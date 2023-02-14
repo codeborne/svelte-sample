@@ -10,8 +10,14 @@
   import SelectField from 'src/forms/SelectField.svelte'
   import MultipleSelect from 'src/forms/MultipleSelect.svelte'
   import Form from 'src/forms/Form.svelte'
+  import SortableTable from 'src/components/SortableTable.svelte'
+  import type {Address} from 'src/api/types'
 
   let range = 33
+  let addresses = [
+    {county: 'Harjumaa', municipality: 'Tallinn', street: 'Sepise', building: '8'},
+    {county: 'Saaremaa', municipality: 'Leisi', street: 'Soodi', building: '3'},
+  ] as Address[]
 </script>
 
 <MainPageLayout title={_('title')}>
@@ -31,5 +37,19 @@
         <MultipleSelect label="MultipleSelect" options={{1: 'a', 2: 'b', 5: 'c'}} values={[1, 5]}/>
       </div>
     </Form>
+
+    <h2>SortableTable</h2>
+    <SortableTable labels="addresses" columns={['county', 'municipality', 'street', 'building']} items={addresses} let:item={a}>
+      <tr>
+        <td>{a.county}</td>
+        <td>{a.municipality}</td>
+        <td>{a.street}</td>
+        <td>{a.building}</td>
+      </tr>
+    </SortableTable>
+    <p>Empty state</p>
+    <SortableTable labels="addresses" columns={['county', 'municipality', 'street', 'building']} items={[]}/>
+    <p>Loading state</p>
+    <SortableTable labels="addresses" columns={['county', 'municipality', 'street', 'building']} items={undefined}/>
   </div>
 </MainPageLayout>
