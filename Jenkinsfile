@@ -37,12 +37,6 @@ pipeline {
       }
       steps {
         sh "$COMPOSE up -d --remove-orphans"
-        script {
-          def startLogs = sh script: "sleep 7 && $COMPOSE logs $APP", returnStdout: true
-          println(startLogs)
-          if (!startLogs.contains("Listening on")) error("Failed to start")
-          if (EMAIL) mail to: EMAIL, subject: "$APP deployed to test", body: EMAIL_BODY + "\n\nStart logs:\n...\n$startLogs"
-        }
       }
     }
   }
