@@ -30,11 +30,11 @@
       <TextAreaField label="TextArea" rows={3} value="Here we have char counter"/>
       <div class="common-grid sm:grid-cols-2">
         <NumberField label="NumberField" unit="%" bind:value={range}/>
-        <AmountField label="AmountField"/>
+        <AmountField label="AmountField" value={123}/>
         <RangeSlider label="RangeSlider" min={10} max={40} bind:value={range}/>
         <UnitsField label="UnitsField" value={100} units={['€ excl. VAT', '€ incl. VAT']} unitRatio={1.2}/>
-        <SelectField label="SelectField" options={{1: 'a', 2: 'b', 5: 'c'}} emptyOption="Please select something"/>
-        <MultipleSelect label="MultipleSelect" options={{1: 'a', 2: 'b', 5: 'c'}} values={[1, 5]}/>
+        <SelectField label="SelectField" options={{'1': 'a', '2': 'b', '5': 'c'}} emptyOption="Please select something"/>
+        <MultipleSelect label="MultipleSelect" options={{'1': 'a', '2': 'b', '5': 'c'}} values={['1', '5']}/>
       </div>
     </Form>
 
