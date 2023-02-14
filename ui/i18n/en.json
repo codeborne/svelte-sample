@@ -1,0 +1,83 @@
+{
+  "title": "Svelte Sample",
+  "addresses": {
+    "country": "Country",
+    "county": "County",
+    "municipality": "Municipality",
+    "area": "Area",
+    "street": "Street",
+    "building": "Building",
+    "apartment": "Apt / Auditorium",
+    "postalCode": "Postal code",
+    "details": "Details",
+    "edit": "Edit address"
+  },
+  "contacts": {
+    "email": "E-mail",
+    "phone": "Phone number",
+    "contactUs": "Contact us",
+    "gmail": "Gmail"
+  },
+  "person": {
+    "birthDate": "Date of birth",
+    "personalCode": "Personal code",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "name": "Name",
+    "age": "Age"
+  },
+  "general": {
+    "yes": "Yes",
+    "no": "No",
+    "and": "and",
+    "add": "Add",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saved": "Saved",
+    "confirm": "Confirm",
+    "edit": "Edit",
+    "close": "Close",
+    "details": "Details",
+    "filter": "Filter...",
+    "loading": "Loading...",
+    "noItems": "No data to show",
+    "showInactive": "Show inactive",
+    "pcs": "pcs",
+    "printPDF": "Print / PDF",
+    "download": "Download",
+    "total": "Total",
+    "average": "Avg",
+    "selectMonth": "Select month",
+    "wholeYear": "Whole year",
+    "optional": "optional",
+    "week": "Week",
+    "files": "Files",
+    "copied": "Copied",
+    "copy": "Copy",
+    "created": "Created"
+  },
+  "login": {
+    "link": "Login",
+    "logout": "Logout",
+    "failed": "Invalid credentials",
+    "noUser": "Invalid credentials"
+  },
+  "home": {
+    "title": "Home",
+    "apiVersionUpdate": {
+      "title": "Application updated",
+      "message": "Refreshing the page is needed for correct functioning",
+      "action": "Refresh now"
+    }
+  },
+  "errors": {
+    "technical": "Technical error, please try again",
+    "paymentGatewayTimeout": "Card payment gateway did not respond, please try again after a few minutes",
+    "notFound": "Not found",
+    "notFoundInstructions": "Please check the URL in the address bar and try again",
+    "alreadyExists": "Already exists",
+    "networkUnavailable": "Cannot connect to the server, please try again later",
+    "notJson": "Communication with server is blocked, please check your network connection",
+    "tooLong": "Text is too long"
+  }
+}

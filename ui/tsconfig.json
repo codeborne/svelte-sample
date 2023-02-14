@@ -1,0 +1,29 @@
+{
+  "extends": "@tsconfig/svelte/tsconfig.json",
+  "include": ["src", "i18n"],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["./src/*"]
+    },
+    /* noEmit - vite/esbuild builds (emits) files, not tsc */
+    "noEmit": true,
+    "types": ["vite/client", "mocha", "./src/shared/ArrayExtensions", "./src/shared/globals", "vitest/globals"],
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "useDefineForClassFields": true,
+    "allowSyntheticDefaultImports": true,
+    "importsNotUsedAsValues": "error",
+    "esModuleInterop": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "strictPropertyInitialization": true
+  }
+}

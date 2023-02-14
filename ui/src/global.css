@@ -1,0 +1,120 @@
+@tailwind base;
+
+@layer base {
+  h1, h2, h3, h4, h5 {
+    outline: none;
+  }
+
+  h1, .h1 {
+    @apply text-4xl;
+  }
+
+  h2, .h2 {
+    @apply text-3xl;
+  }
+
+  h3, .h3 {
+    @apply text-2xl;
+  }
+
+  h4, .h4 {
+    @apply text-xl font-semibold text-gray-900;
+  }
+
+  h5, .h5 {
+    @apply text-lg font-medium text-gray-900;
+  }
+
+  h6, .h6 {
+    @apply text-base font-medium text-gray-900;
+  }
+
+  img, svg {
+    display: inline-block;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  th, td {
+    vertical-align: top;
+  }
+
+  a {
+    cursor: pointer;
+    @apply text-primary-600 hover:text-primary-700;
+  }
+
+  table th, table td {
+    @apply px-0 py-2;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-muted {
+    @apply text-gray-400;
+  }
+
+  .link-with-icon {
+    @apply flex items-center text-primary-900 hover:text-primary-500 focus:text-primary-700
+  }
+
+  .card-title {
+    @apply text-lg font-medium leading-6 text-gray-900
+  }
+
+  .modal-wide {
+    @apply w-full md:w-1/2
+  }
+
+  .modal-narrow {
+    @apply w-full md:w-1/4
+  }
+
+  .input-label {
+    @apply text-sm font-medium text-gray-700
+  }
+
+  .common-grid {
+    @apply grid gap-6
+  }
+
+  .spaced {
+    @apply space-y-6
+  }
+
+  .justify-sides {
+    @apply flex justify-between items-center
+  }
+
+  .section {
+    @apply max-w-5xl mx-auto w-full px-4
+  }
+
+  .bg-noise {
+    background: linear-gradient(20deg, green, transparent), url(/img/noise.svg);
+    filter: contrast(170%) brightness(100%);
+    opacity: 0.2;
+  }
+}
+
+html.loading {
+  cursor: wait;
+}
+
+.animation-from-left-to-right {
+  animation: slide-from-left-to-right 2s infinite;
+}
+
+@keyframes slide-from-left-to-right {
+  0% {
+    transform: translateX(-100%)
+  }
+  100% {
+    transform: translateX(100%)
+  }
+}

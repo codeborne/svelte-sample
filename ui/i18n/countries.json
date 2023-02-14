@@ -1,0 +1,32 @@
+{
+  "EE": {
+    "currency": "EUR",
+    "phoneAreaCode": "372",
+    "defaultLang": "et",
+    "vatPercents": [20, 0]
+  },
+  "LV": {
+    "currency": "EUR",
+    "phoneAreaCode": "371",
+    "defaultLang": "lv",
+    "vatPercents": [21, 0]
+  },
+  "LT": {
+    "currency": "EUR",
+    "phoneAreaCode": "370",
+    "defaultLang": "lt",
+    "vatPercents": [21, 0]
+  },
+  "FI": {
+    "currency": "EUR",
+    "phoneAreaCode": "358",
+    "defaultLang": "fi",
+    "vatPercents": [24, 0]
+  },
+  "PL": {
+    "currency": "PLN",
+    "phoneAreaCode": "48",
+    "defaultLang": "pl",
+    "vatPercents": [23, 0]
+  }
+}

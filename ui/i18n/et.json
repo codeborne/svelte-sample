@@ -1,0 +1,82 @@
+{
+  "addresses": {
+    "country": "Riik",
+    "county": "Maakond",
+    "municipality": "Linn/asula",
+    "area": "Linnaosa",
+    "street": "Tänav",
+    "building": "Maja",
+    "apartment": "Klass",
+    "postalCode": "Indeks",
+    "details": "Lisainfo",
+    "edit": "Muuda aadress"
+  },
+  "contacts": {
+    "email": "E-post",
+    "phone": "Telefon",
+    "contactUs": "Võta meiega ühendust",
+    "gmail": "Gmail"
+  },
+  "person": {
+    "birthDate": "Sünnikuupäev",
+    "personalCode": "Isikukood",
+    "firstName": "Eesnimi",
+    "lastName": "Perekonnanimi",
+    "name": "Nimi",
+    "age": "Vanus"
+  },
+  "general": {
+    "yes": "Jah",
+    "no": "Ei",
+    "and": "ja",
+    "add": "Lisa",
+    "cancel": "Tühista",
+    "save": "Salvesta",
+    "saved": "Salvestatud",
+    "confirm": "Kinnita",
+    "edit": "Muuda",
+    "close": "Sulge",
+    "details": "Detailid",
+    "filter": "Filtreeri...",
+    "loading": "Laeb...",
+    "noItems": "Andmeid ei ole",
+    "showInactive": "Näita mitteaktiivseid",
+    "pcs": "tk",
+    "printPDF": "Trüki / PDF",
+    "download": "Laadi alla",
+    "total": "Kokku",
+    "average": "Kesk",
+    "selectMonth": "Vali kuu",
+    "wholeYear": "Terve aasta",
+    "optional": "valikuline",
+    "week": "Nädal",
+    "files": "Failid",
+    "copied": "Kopeeritud",
+    "copy": "Kopeeri",
+    "created": "Loodud"
+  },
+  "login": {
+    "link": "Sisene",
+    "logout": "Välju",
+    "failed": "Sisenemine ebaõnnestus",
+    "noUser": "Sisenemine ebaõnnestus"
+  },
+  "home": {
+    "title": "Avaleht",
+    "apiVersionUpdate": {
+      "title": "Rakendus uuenes",
+      "message": "Lehe värskendamine on vajalik korrektse töö jätkamiseks",
+      "action": "Värskenda nüüd"
+    }
+  },
+  "errors": {
+    "technical": "Tehniline viga, palun proovi uuesti",
+    "paymentGatewayTimeout": "Kaardimakse teenus ei vasta. Palun proovi uuesti mõni minuti pärast",
+    "notFound": "Lehte ei leitud",
+    "notFoundInstructions": "Palun kontrolli URL'i korrektsust aadressiribal ja proovi uuesti",
+    "alreadyExists": "Juba eksisteerib",
+    "networkUnavailable": "Serveriga ei saa ühendust, proovige hiljem uuesti",
+    "notJson": "Side serveriga on blokeeritud, kontrollige oma võrguühendust",
+    "tooLong": "Tekst on liiga pikk"
+  }
+}
