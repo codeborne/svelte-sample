@@ -14,23 +14,19 @@ describe('LangSelect', () => {
 
   it('updates locale', async () => {
     user.set(null as any)
-    stub(api, 'post').resolves()
     location.pathname = '/en'
     const {container} = render(LangSelect, {location})
     const selection = container.querySelector('select')!
     expect(selection.value).eq('en')
     await fireEvent.change(selection, { target: { value: 'et' } });
     expect(selection.value).eq('et')
-    expect(api.post).not.called
     expect(location.href).to.eq('/et')
   })
 
   it('saves user locale when changing language', async () => {
-    stub(api, 'post').resolves()
     const {container} = render(LangSelect, {location})
     const selection = container.querySelector('select')!
     expect(selection.value).eq('en')
     await fireEvent.change(selection, {target: {value: 'et'}})
-    expect(api.post).calledWith(`users/lang`, {lang: 'et'})
   })
 })

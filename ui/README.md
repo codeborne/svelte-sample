@@ -10,12 +10,14 @@ Runs the app in the development mode.
 Open http://localhost:8000 to view it in the browser.
 
 The page will reload if you make edits.
-You will also see any lint errors in the console.
+
+### npm check
+
+Will run svelte-check to validate all types with TypeScript.
 
 ### npm test
 
-Launches the test runner in the interactive watch mode.
-See the section about running tests for more information.
+Runs unit tests using Vitest.
 
 ### npm run build
 
