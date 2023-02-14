@@ -3,7 +3,7 @@
   import {Route, Router} from 'svelte-navigator'
   import Toasts from './components/Toasts.svelte'
   import NotFoundPage from './layout/NotFoundPage.svelte'
-  import HomePage from 'src/routes/HomePage.svelte'
+  import ComponentsDemo from 'src/pages/ComponentsDemo.svelte'
 </script>
 
 <svelte:head>
@@ -14,7 +14,7 @@
 
 <Router primary={false}>
   <div class="App min-h-screen flex flex-col">
-    <Route path="/" component={HomePage}/>
+    <Route path="/" component={ComponentsDemo}/>
     <Route component={NotFoundPage}/>
   </div>
 </Router>
