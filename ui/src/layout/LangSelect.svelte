@@ -9,13 +9,7 @@
   async function onChange(e: FormEvent) {
     const newLang = e.currentTarget.value
     rememberLang(newLang)
-    if ($user) await updateUserLocale(newLang)
     location.href = location.pathname.replace(new RegExp(`^/${lang}(/|$)`), `/${newLang}$1`)
-  }
-
-  async function updateUserLocale(lang: string) {
-    $user.lang = lang
-    await api.post(`users/lang`, {lang})
   }
 </script>
 
