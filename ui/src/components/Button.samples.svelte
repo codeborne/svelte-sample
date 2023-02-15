@@ -1,13 +1,21 @@
 <script lang="ts">
   import Button from 'src/components/Button.svelte'
+
+  const def = {label: 'Default'}
+  const props = [
+    def,
+    {...def, size: 'lg'},
+    {...def, size: 'sm'}
+  ]
 </script>
 
 <div class="common-grid sm:grid-cols-4">
   <div class="flex flex-col gap-6">
-    <Button label="Default"/>
-    <Button label="Default lg" size="lg"/>
-    <Button label="Default sm" size="sm"/>
+    {#each props as p}
+      <Button {...p}/>
+    {/each}
   </div>
+
   <div class="flex flex-col gap-6">
     <Button label="Primary" class="primary"/>
     <Button label="Primary lg" class="primary" size="lg"/>
