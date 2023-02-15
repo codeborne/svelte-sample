@@ -9,6 +9,7 @@
     <div class="flex flex-col gap-6">
       <h2>Size {size || 'default'}</h2>
       <Button label="Default" {size}/>
+      <Button label="With icon" {size} icon="link-external"/>
       <Button label="Primary" class="primary" {size}/>
       <Button label="Danger" class="danger" {size}/>
       <Button label="Success" class="success" {size}/>
