@@ -1,5 +1,6 @@
 export default [
   'components/Icon',
   'components/Button',
-  'forms/FormField'
+  'forms/FormField',
+  'components/SortableTable',
 ]
