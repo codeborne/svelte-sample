@@ -1,7 +1,7 @@
 <script lang="ts">
   import icons from './icons'
 
-  export let name: string
+  export let name: keyof icons
   export let focusable: any = false
 
   $: icon = icons[name]
