@@ -3,9 +3,9 @@
   import Link from 'src/components/Link.svelte'
   import components from 'src/samples/components'
 
-  export let name: string
+  export let path: string
 
-  if (!name) name = components[0]
+  if (!path) path = components[0]
 </script>
 
 <MainPageLayout title="Component samples">
@@ -16,7 +16,7 @@
       {/each}
     </ul>
     <div>
-      {#await import(`src/components/${name}.samples.svelte`)}
+      {#await import(`/src/${path}.samples.svelte`)}
         Loading...
       {:then module}
         <svelte:component this={module.default}/>

@@ -1,3 +1,4 @@
 export default [
-  'Button'
+  'components/Button',
+  'forms/FormField'
 ]

@@ -16,7 +16,7 @@
 <Router primary={false}>
   <div class="App min-h-screen flex flex-col">
     <Route path="/" component={ComponentsDemo}/>
-    <Route path="/samples/*name" component={ComponentSamples}/>
+    <Route path="/samples/*path" component={ComponentSamples}/>
     <Route component={NotFoundPage}/>
   </div>
 </Router>
