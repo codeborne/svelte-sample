@@ -12,7 +12,6 @@
   import Form from 'src/forms/Form.svelte'
   import SortableTable from 'src/components/SortableTable.svelte'
   import type {Address} from 'src/api/types'
-  import ButtonSamples from 'src/components/Button.samples.svelte'
 
   let range = 33
   let addresses = [
@@ -23,8 +22,6 @@
 
 <MainPageLayout title={_('title')}>
   <div class="common-grid">
-    <ButtonSamples/>
-
     <h2>Sample user form</h2>
     <UserForm/>
 
