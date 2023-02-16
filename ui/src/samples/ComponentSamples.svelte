@@ -1,39 +1,40 @@
 <script lang="ts">
   import MainPageLayout from 'src/layout/MainPageLayout.svelte'
   import Link from 'src/components/Link.svelte'
-  import components from 'src/samples/components'
   import {useLocation} from 'svelte-navigator'
-  import {groupBy} from 'src/utils'
+  import {navigate} from 'src/i18n'
 
   export let path: string
 
-  if (!path) path = components[0]
-
   const location = useLocation()
+  const samples = Object.entries(import.meta.glob('src/**/*.samples.svelte')).map(([p, f]) => [p.replace('/src/', '').replace('.samples.svelte', ''), f]).toObject()
+  const groupedMenu = Object.keys(samples).groupBy(p => p.split('/')[0])
 
-  const groupedMenu = groupBy(components, x => x.split('/')[0])
+  if (!path) navigate('samples/' + Object.keys(samples)[0])
 </script>
 
 <MainPageLayout>
   <div class="flex items-start gap-10">
     <nav class="nav">
-      {#each Object.keys(groupedMenu) as group}
-        <div class="nav-group">{group}</div>
-        {#each groupedMenu[group].sort() as name}
-          <Link to="samples/{name}"
-                class="nav-link {($location.pathname === '/samples/' + name) && 'active'}"
-          >{name.split('/')[1]}</Link>
+      {#each Object.keys(groupedMenu) as dir}
+        <div class="nav-group">{dir}</div>
+        {#each groupedMenu[dir] as path}
+          <Link to="samples/{path}" class="nav-link {$location.pathname.endsWith(path) ? 'active': ''}">
+            {path.split('/')[1]}
+          </Link>
         {/each}
       {/each}
     </nav>
     <div class="w-full">
-      {#await import(`/src/${path}.samples.svelte`)}
-        Loading...
-      {:then module}
-        <svelte:component this={module.default}/>
-      {:catch error}
-        Failed: {error}
-      {/await}
+      {#if path}
+        {#await samples[path]()}
+          Loading...
+        {:then module}
+          <svelte:component this={module.default}/>
+        {:catch error}
+          Failed: {error}
+        {/await}
+      {/if}
     </div>
   </div>
 </MainPageLayout>
