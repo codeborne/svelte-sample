@@ -4,7 +4,8 @@
 </script>
 
 <Sample title="Units field">
-  <div class="w-64 mx-auto">
-    <UnitsField label="UnitsField" value={100} units={['€ excl. VAT', '€ incl. VAT']} unitRatio={1.2}/>
+  <div class="w-64 mx-auto common-grid">
+    <UnitsField label="Price" value={100} units={['€ excl. VAT', '€ incl. VAT']} unitRatio={1.2}/>
+    <UnitsField label="Residual amount" value={1500.45} units={['€', '%']} unitRatio={0.03} unit="%"/>
   </div>
 </Sample>

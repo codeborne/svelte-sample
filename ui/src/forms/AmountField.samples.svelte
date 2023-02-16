@@ -4,7 +4,8 @@
 </script>
 
 <Sample title="Amount field">
-  <div class="w-64 mx-auto">
-    <AmountField label="Cost" value={123}/>
+  <div class="w-64 mx-auto common-grid">
+    <AmountField label="Price" value={123.47}/>
+    <AmountField label="Price" value={1250} currency="PLN"/>
   </div>
 </Sample>
