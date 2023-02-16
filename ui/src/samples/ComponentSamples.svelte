@@ -15,7 +15,6 @@
 </script>
 
 <MainPageLayout>
-
   <div class="flex items-start gap-10">
     <nav class="nav">
       {#each Object.keys(groupedMenu) as group}
