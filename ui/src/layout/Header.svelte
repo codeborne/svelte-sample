@@ -10,6 +10,7 @@
 
   const menu = [
     {path: '', label: 'home.title', roles: [Role.ADMIN, Role.TRAINER, Role.CUSTOMER]},
+    {path: 'samples', label: 'Samples', roles: [Role.ADMIN, Role.TRAINER, Role.CUSTOMER]},
   ]
 </script>
 

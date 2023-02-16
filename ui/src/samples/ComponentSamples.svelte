@@ -12,7 +12,6 @@
 </script>
 
 <MainPageLayout title="Component samples">
-
   <div class="flex items-start gap-10">
     <nav class="nav">
       {#each components as name}
@@ -22,13 +21,15 @@
       {/each}
     </nav>
     <div>
-      {#await import(`/src/${path}.samples.svelte`)}
-        Loading...
-      {:then module}
-        <svelte:component this={module.default}/>
-      {:catch error}
-        Failed: {error}
-      {/await}
+      {#if path}
+        {#await import(`/src/${path}.samples.svelte`)}
+          Loading...
+        {:then module}
+          <svelte:component this={module.default}/>
+        {:catch error}
+          Failed: {error}
+        {/await}
+      {/if}
     </div>
   </div>
 </MainPageLayout>
