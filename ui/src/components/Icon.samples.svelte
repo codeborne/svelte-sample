@@ -10,7 +10,7 @@
 
 
 <div class="grid grid-cols-6 gap-4">
-  {#each Object.keys(icons) as name}
+  {#each Object.keys(icons).sort() as name}
     <div>
       <Sample title={name} class="!mb-2 text-center">
         <Icon {name} class="icon-sm"/>
