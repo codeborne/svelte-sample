@@ -4,5 +4,6 @@ export default [
   'components/SortableTable',
   'forms/FormField',
   'forms/NumberField',
-  'forms/AmountField'
+  'forms/AmountField',
+  'forms/RangeSlider'
 ]
