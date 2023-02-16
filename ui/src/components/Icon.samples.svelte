@@ -12,7 +12,7 @@
 <div class="grid grid-cols-6 gap-4">
   {#each Object.keys(icons) as name}
     <div>
-      <Sample title={name} class="!mb-2">
+      <Sample title={name} class="!mb-2 text-center">
         <Icon {name} class="icon-sm"/>
         <Icon {name}/>
         <Icon {name} class="icon-lg text-primary-500"/>
