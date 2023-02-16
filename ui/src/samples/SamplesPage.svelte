@@ -1,7 +1,6 @@
 <script lang="ts">
   import MainPageLayout from 'src/layout/MainPageLayout.svelte'
   import Link from 'src/components/Link.svelte'
-  import {useLocation} from 'svelte-navigator'
   import {navigate} from 'src/i18n'
   import Card from 'src/components/Card.svelte'
 

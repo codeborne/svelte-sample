@@ -1,6 +1,5 @@
 <script>
   import UnitsField from 'src/forms/UnitsField.svelte'
-  import Sample from 'src/samples/Sample.svelte'
 </script>
 
 <div class="w-64 common-grid">

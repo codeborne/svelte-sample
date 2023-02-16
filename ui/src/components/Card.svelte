@@ -11,7 +11,7 @@
   <div class="common-grid md:grid-cols-3">
     {#if title}
       <div class={split ? 'md:col-span-1': 'md:col-span-3'}>
-        <h3 class="text-lg font-medium leading-6">{_(title)}</h3>
+        <h3 class="text-lg font-medium leading-6">{title}</h3>
         {#if subtitle}
           <p class="mt-1 text-sm text-gray-500">{subtitle}</p>
         {/if}

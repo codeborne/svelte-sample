@@ -1,6 +1,5 @@
 <script>
   import NumberField from 'src/forms/NumberField.svelte'
-  import Sample from 'src/samples/Sample.svelte'
 </script>
 
 <div class="w-64 common-grid">

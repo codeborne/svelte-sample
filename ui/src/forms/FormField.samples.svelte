@@ -1,8 +1,6 @@
 <script lang="ts">
   import Form from 'src/forms/Form.svelte'
   import FormField from 'src/forms/FormField.svelte'
-  import Sample from 'src/samples/Sample.svelte'
-  import UserForm from 'src/samples/UserForm.svelte'
   import {today} from 'src/i18n'
 </script>
 

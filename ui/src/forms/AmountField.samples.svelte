@@ -1,6 +1,5 @@
 <script>
   import AmountField from 'src/forms/AmountField.svelte'
-  import Sample from 'src/samples/Sample.svelte'
 </script>
 
 <div class="w-64 common-grid">

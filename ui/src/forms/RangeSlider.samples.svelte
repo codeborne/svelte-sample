@@ -1,6 +1,5 @@
 <script>
   import RangeSlider from 'src/forms/RangeSlider.svelte'
-  import Sample from 'src/samples/Sample.svelte'
   import NumberField from 'src/forms/NumberField.svelte'
 
   let range = 33
