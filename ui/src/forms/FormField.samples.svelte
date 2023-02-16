@@ -32,8 +32,3 @@
     </Form>
   </div>
 </Sample>
-
-<Sample title="Sample user form">
-  <UserForm/>
-</Sample>
-
