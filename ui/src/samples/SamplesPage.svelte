@@ -45,7 +45,7 @@
     @apply flex flex-col
   }
 
-  .nav.nav-group {
+  .nav-group {
     @apply text-gray-400 font-semibold text-xs mb-2 uppercase
   }
 
