@@ -15,7 +15,7 @@ pipeline {
   stages {
     stage('Build UI') {
       steps {
-        sh "docker build --target build-ui -t ${BUILD}_ui ."
+        sh "docker build --target build-ui -t ${BUILD}_test ."
       }
     }
     stage('Test UI') {
