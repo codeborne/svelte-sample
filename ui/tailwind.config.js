@@ -18,7 +18,7 @@ module.exports = {
         'success': colors.emerald,
         'warning': colors.amber,
         'danger': colors.red,
-        'primary': colors.gray,
+        'primary': colors.blue,
         'brand': colors.amber
       },
     },
