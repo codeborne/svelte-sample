@@ -5,5 +5,6 @@ export default [
   'forms/FormField',
   'forms/NumberField',
   'forms/AmountField',
-  'forms/RangeSlider'
+  'forms/RangeSlider',
+  'forms/UnitsField'
 ]

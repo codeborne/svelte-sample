@@ -1,7 +1,6 @@
 <script lang="ts">
   import {_} from 'src/i18n'
   import MainPageLayout from 'src/layout/MainPageLayout.svelte'
-  import UnitsField from 'src/forms/UnitsField.svelte'
   import TextAreaField from 'src/forms/TextAreaField.svelte'
   import SelectField from 'src/forms/SelectField.svelte'
   import MultipleSelect from 'src/forms/MultipleSelect.svelte'
@@ -17,7 +16,6 @@
     <Form submit={() => alert('Nowhere to submit')}>
       <TextAreaField label="TextArea" rows={3} value="Here we have char counter"/>
       <div class="common-grid sm:grid-cols-2">
-        <UnitsField label="UnitsField" value={100} units={['€ excl. VAT', '€ incl. VAT']} unitRatio={1.2}/>
         <SelectField label="SelectField" options={{'1': 'a', '2': 'b', '5': 'c'}} emptyOption="Please select something"/>
         <MultipleSelect label="MultipleSelect" options={{'1': 'a', '2': 'b', '5': 'c'}} values={['1', '5']}/>
       </div>
