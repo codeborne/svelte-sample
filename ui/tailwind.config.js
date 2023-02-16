@@ -15,22 +15,11 @@ module.exports = {
         large: '3rem',
       },
       colors: {
-        primary: colors.emerald,
-        secondary: colors.orange,
-        success: {
-          "50": "#E0FFE0",
-          "100": "#C2FFC2",
-          "200": "#85FF85",
-          "300": "#47FF47",
-          "400": "#0AFF0A",
-          "500": "#00CD00",
-          "600": "#00A300",
-          "700": "#007A00",
-          "800": "#005200",
-          "900": "#002900"
-        },
-        warning: colors.amber,
-        danger: colors.red
+        'success': colors.emerald,
+        'warning': colors.amber,
+        'danger': colors.red,
+        'primary': colors.gray,
+        'brand': colors.amber
       },
     },
   },
