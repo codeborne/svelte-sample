@@ -1,6 +1,7 @@
 <script lang="ts">
   import SortableTable from 'src/components/SortableTable.svelte'
   import type {Address} from 'src/api/types'
+  import Sample from 'src/samples/Sample.svelte'
 
   let addresses = [
     {county: 'Harjumaa', municipality: 'Tallinn', street: 'Sepise', building: '8'},
@@ -8,17 +9,21 @@
   ] as Address[]
 </script>
 
-<SortableTable labels="addresses" columns={['county', 'municipality', 'street', 'building']} items={addresses} let:item={a}>
-  <tr>
-    <td>{a.county}</td>
-    <td>{a.municipality}</td>
-    <td>{a.street}</td>
-    <td>{a.building}</td>
-  </tr>
-</SortableTable>
+<Sample>
+  <SortableTable labels="addresses" columns={['county', 'municipality', 'street', 'building']} items={addresses} let:item={a}>
+    <tr>
+      <td>{a.county}</td>
+      <td>{a.municipality}</td>
+      <td>{a.street}</td>
+      <td>{a.building}</td>
+    </tr>
+  </SortableTable>
+</Sample>
 
-<h2>Empty state</h2>
-<SortableTable labels="addresses" columns={['county', 'municipality', 'street', 'building']} items={[]}/>
+<Sample title="Empty state">
+  <SortableTable labels="addresses" columns={['county', 'municipality', 'street', 'building']} items={[]}/>
+</Sample>
 
-<h2>Loading state</h2>
-<SortableTable labels="addresses" columns={['county', 'municipality', 'street', 'building']} items={undefined}/>
+<Sample title="Loading state">
+  <SortableTable labels="addresses" columns={['county', 'municipality', 'street', 'building']} items={undefined}/>
+</Sample>

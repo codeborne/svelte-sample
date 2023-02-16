@@ -27,7 +27,7 @@
         {/each}
       {/each}
     </nav>
-    <div>
+    <div class="w-full">
       {#await import(`/src/${path}.samples.svelte`)}
         Loading...
       {:then module}
