@@ -8,6 +8,7 @@
   export let label = ''
   export let values: string[]
   export let options: {[value: string|number]: string|number} | string[] | string | undefined
+  export let disabled = false
 
   let select: HTMLSelectElement
 
@@ -29,8 +30,10 @@
 <FormField {label}>
   <div class="flex flex-row flex-wrap items-center gap-2">
     {#each values ?? [] as key}
-      <Badge>{options?.[key]} <a on:click={() => remove(key)}><Icon name="x"/></a></Badge>
+      <Badge>{options?.[key]} {#if !disabled}<a on:click={() => remove(key)}><Icon name="x"/></a>{/if}</Badge>
     {/each}
-    <PlusSelectField {options} {values} bind:select on:change={add}/>
+    {#if !disabled}
+      <PlusSelectField {options} {values} bind:select on:change={add}/>
+    {/if}
   </div>
 </FormField>

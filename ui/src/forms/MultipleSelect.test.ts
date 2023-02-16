@@ -1,7 +1,6 @@
 import {fireEvent, render} from '@testing-library/svelte'
 import {expect} from 'chai'
 import MultipleSelect from './MultipleSelect.svelte'
-
 describe('MultipleSelect', () => {
   it('waits for options to load', () => {
     render(MultipleSelect, {values: ['x'], options: undefined})
