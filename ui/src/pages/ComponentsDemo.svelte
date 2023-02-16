@@ -7,10 +7,5 @@
 </script>
 
 <MainPageLayout title={_('title')}>
-  <div class="common-grid">
 
-    <h2>More advanced components</h2>
-    <Form submit={() => alert('Nowhere to submit')}>
-    </Form>
-  </div>
 </MainPageLayout>

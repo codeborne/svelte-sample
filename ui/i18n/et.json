@@ -69,6 +69,9 @@
       "action": "Värskenda nüüd"
     }
   },
+  "samples": {
+    "title": "Näidised"
+  },
   "errors": {
     "technical": "Tehniline viga, palun proovi uuesti",
     "paymentGatewayTimeout": "Kaardimakse teenus ei vasta. Palun proovi uuesti mõni minuti pärast",
