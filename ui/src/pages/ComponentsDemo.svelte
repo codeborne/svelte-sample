@@ -3,7 +3,6 @@
   import MainPageLayout from 'src/layout/MainPageLayout.svelte'
   import UnitsField from 'src/forms/UnitsField.svelte'
   import AmountField from 'src/forms/AmountField.svelte'
-  import NumberField from 'src/forms/NumberField.svelte'
   import RangeSlider from 'src/forms/RangeSlider.svelte'
   import TextAreaField from 'src/forms/TextAreaField.svelte'
   import SelectField from 'src/forms/SelectField.svelte'
@@ -21,7 +20,6 @@
     <Form submit={() => alert('Nowhere to submit')}>
       <TextAreaField label="TextArea" rows={3} value="Here we have char counter"/>
       <div class="common-grid sm:grid-cols-2">
-        <NumberField label="NumberField" unit="%" bind:value={range}/>
         <AmountField label="AmountField" value={123}/>
         <RangeSlider label="RangeSlider" min={10} max={40} bind:value={range}/>
         <UnitsField label="UnitsField" value={100} units={['€ excl. VAT', '€ incl. VAT']} unitRatio={1.2}/>
