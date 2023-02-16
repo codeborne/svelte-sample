@@ -57,6 +57,6 @@
   }
 
   .nav-link.active {
-    @apply bg-gray-100
+    @apply bg-slate-200
   }
 </style>
