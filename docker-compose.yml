@@ -4,3 +4,9 @@ services:
   svelte-sample:
     restart: always
     build: .
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
