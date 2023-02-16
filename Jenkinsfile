@@ -15,12 +15,12 @@ pipeline {
   stages {
     stage('Build UI') {
       steps {
-        sh "docker build --target build-ui -t ${BUILD}_test ."
+        sh "docker build --target build-ui -t ${BUILD}_ui ."
       }
     }
     stage('Test UI') {
       steps {
-        sh "docker run -t ${BUILD}_test npm run test"
+        sh "docker run -t ${BUILD}_ui npm run test"
       }
     }
     stage('Build final') {
@@ -41,12 +41,6 @@ pipeline {
     }
   }
   post {
-    always {
-      sh 'rm -fr build && mkdir -p build/test-results'
-      sh 'docker cp ${BUILD}_test:/app/domain/build/test-results build/ && docker cp ${BUILD}_test:/app/app/build/test-results build/ && docker rm ${BUILD}_test || echo "No test container"'
-      sh "touch build/test-results/**/*.xml"
-      junit 'build/test-results/**/*.xml'
-    }
     failure {
       script {
         if (EMAIL) mail to: EMAIL, subject: "$APP ($BRANCH_NAME) build failed", body: EMAIL_BODY
