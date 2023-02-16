@@ -7,12 +7,15 @@
 </script>
 
 <Sample title="States & Types">
+  <p class="mb-6">All form fields are required by default.</p>
+
   <div class="common-grid sm:grid-cols-2">
     <Form submit={() => alert('No submit')}>
       <FormField label="FormField"/>
       <FormField label="FormField" placeholder="Placeholder"/>
       <FormField label="Disabled" disabled/>
       <FormField label="Readonly" readonly/>
+      <FormField label="Not required" required={false}/>
       <FormField label="With help" helpText="Mega additional help"/>
 
       <div class="validated">
