@@ -2,19 +2,25 @@
   import MainPageLayout from 'src/layout/MainPageLayout.svelte'
   import Link from 'src/components/Link.svelte'
   import components from 'src/samples/components'
+  import {useLocation} from 'svelte-navigator'
 
   export let path: string
 
   if (!path) path = components[0]
+
+  const location = useLocation()
 </script>
 
 <MainPageLayout title="Component samples">
-  <div class="flex gap-10">
-    <ul>
+
+  <div class="flex items-start gap-10">
+    <nav class="nav">
       {#each components as name}
-        <li><Link to="samples/{name}">{name}</Link></li>
+        <Link to="samples/{name}"
+              class="nav-link {($location.pathname === '/samples/' + name) && 'active'}"
+        >{name}</Link>
       {/each}
-    </ul>
+    </nav>
     <div>
       {#await import(`/src/${path}.samples.svelte`)}
         Loading...
@@ -26,3 +32,17 @@
     </div>
   </div>
 </MainPageLayout>
+
+<style global>
+  .nav {
+    @apply flex flex-col space-y-1
+  }
+
+  .nav-link {
+    @apply font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm rounded-md
+  }
+
+  .nav-link.active {
+    @apply bg-gray-100
+  }
+</style>
