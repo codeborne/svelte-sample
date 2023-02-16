@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: 'Roboto, sans-serif',
+        sans: 'Inter, sans-serif',
         serif: 'serif'
       },
       borderRadius: {
