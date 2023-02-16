@@ -3,7 +3,6 @@
   import MainPageLayout from 'src/layout/MainPageLayout.svelte'
   import TextAreaField from 'src/forms/TextAreaField.svelte'
   import SelectField from 'src/forms/SelectField.svelte'
-  import MultipleSelect from 'src/forms/MultipleSelect.svelte'
   import Form from 'src/forms/Form.svelte'
   import type {Address} from 'src/api/types'
 
@@ -15,9 +14,6 @@
     <h2>More advanced components</h2>
     <Form submit={() => alert('Nowhere to submit')}>
       <TextAreaField label="TextArea" rows={3} value="Here we have char counter"/>
-      <div class="common-grid sm:grid-cols-2">
-        <MultipleSelect label="MultipleSelect" options={{'1': 'a', '2': 'b', '5': 'c'}} values={['1', '5']}/>
-      </div>
     </Form>
   </div>
 </MainPageLayout>
