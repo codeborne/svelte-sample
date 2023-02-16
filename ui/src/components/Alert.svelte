@@ -1,4 +1,4 @@
-<div class="alert {$$props.class ?? ''}" role="alert">
+<div class="alert {$$props.class ?? 'primary'}" role="alert">
   <p class="font-bold">
     <slot/>
   </p>
@@ -14,19 +14,19 @@
     content: "";
   }
 
-  .alert-primary {
+  .alert.primary {
     @apply bg-primary-100 text-primary-700 before:bg-primary-500
   }
 
-  .alert-success {
+  .alert.success {
     @apply bg-success-100 text-success-700 before:bg-success-500
   }
 
-  .alert-warning {
+  .alert.warning {
     @apply bg-warning-100 text-warning-700 before:bg-warning-500
   }
 
-  .alert-danger {
+  .alert.danger {
     @apply bg-danger-100 text-danger-700 before:bg-danger-500
   }
 </style>
