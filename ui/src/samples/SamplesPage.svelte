@@ -33,12 +33,12 @@
   </div>
 </MainPageLayout>
 
-<style global>
+<style>
   .nav {
     @apply flex flex-col
   }
 
-  .nav-group {
+  .nav.nav-group {
     @apply text-gray-400 font-semibold text-xs mb-2 uppercase
   }
 
@@ -46,11 +46,11 @@
     @apply mt-4
   }
 
-  .nav-link {
+  .nav :global(.nav-link) {
     @apply font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center mt-1 px-3 py-2 text-sm rounded-md min-w-[180px]
   }
 
-  .nav-link.active {
+  .nav :global(.nav-link.active) {
     @apply bg-slate-200
   }
 </style>
