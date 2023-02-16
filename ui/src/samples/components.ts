@@ -4,6 +4,7 @@ export default [
   'components/SortableTable',
   'forms/AmountField',
   'forms/FormField',
+  'forms/MultipleSelect',
   'forms/NumberField',
   'forms/RangeSlider',
   'forms/SelectField',
