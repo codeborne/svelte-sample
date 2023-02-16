@@ -14,7 +14,7 @@
   const groupedMenu = groupBy(components, x => x.split('/')[0])
 </script>
 
-<MainPageLayout title="Component samples">
+<MainPageLayout>
 
   <div class="flex items-start gap-10">
     <nav class="nav">
