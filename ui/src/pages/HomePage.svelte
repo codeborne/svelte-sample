@@ -1,11 +1,10 @@
 <script lang="ts">
-  import {_} from 'src/i18n'
+  import {_, navigate} from 'src/i18n'
   import MainPageLayout from 'src/layout/MainPageLayout.svelte'
-  import Form from 'src/forms/Form.svelte'
-  import type {Address} from 'src/api/types'
 
+  navigate('samples')
 </script>
 
 <MainPageLayout title={_('title')}>
-
+  TODO
 </MainPageLayout>
