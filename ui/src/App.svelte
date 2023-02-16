@@ -4,7 +4,7 @@
   import Toasts from './components/Toasts.svelte'
   import NotFoundPage from './layout/NotFoundPage.svelte'
   import HomePage from 'src/pages/HomePage.svelte'
-  import ComponentSamples from 'src/samples/ComponentSamples.svelte'
+  import Spinner from 'src/components/Spinner.svelte'
 </script>
 
 <svelte:head>
@@ -16,7 +16,13 @@
 <Router primary={false}>
   <div class="App min-h-screen flex flex-col">
     <Route path="/" component={HomePage}/>
-    <Route path="/samples/*path" component={ComponentSamples}/>
+    <Route path="/samples/*path" let:params>
+      {#await import('src/samples/SamplesPage.svelte')}
+        <Spinner/>
+      {:then samples}
+        <svelte:component this={samples.default} {...params}/>
+      {/await}
+    </Route>
     <Route component={NotFoundPage}/>
   </div>
 </Router>
