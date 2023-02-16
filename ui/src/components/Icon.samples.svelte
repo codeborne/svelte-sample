@@ -2,6 +2,8 @@
   import icons from 'src/components/icons'
   import Icon from 'src/components/Icon.svelte'
   import Sample from 'src/samples/Sample.svelte'
+
+  const names = Object.keys(icons).sort() as (keyof typeof icons)[]
 </script>
 
 <p class="text-lg mb-10">
@@ -10,7 +12,7 @@
 
 
 <div class="grid grid-cols-6 gap-4">
-  {#each Object.keys(icons).sort() as name}
+  {#each names as name}
     <div>
       <Sample title={name} class="!mb-2 text-center">
         <Icon {name} class="icon-sm"/>

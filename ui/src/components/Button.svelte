@@ -3,7 +3,7 @@
   import Icon from './Icon.svelte'
   import type icons from 'src/components/icons'
 
-  export let icon: keyof icons|undefined = undefined
+  export let icon: keyof typeof icons|undefined = undefined
   export let size: 'sm'|''|'lg' = ''
   export let label = ''
   export let type: 'button'|'submit' = 'button'

@@ -1,8 +1,9 @@
 <script lang="ts">
   import Icon from './Icon.svelte'
+  import type icons from 'src/components/icons'
 
   export let contact: string | undefined
-  export let icon: string | undefined = undefined
+  export let icon: keyof typeof icons | undefined = undefined
 
   $: proto = contact?.includes('@') ? 'mailto' : 'tel'
 </script>

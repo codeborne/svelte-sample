@@ -1,7 +1,7 @@
 <script lang="ts">
   import Button from 'src/components/Button.svelte'
 
-  const sizes = ['sm', '', 'lg']
+  const sizes = ['sm', '', 'lg'] as const
 </script>
 
 <div class="common-grid sm:grid-cols-4">

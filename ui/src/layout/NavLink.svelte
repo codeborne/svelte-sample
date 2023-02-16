@@ -1,10 +1,11 @@
 <script lang="ts">
-  import Icon from '../components/Icon.svelte'
-  import Link from '../components/Link.svelte'
+  import Icon from 'src/components/Icon.svelte'
+  import Link from 'src/components/Link.svelte'
   import {useLocation} from 'svelte-navigator'
+  import type icons from 'src/components/icons'
 
   export let to = ''
-  export let icon = ''
+  export let icon: keyof typeof icons
   export let label: string
 
   const location = useLocation()
