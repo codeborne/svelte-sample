@@ -8,5 +8,6 @@ export default [
   'forms/NumberField',
   'forms/RangeSlider',
   'forms/SelectField',
+  'forms/TextAreaField',
   'forms/UnitsField'
 ]
