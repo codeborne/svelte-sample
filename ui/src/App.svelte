@@ -20,7 +20,7 @@
       {#await import('src/samples/SamplesPage.svelte')}
         <Spinner/>
       {:then samples}
-        <svelte:component this={samples.default} {...params}/>
+        <svelte:component this={samples.default} path={params.path}/>
       {/await}
     </Route>
     <Route component={NotFoundPage}/>
