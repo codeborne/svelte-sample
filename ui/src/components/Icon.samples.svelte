@@ -10,7 +10,6 @@
   The base library for the icons is <a href="https://tablericons.com/" target="_blank">TablerIcons</a>
 </p>
 
-
 <div class="grid grid-cols-6 gap-4">
   {#each names as name}
     <div>

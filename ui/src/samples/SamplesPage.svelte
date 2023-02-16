@@ -3,6 +3,7 @@
   import Link from 'src/components/Link.svelte'
   import {useLocation} from 'svelte-navigator'
   import {navigate} from 'src/i18n'
+  import Card from 'src/components/Card.svelte'
 
   export let path: string
 
@@ -26,10 +27,15 @@
         {/each}
       {/key}
     </nav>
+
     <div class="w-full">
-      {#if path}
-        <svelte:component this={samples[path].default}/>
-      {/if}
+      <Card title={path}>
+        <div class="common-grid">
+          {#if path}
+            <svelte:component this={samples[path].default}/>
+          {/if}
+        </div>
+      </Card>
     </div>
   </div>
 </MainPageLayout>
