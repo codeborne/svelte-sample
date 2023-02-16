@@ -6,7 +6,6 @@
 
   export let path: string
 
-  const location = useLocation()
   const samples = Object.entries(import.meta.globEager('src/**/*.samples.svelte')).map(([p, f]) => [p.replace('/src/', '').replace('.samples.svelte', ''), f]).toObject()
   const groupedMenu = Object.keys(samples).groupBy(p => p.split('/')[0])
 
@@ -16,14 +15,16 @@
 <MainPageLayout>
   <div class="flex items-start gap-10">
     <nav class="nav">
-      {#each Object.keys(groupedMenu) as dir}
-        <div class="nav-group">{dir}</div>
-        {#each groupedMenu[dir] as path}
-          <Link to="samples/{path}" class="nav-link {$location.pathname.endsWith(path) ? 'active': ''}">
-            {path.split('/')[1]}
-          </Link>
+      {#key path}
+        {#each Object.keys(groupedMenu) as dir}
+          <div class="nav-group">{dir}</div>
+          {#each groupedMenu[dir] as path}
+            <Link to="samples/{path}" class="nav-link {location.pathname.endsWith(path) ? 'active': ''}">
+              {path.split('/')[1]}
+            </Link>
+          {/each}
         {/each}
-      {/each}
+      {/key}
     </nav>
     <div class="w-full">
       {#if path}
