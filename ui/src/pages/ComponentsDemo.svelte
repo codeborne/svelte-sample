@@ -16,7 +16,6 @@
     <Form submit={() => alert('Nowhere to submit')}>
       <TextAreaField label="TextArea" rows={3} value="Here we have char counter"/>
       <div class="common-grid sm:grid-cols-2">
-        <SelectField label="SelectField" options={{'1': 'a', '2': 'b', '5': 'c'}} emptyOption="Please select something"/>
         <MultipleSelect label="MultipleSelect" options={{'1': 'a', '2': 'b', '5': 'c'}} values={['1', '5']}/>
       </div>
     </Form>
