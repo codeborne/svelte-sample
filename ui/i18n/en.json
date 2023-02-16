@@ -70,6 +70,9 @@
       "action": "Refresh now"
     }
   },
+  "samples": {
+    "title": "Samples"
+  },
   "errors": {
     "technical": "Technical error, please try again",
     "paymentGatewayTimeout": "Card payment gateway did not respond, please try again after a few minutes",

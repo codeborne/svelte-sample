@@ -4,5 +4,5 @@
 </script>
 
 <Link to="">
-  <img class="h-10" src="/img/logo.png" title={_('title')}>
+  <img class="h-7" src="/img/logo.png" title={_('title')} alt="Codeborne logo">
 </Link>

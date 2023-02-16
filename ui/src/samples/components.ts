@@ -1,6 +1,13 @@
 export default [
   'components/Icon',
   'components/Button',
-  'forms/FormField',
   'components/SortableTable',
+  'forms/AmountField',
+  'forms/FormField',
+  'forms/MultipleSelect',
+  'forms/NumberField',
+  'forms/RangeSlider',
+  'forms/SelectField',
+  'forms/TextAreaField',
+  'forms/UnitsField'
 ]

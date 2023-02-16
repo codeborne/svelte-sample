@@ -7,6 +7,7 @@
     "build": "vite build && cp -r i18n build/i18n",
     "preview": "vite preview",
     "check": "svelte-check --diagnostic-sources js,svelte --compiler-warnings a11y-missing-attribute:ignore,a11y-label-has-associated-control:ignore,a11y-click-events-have-key-events:ignore,security-anchor-rel-noreferrer:ignore",
+    "check:dev": "npm run check -- --watch",
     "test": "vitest run"
   },
   "browserslist": [

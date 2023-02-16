@@ -13,7 +13,7 @@
   {/if}
 </svelte:head>
 
-<div class="min-h-screen relative">
+<div class="min-h-screen relative bg-gray-50">
   <div class="absolute inset-0 flex items-center justify-center -z-10"></div>
 
   <Container {width}>
