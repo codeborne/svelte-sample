@@ -7,7 +7,7 @@
   export let path: string
 
   const location = useLocation()
-  const samples = Object.entries(import.meta.glob('src/**/*.samples.svelte')).map(([p, f]) => [p.replace('/src/', '').replace('.samples.svelte', ''), f]).toObject()
+  const samples = Object.entries(import.meta.globEager('src/**/*.samples.svelte')).map(([p, f]) => [p.replace('/src/', '').replace('.samples.svelte', ''), f]).toObject()
   const groupedMenu = Object.keys(samples).groupBy(p => p.split('/')[0])
 
   if (!path) navigate('samples/' + Object.keys(samples)[0])
@@ -27,13 +27,7 @@
     </nav>
     <div class="w-full">
       {#if path}
-        {#await samples[path]()}
-          Loading...
-        {:then module}
-          <svelte:component this={module.default}/>
-        {:catch error}
-          Failed: {error}
-        {/await}
+        <svelte:component this={samples[path].default}/>
       {/if}
     </div>
   </div>
