@@ -1,5 +1,5 @@
 FROM node:18-alpine as build-ui
-WORKDIR /ui
+WORKDIR /app
 
 COPY ui/*.json ./
 RUN npm ci
@@ -15,7 +15,7 @@ ARG VERSION=dev
 ENV VERSION=$VERSION
 
 WORKDIR /usr/share/nginx/html
-COPY --from=build-ui /ui/build ./
+COPY --from=build-ui /app/build ./
 
 RUN echo "Setting built version to $VERSION" &&  \
     sed -Ei "s/\\\$VERSION/$VERSION/" index.html

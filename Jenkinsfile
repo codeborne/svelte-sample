@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Test UI') {
       steps {
-        sh "docker run -t ${BUILD}_ui npm run test"
+        sh "docker run -t ${BUILD}_test npm run test"
       }
     }
     stage('Build final') {
