@@ -27,10 +27,6 @@
            disabled:opacity-50 justify-center py-2 px-4 text-sm font-medium
   }
 
-  .btn.circular {
-    @apply flex items-center justify-center rounded-full
-  }
-
   .btn.default {
     @apply focus:ring-primary-500 hover:bg-gray-50 bg-white text-gray-700 border border-gray-300
   }
@@ -44,7 +40,7 @@
   }
 
   .btn.success {
-    @apply text-white hover:text-white bg-primary-400 hover:bg-primary-700 focus:ring-primary-500
+    @apply text-white hover:text-white bg-success-400 hover:bg-success-700 focus:ring-success-500
   }
 
   .btn.link {

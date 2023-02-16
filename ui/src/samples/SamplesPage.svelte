@@ -28,7 +28,7 @@
     </nav>
 
     <div class="w-full">
-      <Card title={path}>
+      <Card title={path.replace('/', ' / ')}>
         <div class="common-grid">
           {#if path}
             <svelte:component this={samples[path].default}/>
