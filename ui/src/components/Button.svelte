@@ -1,9 +1,8 @@
 <script lang="ts">
   import {_} from '../i18n'
-  import Icon from './Icon.svelte'
-  import type icons from 'src/components/icons'
+  import Icon from 'src/icons/Icon.svelte'
 
-  export let icon: keyof typeof icons|undefined = undefined
+  export let icon = ''
   export let size: 'sm'|''|'lg' = ''
   export let label = ''
   export let type: 'button'|'submit' = 'button'
@@ -13,7 +12,7 @@
 
 <button {type} {...$$restProps} class="btn {$$props.class ?? 'default'} {size} {icon ? 'inline-flex items-center' : ''}" class:icon-only={icon && !hasLabel} on:click>
   {#if icon}
-    <Icon name={icon} class={size == 'lg' ? 'icon-lg' : size == 'sm' ? 'icon-sm' : ''}/>
+    <Icon name={icon} {size}/>
   {/if}
   {#if hasLabel}
     <span class:ml-2={icon}><slot>{_(label)}</slot></span>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Icon from './Icon.svelte'
+  import Icon from 'src/icons/Icon.svelte'
   import {hideToast, toastStore} from 'src/stores/toasts'
   import {fly} from 'svelte/transition'
   import {ToastType} from '../stores/toasts'

@@ -1,7 +1,7 @@
 <script lang="ts">
   import FormField from 'src/forms/FormField.svelte'
   import Badge from 'src/components/Badge.svelte'
-  import Icon from 'src/components/Icon.svelte'
+  import Icon from 'src/icons/Icon.svelte'
   import PlusSelectField from './PlusSelectField.svelte'
   import {createEventDispatcher} from 'svelte'
 

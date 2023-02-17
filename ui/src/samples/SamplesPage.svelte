@@ -28,13 +28,13 @@
     </nav>
 
     <div class="w-full">
-      <Card title={path.replace('/', ' / ')}>
-        <div class="common-grid">
-          {#if path}
+      {#if path}
+        <Card title={path.replace('/', ' / ')}>
+          <div class="common-grid">
             <svelte:component this={samples[path].default}/>
-          {/if}
-        </div>
-      </Card>
+          </div>
+        </Card>
+      {/if}
     </div>
   </div>
 </MainPageLayout>

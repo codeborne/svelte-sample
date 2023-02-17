@@ -7,9 +7,9 @@
 </script>
 
 <p class="text-lg">
-  The base library for the icons is <a href="https://tablericons.com/" target="_blank">TablerIcons</a>
+  The base library for the icons is <a href="https://tablericons.com/" target="_blank">TablerIcons</a><br>
+  Save new icons into src/icons as *.svg files, remove class attribute and change stroke="currentColor".
 </p>
-
 
 <div class="grid grid-cols-6 gap-4">
   {#each names as name}

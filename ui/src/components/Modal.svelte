@@ -2,7 +2,7 @@
   import {_} from 'src/i18n'
   import {fade, fly} from 'svelte/transition'
   import type {FlyParams} from 'svelte/types/runtime/transition'
-  import Icon from './Icon.svelte'
+  import Icon from 'src/icons/Icon.svelte'
   import {onDestroy} from 'svelte'
 
   export let title: string = ''
