@@ -10,4 +10,7 @@ export const admin: User = {
   role: Role.ADMIN
 }
 
-export const user: AuthenticatedUser = {user: admin}
+export default {
+  'user': {user: admin} as AuthenticatedUser,
+  'users/search': [{id: 1, name: 'Anton'}, {id: 2, name: 'Erkki'}, {id: 3, name: 'Elis'}, {id: 4, name: 'Markus'}]
+}

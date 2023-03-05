@@ -27,7 +27,7 @@ describe('MultipleSelect', () => {
     expect(container.querySelectorAll('.badge')).to.have.length(3)
     expect(container.querySelector('select')).to.not.exist
 
-    await fireEvent.click(container.querySelectorAll('.badge')[1].querySelector('.icon-x')!)
+    await fireEvent.click(container.querySelectorAll('.badge')[1].querySelector('.icon.x')!)
     expect(container.querySelectorAll('.badge')).to.have.length(2)
     expect(container.querySelectorAll('option')).to.have.length(2)
     expect(container.querySelector('select')!.selectedIndex).to.eq(0)

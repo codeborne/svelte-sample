@@ -14,8 +14,9 @@ FROM nginx:alpine-slim as final
 ARG VERSION=dev
 ENV VERSION=$VERSION
 
-WORKDIR /usr/share/nginx/html
+WORKDIR /app
 COPY --from=build-ui /app/build ./
+COPY nginx.conf /etc/nginx/nginx.conf
 
 RUN echo "Setting built version to $VERSION" &&  \
     sed -Ei "s/\\\$VERSION/$VERSION/" index.html

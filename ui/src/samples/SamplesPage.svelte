@@ -6,7 +6,7 @@
 
   export let path: string
 
-  const samples = Object.entries(import.meta.globEager('src/**/*.samples.svelte')).map(([p, f]) => [p.replace('/src/', '').replace('.samples.svelte', ''), f]).toObject()
+  const samples = Object.entries(import.meta.glob('src/**/*.samples.svelte', {eager: true})).map(([p, f]) => [p.replace('/src/', '').replace('.samples.svelte', ''), f]).toObject()
   const groupedMenu = Object.keys(samples).groupBy(p => p.split('/')[0])
 
   if (!path) navigate('samples/' + Object.keys(samples)[0])
@@ -28,13 +28,13 @@
     </nav>
 
     <div class="w-full">
-      <Card title={path.replace('/', ' / ')}>
-        <div class="common-grid">
-          {#if path}
+      {#if path}
+        <Card title={path.replace('/', ' / ')}>
+          <div class="common-grid">
             <svelte:component this={samples[path].default}/>
-          {/if}
-        </div>
-      </Card>
+          </div>
+        </Card>
+      {/if}
     </div>
   </div>
 </MainPageLayout>
