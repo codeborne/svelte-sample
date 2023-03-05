@@ -19,7 +19,7 @@ Array.prototype.indexBy = function<T, R>(by: (e: T) => string|number, combiner: 
 }, {})}
 
 Array.prototype.groupBy = function<T>(by: (e: T) => string|number) {
-  return this.indexBy(by, (e: T, r: T[]) => r.concat(e), [])
+  return this.indexBy(by, (e: T, r: T[]) => [...r, e], [])
 }
 
 Array.prototype.countBy = function<T>(by: (e: T) => string|number) {
