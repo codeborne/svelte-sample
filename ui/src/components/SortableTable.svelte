@@ -48,14 +48,14 @@
 
 <div class="-mx-6 overflow-x-auto md:mx-0 md:overflow-visible {$$props.class ?? ''}">
   <div class="min-w-full pb-3">
-    <table {id} class="min-w-full bg-white divide-y divide-gray-200 border-b border-gray-200 md:rounded-lg md:shadow">
-      <thead class="border-b-2">
+    <table {id}>
+      <thead>
       <tr>
         {#each columns as column, i}
           {#if column || column === ''}
             <th on:click={() => items = items && !!column ? sortBy(items, sortFields[i]) : items}
                 scope="col"
-                class="text-xs font-medium text-muted uppercase tracking-wider relative {asc === 1 ? 'asc' : 'desc'} {rightAlign.includes(column) ? 'text-right' : ''}"
+                class="{asc === 1 ? 'asc' : 'desc'} {rightAlign.includes(column) ? 'text-right' : ''}"
                 class:sortable={!!column}
                 class:sorted={sortedBy === sortFields[i]}>
               {#if column}
@@ -80,7 +80,7 @@
             <slot {item} {i}/>
           {/each}
           {#if renderMax < items.length}
-            <td colspan={columns.length} class="text-center" style="height: {window.innerHeight}px"><Spinner/></td>
+            <td colspan={columns.length} class="text-center" style="height: {window.innerHeight}px"><Spinner class="py-24"/></td>
           {/if}
         {/if}
       {:else}
@@ -97,8 +97,16 @@
 </div>
 
 <style>
+  table {
+    @apply relative bg-white min-w-full divide-y divide-gray-200 md:rounded-lg md:shadow border-separate border-spacing-0
+  }
+
   table :global(th), table :global(td) {
-    @apply px-4 py-3;
+    @apply px-4 py-3 border-b border-gray-200
+  }
+
+  table thead th {
+    @apply text-xs font-medium text-muted uppercase tracking-wider sticky top-0 bg-white border-b-2 border-gray-200 border-solid;
   }
 
   table :global(th:last-child), :global(td:last-child:not(:first-child)) {
