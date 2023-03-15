@@ -15,7 +15,7 @@
   export let sortedBy: Field = undefined, asc = 1
   export let renderMax = 100
 
-  if (columns.length != sortFields.length) throw Error('columns and fields must be of the same length')
+  if (location.origin.includes('localhost') && columns.length != sortFields.length) throw Error('columns and fields must be of the same length')
 
   function get(item: T, by: Field) {
     const v = by instanceof Function ? by(item) : by && item[by]
@@ -55,7 +55,7 @@
           {#if column || column === ''}
             <th on:click={() => items = items && !!column ? sortBy(items, sortFields[i]) : items}
                 scope="col"
-                class="{asc === 1 ? 'asc' : 'desc'} {rightAlign.includes(column) ? 'text-right' : ''}"
+                class="text-muted {asc === 1 ? 'asc' : 'desc'} {rightAlign.includes(column) ? 'text-right' : ''}"
                 class:sortable={!!column}
                 class:sorted={sortedBy === sortFields[i]}>
               {#if column}
@@ -106,7 +106,7 @@
   }
 
   table thead th {
-    @apply text-xs font-medium text-muted uppercase tracking-wider sticky top-0 bg-white border-b-2 border-gray-200 border-solid;
+    @apply text-xs font-medium uppercase tracking-wider sticky top-0 bg-white border-b-2 border-gray-200 border-solid;
   }
 
   table :global(th:last-child), :global(td:last-child:not(:first-child)) {
