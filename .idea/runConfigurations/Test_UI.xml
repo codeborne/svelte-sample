@@ -1,7 +1,10 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Test UI" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/ui/package.json" />
-    <command value="test" />
+    <command value="run" />
+    <scripts>
+      <script value="test:dev" />
+    </scripts>
     <node-interpreter value="project" />
     <envs />
     <method v="2" />
