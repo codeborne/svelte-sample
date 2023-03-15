@@ -1,6 +1,7 @@
 <script lang="ts">
   import {_} from 'src/i18n'
   import Spinner from 'src/components/Spinner.svelte'
+  import {debounce} from 'src/shared/debounce'
 
   type T = $$Generic
   type Field = keyof T | ((item: T) => any) | false | '' | undefined
@@ -12,6 +13,7 @@
   export let sortFields: Field[] = columns as Field[]
   export let rightAlign: string[] = ['amount', 'amountWithVAT']
   export let sortedBy: Field = undefined, asc = 1
+  export let renderMax = 100
 
   if (columns.length != sortFields.length) throw Error('columns and fields must be of the same length')
 
@@ -31,40 +33,41 @@
     })
   }
 
-  let itemsToRender: T[]
-  $: if (items) {
-    itemsToRender = items.slice(0, 20)
-    renderMore()
-  }
-
-  function renderMore() {
-    if (itemsToRender!.length < items!.length)
-      setTimeout(() => itemsToRender = items!, 100)
+  function onScroll() {
+    if (!items || renderMax >= items.length) return
+    const scrollMax = document.body.scrollHeight - window.innerHeight
+    if (window.scrollY == scrollMax) {
+      renderMax = items.length
+      setTimeout(() => scrollTo(0, document.body.scrollHeight))
+    }
+    else if (window.scrollY > scrollMax - window.innerHeight) renderMax += 50
   }
 </script>
+
+<svelte:window on:scroll={debounce(onScroll, 300)}/>
 
 <div class="-mx-6 overflow-x-auto md:mx-0 md:overflow-visible {$$props.class ?? ''}">
   <div class="min-w-full pb-3">
     <table {id} class="min-w-full bg-white divide-y divide-gray-200 border-b border-gray-200 md:rounded-lg md:shadow">
       <thead class="border-b-2">
-        <tr>
-          {#each columns as column, i}
-            {#if column || column === ''}
-              <th on:click={() => items = items && !!column ? sortBy(items, sortFields[i]) : items}
-                  scope="col"
-                  class="text-xs font-medium text-muted uppercase tracking-wider relative {asc === 1 ? 'asc' : 'desc'} {rightAlign.includes(column) ? 'text-right' : ''}"
-                  class:sortable={!!column}
-                  class:sorted={sortedBy === sortFields[i]}>
-                {#if column}
-                  <span class="pr-1">{_((labels && !column.includes('.') ? labels + '.' : '') + column)}</span>
-                {/if}
-              </th>
-            {/if}
-          {/each}
-        </tr>
-        {#if items}
-          <slot name="thead"/>
-        {/if}
+      <tr>
+        {#each columns as column, i}
+          {#if column || column === ''}
+            <th on:click={() => items = items && !!column ? sortBy(items, sortFields[i]) : items}
+                scope="col"
+                class="text-xs font-medium text-muted uppercase tracking-wider relative {asc === 1 ? 'asc' : 'desc'} {rightAlign.includes(column) ? 'text-right' : ''}"
+                class:sortable={!!column}
+                class:sorted={sortedBy === sortFields[i]}>
+              {#if column}
+                <span class="pr-1">{_((labels && !column.includes('.') ? labels + '.' : '') + column)}</span>
+              {/if}
+            </th>
+          {/if}
+        {/each}
+      </tr>
+      {#if items}
+        <slot name="thead"/>
+      {/if}
       </thead>
       <tbody class="divide-y divide-gray-200">
       {#if items}
@@ -73,9 +76,12 @@
             <td colspan={columns.length} class="text-center">{_('general.noItems')}</td>
           </tr>
         {:else}
-          {#each itemsToRender as item, i (item['id'] ?? i)}
+          {#each items.slice(0, renderMax) as item, i (item['id'] ?? i)}
             <slot {item} {i}/>
           {/each}
+          {#if renderMax < items.length}
+            <td colspan={columns.length} class="text-center" style="height: {window.innerHeight}px"><Spinner/></td>
+          {/if}
         {/if}
       {:else}
         <tr>
