@@ -41,7 +41,7 @@ describe('SortableTable', () => {
   it('shows spinner if items not yet loaded', async () => {
     const {container} = render(SortableTable, {items: undefined, columns: []})
     expect(container.querySelector('tbody')).to.exist
-    expect(container.querySelector('.spinner-container')).to.exist
+    expect(container.querySelector('.spinner')).to.exist
   })
 
   it('handles no items', async () => {
