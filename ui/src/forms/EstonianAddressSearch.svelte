@@ -29,7 +29,7 @@
     searchChanged = false
     if (searchString.length > 2) {
       try {
-        addresses = await estonianAddressRegister.search({
+        addresses = await estonianAddressRegister.searchAddress({
           address: searchString,
           results: results,
           appartment: searchApartments ? 2 : 1,
@@ -94,7 +94,9 @@
     if (e.target instanceof HTMLSelectElement) loadByAdrId(e.target.value)
   }
 </script>
+
 <svelte:window on:keydown={navigateList}/>
+
 <div class="relative">
   <FormField let:id {...$$restProps}>
     <div class="flex">
