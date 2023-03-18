@@ -11,6 +11,9 @@
     "phone": "Телефон",
     "contactUs": "Свяжись с нами"
   },
+  "estonianAddressSearch": {
+    "selectApartment": "Выберите квартиру"
+  },
   "person": {
     "birthDate": "Дата рождения",
     "personalCode": "Личный код",

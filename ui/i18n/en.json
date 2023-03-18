@@ -18,6 +18,9 @@
     "contactUs": "Contact us",
     "gmail": "Gmail"
   },
+  "estonianAddressSearch": {
+    "selectApartment": "Select apartment"
+  },
   "person": {
     "birthDate": "Date of birth",
     "personalCode": "Personal code",

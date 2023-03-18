@@ -17,6 +17,9 @@
     "contactUs": "Võta meiega ühendust",
     "gmail": "Gmail"
   },
+  "estonianAddressSearch": {
+    "selectApartment": "Vali korter"
+  },
   "person": {
     "birthDate": "Sünnikuupäev",
     "personalCode": "Isikukood",
