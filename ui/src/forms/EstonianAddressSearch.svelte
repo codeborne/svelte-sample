@@ -3,7 +3,7 @@
   import FormField from 'src/forms/FormField.svelte'
   import {_} from 'src/i18n'
   import type {AddressSearch, EstonianAddress, EstonianAddressApartment} from 'src/api/estonianAddressRegister'
-  import estonianAddressRegister from 'src/api/estonianAddressRegister'
+  import estonianAddressRegister, {ApartmentSearch} from 'src/api/estonianAddressRegister'
 
   export let showApartments: true
   export let searchApartments: true
@@ -32,7 +32,7 @@
         addresses = await estonianAddressRegister.searchAddress({
           address: searchString,
           results: results,
-          appartment: searchApartments ? 2 : 1,
+          appartment: searchApartments ? ApartmentSearch.SEARCH_WITHOUT_BUILDING_DATA : ApartmentSearch.DO_NOT_SEARCH,
           unik: !showNonAddressObjects,
           iTappAsendus: true
         } as AddressSearch)

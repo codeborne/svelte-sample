@@ -72,6 +72,13 @@ export enum Features {
   EHITISHOONE = 'EHITISHOONE'
 }
 
+export enum ApartmentSearch {
+  DO_NOT_SEARCH,
+  SEARCH,
+  SEARCH_WITHOUT_BUILDING_DATA
+}
+
+
 export interface EstonianAddressSearchParameters {
   /**
    * features Object types from which are searched (separated by a comma).
@@ -91,7 +98,7 @@ export interface EstonianAddressSearchParameters {
    1 - apartments are searched,
    2 - apartments are searched and the result is apartment data without building data (default option)
    */
-  appartment?: number
+  appartment?: ApartmentSearch
   /**
    * Maximum number of results. Highest possible value is 100, default value 10.
    * The parameter is not considered when value is set to parameters x and y.
@@ -400,7 +407,7 @@ class EstonianAddressRegisterApi {
   private getUrl(request: EstonianAddressSearchParameters): string {
     const url = new URL(basePath)
     Object.entries(request)
-      .filter(([ignore, value]) => !!value)
+      .filter(([ignore, value]) => value !== undefined)
       .forEach(([key, value]) => {
         if (value === true) {
           url.searchParams.append(key, '1')
