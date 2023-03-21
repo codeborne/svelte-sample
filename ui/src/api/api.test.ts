@@ -42,9 +42,9 @@ describe('api', () => {
   })
 
   it('supports No Content response', async () => {
-    fetch.resolves({...successfulResponse, status: 204})
+    fetch.resolves({...successfulResponse, status: 204, text: () => ''})
     const promise = api.requestJson('path', {body: {data: 'data'}})
-    expect(await promise).to.be.undefined
+    expect(await promise).to.eq('')
   })
 
   it('handles http error', () => {
