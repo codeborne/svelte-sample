@@ -9,6 +9,8 @@
 
 <Route {path} let:params>
   <PrivateRouteGuard>
-    <svelte:component this={component} {...params}/>
+    <slot {params}>
+      <svelte:component this={component} {...params} />
+    </slot>
   </PrivateRouteGuard>
 </Route>
