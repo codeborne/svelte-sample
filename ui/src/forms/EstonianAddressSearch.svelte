@@ -10,16 +10,16 @@
   export let showNonAddressObjects = false
   export let results = 10
   export let address: EstonianAddress | undefined
+
   let selectedApartment: EstonianAddress | undefined
   let selectedAddress: EstonianAddress | undefined
+
   $: address = selectedApartment || selectedAddress
 
   let addresses: EstonianAddress[] = []
   let apartments: EstonianAddressApartment[] | null = null
 
-
-  const debounced = debounce(search, 400)
-  let searchString: string = ''
+  let searchString = ''
   let showList = false
   let searchChanged = false
   let selectedRowIndex = 0
@@ -51,7 +51,8 @@
     }
   }
 
-  $: searchChanged && debounced(searchString)
+  const debouncedSearch = debounce(search, 400)
+  $: searchChanged && debouncedSearch(searchString)
 
   function select(address: EstonianAddress) {
     showList = false
@@ -80,17 +81,14 @@
         showList = true
         selectedRowIndex -= 1
       } else if (e.key === 'Enter') {
-        if (showList)
-          select(addresses[selectedRowIndex])
-        else {
-          showList = true
-        }
+        if (showList) select(addresses[selectedRowIndex])
+        else showList = true
       }
       selectedRowIndex = (addresses.length + selectedRowIndex) % addresses.length
     }
   }
 
-  const onChange = (e: Event) => {
+  function onChange(e: Event) {
     if (e.target instanceof HTMLSelectElement) loadByAdrId(e.target.value)
   }
 </script>
