@@ -4,7 +4,7 @@
   import type {SvelteComponentTyped} from 'svelte'
 
   export let path: string
-  export let component: new (args: { target: any; props?: any; }) => SvelteComponentTyped
+  export let component: (new (args: { target: any; props?: any; }) => SvelteComponentTyped) | undefined = undefined
 </script>
 
 <Route {path} let:params>
