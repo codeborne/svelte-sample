@@ -98,13 +98,11 @@
 <div class="relative">
   <FormField let:id {...$$restProps}>
     <div class="flex">
-      <input bind:value={searchString}
-             class="{apartments?'!rounded-r-none !border-r-0':''}"
-             on:blur={()=>showList=false}
-             on:focus={()=>showList=addresses.length > 1}
-             on:input={()=>searchChanged = true}
-             type="search"
-      />
+      <input type="search" {id} bind:value={searchString}
+             class={apartments? '!rounded-r-none !border-r-0' : ''}
+             on:blur={() => showList = false}
+             on:focus={() => showList = addresses.length > 1}
+             on:input={() => searchChanged = true}>
       {#if apartments}
         <select class="!rounded-l-none !w-auto !pl-1 !pr-7" on:change={onChange}>
           <option value="">{_('estonianAddressSearch.selectApartment')}</option>
@@ -115,6 +113,7 @@
       {/if}
     </div>
   </FormField>
+
   {#if showList}
     <div class="absolute rounded shadow bg-white overflow-hidden flex flex-col w-full mt-0 border border-gray-200">
       {#each addresses as address, i}
