@@ -11,7 +11,6 @@
   let selectedIndex = -1
   let showList = false
   $: if (!query) selectedIndex = -1
-  $: if (selectedIndex < 0) showList = !!options.length
 
   function navigateList(e: KeyboardEvent) {
     if (!options.length) return
@@ -38,12 +37,12 @@
 
 <div class="relative">
   <FormField type="search" bind:value={query} on:keydown={navigateList} autocomplete="off" {...$$restProps}
-             on:focus={() => showList = options.length > 1} on:blur={() => showList = false}>
+             on:focus={() => showList = true} on:blur={() => showList = false}>
     <svelte:fragment slot="after"><slot/></svelte:fragment>
   </FormField>
 
   {#if showList}
-    <div class="absolute rounded shadow bg-white overflow-hidden flex flex-col w-full mt-0 border border-gray-200">
+    <div class="absolute rounded shadow bg-white overflow-hidden flex flex-col w-full mt-0 border border-gray-200 text-sm">
       {#each options as o, i}
         <div class="cursor-pointer group border-t"
              on:mousedown={() => select(o)}
