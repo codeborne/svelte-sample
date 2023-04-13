@@ -71,7 +71,7 @@
   {#if loading}<Spinner class="absolute w-8 h-8 p-1 right-8"/>{/if}
   {#if apartments}
     <select class="-ml-1 !rounded-l-none !w-auto !pl-2 !pr-7" on:change={e => refreshAddressWithApartment(e.currentTarget.value)} autofocus>
-      <option value="">{_('estonianAddressSearch.selectApartment')}</option>
+      <option value="">{_('addresses.selectApartment')}</option>
       {#each apartments as apartment}
         <option value={apartment.adr_id}>{apartment.tahis}</option>
       {/each}

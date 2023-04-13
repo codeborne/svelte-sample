@@ -9,16 +9,14 @@
     "apartment": "Klass",
     "postalCode": "Indeks",
     "details": "Lisainfo",
-    "edit": "Muuda aadress"
+    "edit": "Muuda aadress",
+    "selectApartment": "Vali korter"
   },
   "contacts": {
     "email": "E-post",
     "phone": "Telefon",
     "contactUs": "Võta meiega ühendust",
     "gmail": "Gmail"
-  },
-  "estonianAddressSearch": {
-    "selectApartment": "Vali korter"
   },
   "person": {
     "birthDate": "Sünnikuupäev",

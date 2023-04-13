@@ -10,16 +10,14 @@
     "apartment": "Apt / Auditorium",
     "postalCode": "Postal code",
     "details": "Details",
-    "edit": "Edit address"
+    "edit": "Edit address",
+    "selectApartment": "Select apartment"
   },
   "contacts": {
     "email": "E-mail",
     "phone": "Phone number",
     "contactUs": "Contact us",
     "gmail": "Gmail"
-  },
-  "estonianAddressSearch": {
-    "selectApartment": "Select apartment"
   },
   "person": {
     "birthDate": "Date of birth",
