@@ -37,13 +37,10 @@
 </script>
 
 <div class="relative">
-  <FormField let:id {...$$restProps}>
-    <div class="flex">
-      <input type="search" {id} bind:value={query} on:keydown={navigateList} autocomplete="off"
+  <FormField type="search" bind:value={query} on:keydown={navigateList} autocomplete="off" {...$$restProps}
              on:focus={() => showList = options.length > 1}
              on:blur={() => showList = false}>
-      <slot/>
-    </div>
+    <svelte:fragment slot="after"><slot/></svelte:fragment>
   </FormField>
 
   {#if showList}

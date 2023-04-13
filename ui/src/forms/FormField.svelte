@@ -26,7 +26,10 @@
     </label>
   {/if}
   <slot {id}>
-    <input {id} bind:this={input} bind:value on:input on:change on:focus on:blur on:paste {minlength} {maxlength} {required} {...$$restProps}>
+    <div class="flex">
+      <input {id} bind:this={input} bind:value on:input on:change on:focus on:blur on:keydown on:paste {minlength} {maxlength} {required} {...$$restProps}>
+      <slot name="after"/>
+    </div>
   </slot>
 </div>
 
