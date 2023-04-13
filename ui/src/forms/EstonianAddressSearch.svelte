@@ -39,7 +39,6 @@
         } as AddressSearch)
         if (addresses.length === 1) select(addresses[0])
       } catch (e) {
-        console.log(e)
         if (e.name !== 'AbortError') throw e
       } finally {
         loading = false
