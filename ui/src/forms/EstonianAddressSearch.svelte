@@ -37,7 +37,6 @@
           unik: !showNonAddressObjects,
           iTappAsendus: true
         } as AddressSearch)
-        if (addresses.length === 1) select(addresses[0])
       } catch (e) {
         if (e.name !== 'AbortError') throw e
       } finally {
@@ -69,7 +68,7 @@
 <CustomAutocompleteField bind:query options={addresses} optionMapper={a => a.ipikkaadress} on:selected={e => select(e.detail)} {...$$restProps}>
   {#if loading}<Spinner class="absolute w-8 h-8 p-1 right-8"/>{/if}
   {#if apartments}
-    <select class="-ml-1 !rounded-l-none !w-auto !pl-2 !pr-7" on:change={e => refreshAddressWithApartment(e.currentTarget.value)} autofocus>
+    <select class="-ml-1 !rounded-l-none !w-auto !pl-2 !pr-7" on:change={e => refreshAddressWithApartment(e.currentTarget.value)} autofocus required>
       <option value="">{_('addresses.selectApartment')}</option>
       {#each apartments as apartment}
         <option value={apartment.adr_id}>{apartment.tahis}</option>
