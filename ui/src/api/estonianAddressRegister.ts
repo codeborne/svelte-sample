@@ -376,10 +376,11 @@ export function toAddress(estonianAddress: EstonianAddress): Address {
 }
 
 class EstonianAddressRegisterApi {
-  private controller = new AbortController()
+  private controller?: AbortController
 
   search(request: EstonianAddressSearchRequest): Promise<EstonianAddressSearchResponse> {
-    this.controller.abort()
+    this.controller?.abort()
+    this.controller = new AbortController()
     document.documentElement.classList.add('loading')
     return fetch(this.getUrl(request), {method: 'GET', signal: this.controller.signal, mode: 'cors'})
       .then(response => response.json())
