@@ -36,9 +36,7 @@
           unik: !showNonAddressObjects,
           iTappAsendus: true
         } as AddressSearch)
-        if (addresses.length === 1) {
-          select(addresses[0])
-        }
+        if (addresses.length === 1) select(addresses[0])
         showList = addresses.length > 1
       } catch (e) {
         if (e.name !== 'AbortError') throw e
@@ -93,15 +91,13 @@
   }
 </script>
 
-<svelte:window on:keydown={navigateList}/>
-
 <div class="relative">
   <FormField let:id {...$$restProps}>
     <div class="flex">
-      <input type="search" {id} bind:value={searchString}
+      <input type="search" {id} bind:value={searchString} on:keydown={navigateList}
              class={apartments? '!rounded-r-none !border-r-0' : ''}
-             on:blur={() => showList = false}
              on:focus={() => showList = addresses.length > 1}
+             on:blur={() => showList = false}
              on:input={() => searchChanged = true}>
       {#if apartments}
         <select class="!rounded-l-none !w-auto !pl-1 !pr-7" on:change={onChange}>
@@ -118,9 +114,8 @@
     <div class="absolute rounded shadow bg-white overflow-hidden flex flex-col w-full mt-0 border border-gray-200">
       {#each addresses as address, i}
         <div class="cursor-pointer group border-t"
-             on:mousedown="{()=>select(address)}"
-             on:mouseover={()=>selectedRowIndex=i}
-             on:focus>
+             on:mousedown={() => select(address)}
+             on:mouseover={() => selectedRowIndex = i}>
           <div class="block p-2 border-transparent border-l-4"
                class:border-blue-600={i === selectedRowIndex}
                class:bg-gray-100={i === selectedRowIndex}>
