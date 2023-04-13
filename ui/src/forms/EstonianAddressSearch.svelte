@@ -6,8 +6,8 @@
   import CustomAutocompleteField from 'src/forms/CustomAutocompleteField.svelte'
   import Spinner from 'src/components/Spinner.svelte'
 
-  export let showApartments: true
-  export let searchApartments: true
+  export let showApartments = true
+  export let searchApartments = true
   export let showNonAddressObjects = false
   export let results = 10
   export let address: EstonianAddress | undefined

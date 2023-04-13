@@ -11,7 +11,7 @@
   export let maxlength = 100
   export let required = true
 
-  interface $$Events {input: FormEvent; change: FormEvent; focus: FormEvent; blur: FormEvent; paste: ClipboardEvent}
+  interface $$Events {input: FormEvent; change: FormEvent; focus: FormEvent; blur: FormEvent; paste: ClipboardEvent, keydown: KeyboardEvent}
 
   let input: HTMLInputElement
   $: if (input && validator) input.setCustomValidity(validator(value as string))
