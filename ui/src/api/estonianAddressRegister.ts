@@ -381,10 +381,8 @@ class EstonianAddressRegisterApi {
   search(request: EstonianAddressSearchRequest): Promise<EstonianAddressSearchResponse> {
     this.controller?.abort()
     this.controller = new AbortController()
-    document.documentElement.classList.add('loading')
     return fetch(this.getUrl(request), {method: 'GET', signal: this.controller.signal, mode: 'cors'})
-      .then(response => response.json())
-      .finally(() => document.documentElement.classList.remove('loading'))
+          .then(response => response.json())
   }
 
   async searchAddress(request: EstonianAddressSearchRequest): Promise<EstonianAddress[]> {
