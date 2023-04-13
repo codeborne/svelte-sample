@@ -39,6 +39,7 @@
         if (addresses.length === 1) select(addresses[0])
         showList = addresses.length > 1
       } catch (e) {
+        console.log(e)
         if (e.name !== 'AbortError') throw e
       }
     } else {
@@ -66,23 +67,27 @@
       searchString = (selectedApartment || selectedAddress)?.ipikkaadress || ''
       showList = false
     } catch (e) {
+      console.log(e)
       if (e.name !== 'AbortError') throw e
     }
   }
 
-  const navigateList = (e: KeyboardEvent) => {
-    if (addresses.length) {
-      if (e.key === 'ArrowDown') {
-        showList = true
-        selectedRowIndex += 1
-      } else if (e.key === 'ArrowUp') {
-        showList = true
-        selectedRowIndex -= 1
-      } else if (e.key === 'Enter') {
-        if (showList) select(addresses[selectedRowIndex])
-        else showList = true
-      }
-      selectedRowIndex = (addresses.length + selectedRowIndex) % addresses.length
+  function navigateList(e: KeyboardEvent) {
+    if (!addresses.length) return
+    if (e.key === 'ArrowDown') {
+      showList = true
+      selectedRowIndex += 1
+      if (selectedRowIndex >= addresses.length) selectedRowIndex = addresses.length
+      e.preventDefault()
+    } else if (e.key === 'ArrowUp') {
+      showList = true
+      selectedRowIndex -= 1
+      if (selectedRowIndex < 0) selectedRowIndex = 0
+      e.preventDefault()
+    } else if (e.key === 'Enter') {
+      if (showList) select(addresses[selectedRowIndex])
+      else showList = true
+      e.preventDefault()
     }
   }
 
