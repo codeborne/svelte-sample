@@ -4,6 +4,7 @@
   import {_} from 'src/i18n'
   import type {AddressSearch, EstonianAddress, EstonianAddressApartment} from 'src/api/estonianAddressRegister'
   import estonianAddressRegister, {ApartmentSearch} from 'src/api/estonianAddressRegister'
+  import CustomAutocompleteField from 'src/forms/CustomAutocompleteField.svelte'
 
   export let showApartments: true
   export let searchApartments: true
@@ -17,118 +18,59 @@
   $: address = selectedApartment || selectedAddress
 
   let addresses: EstonianAddress[] = []
-  let apartments: EstonianAddressApartment[] | null = null
+  let apartments: EstonianAddressApartment[] | undefined
 
-  let searchString = ''
-  let showList = false
-  let searchChanged = false
-  let selectedRowIndex = 0
+  let query = ''
+  const debouncedSearch = debounce(search, 400)
+  $: debouncedSearch(query)
 
-  async function search(searchString: string) {
-    apartments = null
-    searchChanged = false
-    if (searchString.length > 2) {
+  async function search(query: string) {
+    if (query.length > 2) {
       try {
+        if (addresses.some(a => a.ipikkaadress == query)) return
+        apartments = undefined
         addresses = await estonianAddressRegister.searchAddress({
-          address: searchString,
+          address: query,
           results: results,
           appartment: searchApartments ? ApartmentSearch.SEARCH_WITHOUT_BUILDING_DATA : ApartmentSearch.DO_NOT_SEARCH,
           unik: !showNonAddressObjects,
           iTappAsendus: true
         } as AddressSearch)
         if (addresses.length === 1) select(addresses[0])
-        showList = addresses.length > 1
       } catch (e) {
         console.log(e)
         if (e.name !== 'AbortError') throw e
       }
     } else {
-      apartments = null
-      selectedAddress = undefined
-      selectedApartment = undefined
       addresses = []
+      apartments = selectedAddress = selectedApartment = undefined
     }
   }
 
-  const debouncedSearch = debounce(search, 400)
-  $: searchChanged && debouncedSearch(searchString)
-
   function select(address: EstonianAddress) {
-    showList = false
     selectedAddress = address
-    apartments = showApartments ? address.appartments : null
-    searchString = address.ipikkaadress
+    apartments = showApartments ? address.appartments : undefined
     selectedApartment = undefined
   }
 
-  async function loadByAdrId(id: string) {
+  async function refreshAddressWithApartment(adrId: string) {
     try {
-      selectedApartment = id ? await estonianAddressRegister.getByAdrId(id) : undefined
-      searchString = (selectedApartment || selectedAddress)?.ipikkaadress || ''
-      showList = false
+      selectedApartment = adrId ? await estonianAddressRegister.getByAdrId(adrId) : undefined
+      addresses = [selectedApartment ?? selectedAddress!]
+      query = addresses[0]?.ipikkaadress || ''
     } catch (e) {
-      console.log(e)
       if (e.name !== 'AbortError') throw e
     }
   }
-
-  function navigateList(e: KeyboardEvent) {
-    if (!addresses.length) return
-    if (e.key === 'ArrowDown') {
-      showList = true
-      selectedRowIndex += 1
-      if (selectedRowIndex >= addresses.length) selectedRowIndex = addresses.length
-      e.preventDefault()
-    } else if (e.key === 'ArrowUp') {
-      showList = true
-      selectedRowIndex -= 1
-      if (selectedRowIndex < 0) selectedRowIndex = 0
-      e.preventDefault()
-    } else if (e.key === 'Enter') {
-      if (showList) select(addresses[selectedRowIndex])
-      else showList = true
-      e.preventDefault()
-    }
-  }
-
-  function onChange(e: Event) {
-    if (e.target instanceof HTMLSelectElement) loadByAdrId(e.target.value)
-  }
 </script>
 
-<div class="relative">
-  <FormField let:id {...$$restProps}>
-    <div class="flex">
-      <input type="search" {id} bind:value={searchString} on:keydown={navigateList}
-             class={apartments? '!rounded-r-none !border-r-0' : ''}
-             on:focus={() => showList = addresses.length > 1}
-             on:blur={() => showList = false}
-             on:input={() => searchChanged = true}>
-      {#if apartments}
-        <select class="!rounded-l-none !w-auto !pl-1 !pr-7" on:change={onChange}>
-          <option value="">{_('estonianAddressSearch.selectApartment')}</option>
-          {#each apartments as apartment}
-            <option value={apartment.adr_id}>{apartment.tahis}</option>
-          {/each}
-        </select>
-      {/if}
-    </div>
-  </FormField>
-
-  {#if showList}
-    <div class="absolute rounded shadow bg-white overflow-hidden flex flex-col w-full mt-0 border border-gray-200">
-      {#each addresses as address, i}
-        <div class="cursor-pointer group border-t"
-             on:mousedown={() => select(address)}
-             on:mouseover={() => selectedRowIndex = i}>
-          <div class="block p-2 border-transparent border-l-4"
-               class:border-blue-600={i === selectedRowIndex}
-               class:bg-gray-100={i === selectedRowIndex}>
-            {address.ipikkaadress}
-          </div>
-        </div>
+<CustomAutocompleteField bind:query options={addresses} optionMapper={a => a.ipikkaadress} on:selected={e => select(e.detail)} {...$$restProps}>
+  {#if apartments}
+    <select class="-ml-1 !rounded-l-none !w-auto !pl-2 !pr-7" on:change={e => refreshAddressWithApartment(e.currentTarget.value)} autofocus>
+      <option value="">{_('estonianAddressSearch.selectApartment')}</option>
+      {#each apartments as apartment}
+        <option value={apartment.adr_id}>{apartment.tahis}</option>
       {/each}
-    </div>
+    </select>
   {/if}
-</div>
-
+</CustomAutocompleteField>
