@@ -36,12 +36,10 @@
   }
 </script>
 
-<div class="relative">
-  <FormField type="search" bind:value={query} on:keydown={navigateList} autocomplete="off" {...$$restProps}
-             on:focus={() => showList = options.length > 1}
-             on:blur={() => showList = false}>
-    <svelte:fragment slot="after"><slot/></svelte:fragment>
-  </FormField>
+<FormField type="search" bind:value={query} on:keydown={navigateList} autocomplete="off" class="relative" {...$$restProps}
+           on:focus={() => showList = options.length > 1}
+           on:blur={() => showList = false}>
+  <svelte:fragment slot="after"><slot/></svelte:fragment>
 
   {#if showList}
     <div class="absolute rounded shadow bg-white overflow-hidden flex flex-col w-full mt-0 border border-gray-200">
@@ -58,4 +56,4 @@
       {/each}
     </div>
   {/if}
-</div>
+</FormField>
