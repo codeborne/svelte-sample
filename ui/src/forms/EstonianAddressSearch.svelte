@@ -1,10 +1,10 @@
 <script lang="ts">
   import {debounce} from 'src/shared/debounce'
-  import FormField from 'src/forms/FormField.svelte'
   import {_} from 'src/i18n'
   import type {AddressSearch, EstonianAddress, EstonianAddressApartment} from 'src/api/estonianAddressRegister'
   import estonianAddressRegister, {ApartmentSearch} from 'src/api/estonianAddressRegister'
   import CustomAutocompleteField from 'src/forms/CustomAutocompleteField.svelte'
+  import Spinner from 'src/components/Spinner.svelte'
 
   export let showApartments: true
   export let searchApartments: true
@@ -20,7 +20,7 @@
   let addresses: EstonianAddress[] = []
   let apartments: EstonianAddressApartment[] | undefined
 
-  let query = ''
+  let query = '', loading = false
   const debouncedSearch = debounce(search, 400)
   $: debouncedSearch(query)
 
@@ -29,6 +29,7 @@
       try {
         if (addresses.some(a => a.ipikkaadress == query)) return
         apartments = undefined
+        loading = true
         addresses = await estonianAddressRegister.searchAddress({
           address: query,
           results: results,
@@ -40,6 +41,8 @@
       } catch (e) {
         console.log(e)
         if (e.name !== 'AbortError') throw e
+      } finally {
+        loading = false
       }
     } else {
       addresses = []
@@ -65,6 +68,7 @@
 </script>
 
 <CustomAutocompleteField bind:query options={addresses} optionMapper={a => a.ipikkaadress} on:selected={e => select(e.detail)} {...$$restProps}>
+  {#if loading}<Spinner class="absolute w-8 h-8 p-1 right-8"/>{/if}
   {#if apartments}
     <select class="-ml-1 !rounded-l-none !w-auto !pl-2 !pr-7" on:change={e => refreshAddressWithApartment(e.currentTarget.value)} autofocus>
       <option value="">{_('estonianAddressSearch.selectApartment')}</option>
