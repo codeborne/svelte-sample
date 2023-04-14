@@ -378,11 +378,12 @@ export function toAddress(estonianAddress: EstonianAddress): Address {
 class EstonianAddressRegisterApi {
   private controller?: AbortController
 
-  search(request: EstonianAddressSearchRequest): Promise<EstonianAddressSearchResponse> {
+  async search(request: EstonianAddressSearchRequest): Promise<EstonianAddressSearchResponse> {
     this.controller?.abort()
     this.controller = new AbortController()
-    return fetch(this.getUrl(request), {method: 'GET', signal: this.controller.signal, mode: 'cors'})
-          .then(response => response.json())
+    const res = await fetch(this.getUrl(request), {method: 'GET', signal: this.controller.signal, mode: 'cors'})
+    if (res.status < 200 || res.status >= 400) throw new Error('Failed: ' + res.status)
+    else return await res.json()
   }
 
   async searchAddress(request: EstonianAddressSearchRequest): Promise<EstonianAddress[]> {
