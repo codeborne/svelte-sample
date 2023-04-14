@@ -41,7 +41,7 @@
     <svelte:fragment slot="after"><slot/></svelte:fragment>
   </FormField>
 
-  {#if showList}
+  {#if showList && options.length}
     <div class="absolute rounded shadow bg-white overflow-hidden flex flex-col w-full mt-0 border border-gray-200 text-sm">
       {#each options as o, i}
         <div class="cursor-pointer group border-t"
