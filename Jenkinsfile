@@ -4,7 +4,7 @@ pipeline {
   environment {
     APP = "svelte-sample"
     BUILD = "${JOB_NAME.replace('/', '-')}-${BUILD_NUMBER}"
-    EMAIL = "anton@codeborne.com"
+    EMAIL = sh(script: "git show -s --format='%ae' HEAD", returnStdout: true)
     GIT_LAST_CHANGE = sh(script: 'git show', returnStdout: true)
     EMAIL_BODY = "Project: ${JOB_NAME}\nBuild Number: ${BUILD_NUMBER}\n\nLast change:\n\n${env.GIT_LAST_CHANGE}"
     COMPOSE = "docker-compose -f docker-compose.yml -p $APP"
