@@ -46,7 +46,7 @@
       {#each options as o, i}
         <div class="cursor-pointer group border-t"
              on:mousedown={() => select(o)}
-             on:mouseover={() => selectedIndex = i}>
+             on:mouseover={() => selectedIndex = i} on:focus={() => {}}>
           <div class="block p-2 border-transparent border-l-4"
                class:border-primary-600={i === selectedIndex}
                class:bg-gray-100={i === selectedIndex}>
