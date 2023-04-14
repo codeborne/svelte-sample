@@ -24,11 +24,8 @@ pipeline {
       }
     }
     stage('Build final') {
-      when {
-        branch 'master'
-      }
       steps {
-        sh "docker build --target final --build-arg VERSION=$VERSION -t ${APP}_${APP} ."
+        sh "$COMPOSE build --build-arg VERSION=$VERSION"
       }
     }
     stage('Deploy') {
