@@ -24,6 +24,9 @@ pipeline {
       }
     }
     stage('Build final') {
+      when {
+         branch 'master'
+      }
       steps {
         sh "$COMPOSE build --build-arg VERSION=$VERSION"
       }
