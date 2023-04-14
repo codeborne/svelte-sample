@@ -1,5 +1,5 @@
-<div class="spinner p-2 w-full text-center {$$props.class ?? ''}">
-  <svg class="animate-spin" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9ca3af" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<div class="spinner w-full text-center {$$props.class ?? 'h-11'}">
+  <svg class="animate-spin" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9ca3af" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
     <line x1="12" y1="6" x2="12" y2="3"></line>
     <line x1="6" y1="12" x2="3" y2="12"></line>
@@ -9,6 +9,7 @@
 
 <style>
   .animate-spin {
+    @apply h-full;
     animation: spin 1s infinite linear;
   }
 

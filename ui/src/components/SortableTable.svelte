@@ -80,7 +80,7 @@
             <slot {item} {i}/>
           {/each}
           {#if renderMax < items.length}
-            <td colspan={columns.length} class="text-center" style="height: {window.innerHeight}px"><Spinner class="py-24"/></td>
+            <td colspan={columns.length} class="text-center" style="height: {window.innerHeight}px"><Spinner class="py-24 h-11"/></td>
           {/if}
         {/if}
       {:else}

@@ -376,32 +376,25 @@ export function toAddress(estonianAddress: EstonianAddress): Address {
 }
 
 class EstonianAddressRegisterApi {
-  private controller?: AbortController = undefined
+  private controller?: AbortController
 
-  async search(request: EstonianAddressSearchRequest): Promise<EstonianAddressSearchResponse> {
-    if (this.controller) {
-      this.controller.abort()
-    }
+  search(request: EstonianAddressSearchRequest): Promise<EstonianAddressSearchResponse> {
+    this.controller?.abort()
     this.controller = new AbortController()
-    document.documentElement.classList.add('loading')
     return fetch(this.getUrl(request), {method: 'GET', signal: this.controller.signal, mode: 'cors'})
-      .then(response => response.json())
-      .finally(() => document.documentElement.classList.remove('loading'))
+          .then(response => response.json())
   }
 
   async searchAddress(request: EstonianAddressSearchRequest): Promise<EstonianAddress[]> {
-    const response = await this.search(request)
-    return response?.addresses || []
+    return (await this.search(request))?.addresses || []
   }
 
   async getByAdrId(adrid: string): Promise<EstonianAddress | undefined> {
-    let response = await this.searchAddress({adrid} as AddressById)
-    return response[0]
+    return (await this.searchAddress({adrid} as AddressById))[0]
   }
 
   async getApartments(hooneoid: string): Promise<EstonianAddressApartment[]> {
-    const request: ApartmentsByOid = {hooneoid}
-    return (await this.search(request))?.appartments || []
+    return (await this.search({hooneoid} as ApartmentsByOid))?.appartments || []
   }
 
   private getUrl(request: EstonianAddressSearchParameters): string {
@@ -409,13 +402,9 @@ class EstonianAddressRegisterApi {
     Object.entries(request)
       .filter(([ignore, value]) => value !== undefined)
       .forEach(([key, value]) => {
-        if (value === true) {
-          url.searchParams.append(key, '1')
-        } else if (value === false) {
-          url.searchParams.append(key, '0')
-        } else {
-          url.searchParams.append(key, value)
-        }
+        if (value === true) url.searchParams.append(key, '1')
+        else if (value === false) url.searchParams.append(key, '0')
+        else url.searchParams.append(key, value)
       })
     return url.toString().replace(/%2C/g, ',')
   }
