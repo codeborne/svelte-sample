@@ -37,7 +37,7 @@
 
 <div class="relative">
   <FormField type="search" bind:value={query} on:keydown={navigateList} autocomplete="off" {...$$restProps}
-             on:focus={() => showList = true} on:blur={() => showList = false}>
+             on:input={() => showList = true} on:blur={() => showList = false}>
     <svelte:fragment slot="after"><slot/></svelte:fragment>
   </FormField>
 
