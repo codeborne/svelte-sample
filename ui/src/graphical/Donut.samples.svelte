@@ -10,6 +10,6 @@
     {angle: angle, color: 'green', offset: offset + angle}
   ]
 </script>
-<RangeSlider bind:value={offset} max="360" min="0"/>
-<RangeSlider bind:value={angle} max="180" min="0"/>
+<RangeSlider bind:value={offset} max={360} min={0}/>
+<RangeSlider bind:value={angle} max={180} min={0}/>
 <Donut {items}/>

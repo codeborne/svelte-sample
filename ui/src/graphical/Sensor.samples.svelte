@@ -11,13 +11,13 @@
 </script>
 
 <FormField label="Upper Bound">
-  <RangeSlider bind:value={upperBound} max="100" min="0"/>
+  <RangeSlider bind:value={upperBound} max={100} min={0}/>
 </FormField>
 <FormField label="Lower Bound">
-  <RangeSlider bind:value={lowerBound} max="100" min="0"/>
+  <RangeSlider bind:value={lowerBound} max={100} min={0}/>
 </FormField>
 <FormField label="Value">
-  <RangeSlider bind:value={value} max="100" min="0"/>
+  <RangeSlider bind:value={value} max={100} min={0}/>
 </FormField>
 <div class="grid grid-cols-2">
   <FormField bind:value={label} label="Label"/>
