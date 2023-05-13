@@ -25,7 +25,12 @@
     "firstName": "First name",
     "lastName": "Last name",
     "name": "Name",
-    "age": "Age"
+    "age": "Age",
+    "gender": "Gender"
+  },
+  "gender": {
+    "male": "Male",
+    "female": "Female"
   },
   "general": {
     "yes": "Yes",

@@ -19,7 +19,12 @@
     "personalCode": "Личный код",
     "firstName": "Имя",
     "lastName": "Фамилия",
-    "name": "Имя пользователя"
+    "name": "Имя пользователя",
+    "gender": "Пол"
+  },
+  "gender": {
+    "male": "Мужчина",
+    "female": "Женщина"
   },
   "general": {
     "yes": "Да",
