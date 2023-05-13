@@ -1,6 +1,6 @@
 <script lang="ts">
   import RadioButton from 'src/forms/RadioButton.svelte'
-  import type {RadioImageSize, RadioOption} from 'src/forms/RadioButton'
+  import type {RadioOption} from 'src/forms/RadioButton'
   import bankData from 'i18n/banks.json'
 
   let currency: RadioOption | undefined
@@ -15,8 +15,17 @@
     {label: 'Euro', value: 'EUR'}
   ]
 
-  interface BankData {supportedCurrencies: string[], paymentMethods: BankDetails[]}
-  interface BankDetails {code: string, name: string, logoUrl: string, supportedCurrencies: string[]}
+  interface BankData {
+    supportedCurrencies: string[],
+    paymentMethods: BankDetails[]
+  }
+
+  interface BankDetails {
+    code: string,
+    name: string,
+    logoUrl: string,
+    supportedCurrencies: string[]
+  }
 
   let banksByCountry: Record<string, BankData> = bankData
   $: countries = Object.entries(banksByCountry)
@@ -28,30 +37,35 @@
     .map((b) => ({
       label: b.name,
       value: b.code.toString(),
-      src: b.logoUrl
+      data: b
     })) : [] as RadioOption[]
-
-  $: size = (imageSize?.value ?? '') as RadioImageSize
 </script>
 
 
-<RadioButton bind:value={currency} class="classic flex-col gap-1" label="Please select Currency:" name="currencies" options={currencies}/>
+<RadioButton bind:value={currency}
+             class="classic flex-col gap-1"
+             label="Please select Currency:"
+             name="currencies"
+             options={currencies}/>
 
 {#if countries?.length}
   <RadioButton bind:value={country}
                class="classic"
                label="Please select your Country:"
-               name="countries" options={countries}/>
+               name="countries"
+               options={countries}/>
 
 {/if}
 {#if banks?.length}
-  <RadioButton bind:value={imageSize} label="Size" name="size" options={sizes} class="classic"/>
   <RadioButton bind:value={bank}
-               class="gap-2 grid grid-cols-6"
+               class="gap-2 grid grid-cols-8"
                label="Please select your bank:"
                name="banks"
-               {size}
-               options={banks}/>
+               options={banks} let:option>
+    <div class="h-10 flex items-center">
+      <img src={option.data.logoUrl} class="h-full w-full object-contain p-1" alt={option.label}/>
+    </div>
+  </RadioButton>
 
   <div>Selected bank is: {bank?.label || ''} {bank?.value || ''}</div>
 {/if}

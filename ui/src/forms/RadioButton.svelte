@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type {RadioImageSize, RadioOption} from 'src/forms/RadioButton'
+  import type {RadioOption} from 'src/forms/RadioButton'
   import {_} from '@codeborne/i18n-json'
 
   export let label: string
@@ -7,7 +7,6 @@
   export let required = true
   export let options: RadioOption[]
   export let id = Math.floor(Math.random() * 100).toString()
-  export let size: RadioImageSize = 'md'
 
   $: resetOption(options)
 
@@ -23,9 +22,9 @@
 </script>
 
 <fieldset {...$$restProps} class="{$$props.class}" id={`group-${id}`} role="radiogroup">
-  <legend id={`label-${id}`}>{_(label)}</legend>
+  <legend id={`label-${id}`} class="w-full">{_(label)}</legend>
   {#each options as option}
-    <div class="flex items-center {size}">
+    <div class="flex items-center">
       <input id={id + slugify(option.value)}
              {required}
              name={`radio-${id}`}
@@ -34,11 +33,9 @@
              value={option}
              bind:group={value}/>
       <label for={id + slugify(option.value)}>
-        {#if option.src}
-          <img src={option.src} class="object-scale-down p-1 w-auto-0 {size}" alt={option.label ?? option.value}/>
-        {:else}
+        <slot option={option}>
           {_(option.label ?? option.value)}
-        {/if}
+        </slot>
       </label>
     </div>
   {/each}
@@ -55,7 +52,11 @@
   }
 
   fieldset.classic input {
-    @apply w-4 h-4 mr-2
+    @apply w-4 h-4 mr-2 disabled:bg-gray-100
+  }
+
+  fieldset.classic input:disabled ~ label {
+    @apply text-gray-400
   }
 
   fieldset:not(.classic) input {
@@ -63,37 +64,16 @@
   }
 
   fieldset:not(.classic) label {
-    @apply flex w-full h-full justify-center items-center
+    @apply w-full h-full
     border border-gray-300
     bg-white rounded-md shadow-sm
     sm:text-sm focus:outline-none focus:ring-primary-500 focus:ring-1 focus:border-primary-500 disabled:bg-gray-100
   }
 
-  img.sm {
-    @apply max-h-6
-  }
-
-  img.md {
-    @apply max-h-10
-  }
-
-  img.lg {
-    @apply max-h-16
-  }
-
-  fieldset:not(.classic) div.sm {
-    @apply h-6
-  }
-
-  fieldset:not(.classic) div.md {
-    @apply h-10
-  }
-
-  fieldset:not(.classic) div.lg {
-    @apply h-16
-  }
-
   fieldset:not(.classic) input:checked ~ label {
     @apply bg-primary-300 text-white
+  }
+  legend {
+    white-space: nowrap;
   }
 </style>
