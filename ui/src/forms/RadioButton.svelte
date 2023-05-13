@@ -67,7 +67,10 @@
     @apply w-full h-full
     border border-gray-300
     bg-white rounded-md shadow-sm
-    sm:text-sm focus:outline-none focus:ring-primary-500 focus:ring-1 focus:border-primary-500 disabled:bg-gray-100
+    sm:text-sm focus:outline-none
+    hover:bg-gray-200
+    focus:ring-primary-500 focus:ring-1 focus:border-primary-500
+    disabled:bg-gray-100
   }
 
   fieldset:not(.classic) input:checked ~ label {
