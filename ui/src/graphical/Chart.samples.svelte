@@ -13,26 +13,27 @@
   let yTics = [...Array(11).keys()].filter(i => i % 1 === 0).map(i => new DOMPoint(0, i - 5))
   let windowWidth = 180
   let windowHeight = 11
-  let chartWidth = 0
-  let chartHeight = 0
-  $: matrix = new DOMMatrix().scale(chartWidth / windowWidth, chartHeight / windowHeight).translate(-90, 5.5)
+
 </script>
 <RangeSlider label="Window width" min={1} max={720} bind:value={windowWidth}/>
 <RangeSlider label="Window Height" min={1} max={20} bind:value={windowHeight}/>
-<Chart bind:chartHeight bind:chartWidth class="p-2 border-2 border-amber-500 rounded-xl" offset={5}>
-  <g slot="top">
+<Chart class="p-2 border-2 border-amber-500 rounded-xl" offset={5}
+       {windowWidth} {windowHeight}
+       xMax={360} xMin={0}
+>
+  <g slot="top" let:matrix >
     <XLabels data={xTics} {matrix}/>
   </g>
-  <g slot="bottom">
+  <g slot="bottom" let:matrix >
     <XLabels data={xTics} {matrix}/>
   </g>
-  <g slot="left">
+  <g slot="left" let:matrix >
     <YLabels data={yTics} {matrix} textAnchor="end"/>
   </g>
-  <g slot="right">
+  <g slot="right" let:matrix >
     <YLabels data={yTics} {matrix}/>
   </g>
-  <g slot="chart">
+  <g slot="chart" let:matrix let:chartHeight let:chartWidth >
     <Grid {chartHeight} {chartWidth} dataX={xTics} dataY={yTics} {matrix}/>
     <Polyline class="stroke-red-500" data={sin} {matrix} stroke-width="2"/>
     <Polyline class="stroke-amber-500" data={cos} {matrix}/>
