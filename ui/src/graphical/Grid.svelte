@@ -1,14 +1,17 @@
 <script lang="ts">
-  export let matrix: DOMMatrix
+  import type {Writable} from 'svelte/store'
+  import {getContext} from 'svelte'
+
+  let matrix: Writable<DOMMatrix> = getContext('matrix')
   export let dataX: DOMPoint[] = []
   export let dataY: DOMPoint[] = []
   export let chartWidth = 0
   export let chartHeight = 0
 
   let pointsX: DOMPoint[] = []
-  $: pointsX = transform(dataX, matrix)
+  $: pointsX = transform(dataX, $matrix)
   let pointsY: DOMPoint[] = []
-  $: pointsY = transform(dataY, matrix)
+  $: pointsY = transform(dataY, $matrix)
 
   function transform(data: DOMPoint[], matrix: DOMMatrix) {
     return (data ?? []).map(p => matrix?.transformPoint(p) ?? p)
