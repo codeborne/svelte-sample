@@ -73,12 +73,15 @@
       <rect height="{chartHeight}" width="{chartWidth}" x="0" y="0"></rect>
     </clipPath>
   </defs>
-  <G bind:height={heightTop} transform="translate({widthLeft + offset}, 0)">
-    <slot {matrix} name="top"></slot>
-  </G>
-  <G bind:height={heightBottom} transform="translate({widthLeft + offset},{height-heightBottom})">
-    <slot {matrix} name="bottom"></slot>
-  </G>
+  <g transform="translate({widthLeft + offset}, 0)">
+    <G bind:height={heightTop} transform="translate(0, {0})">
+      <slot {matrix} name="top"></slot>
+    </G>
+    <G bind:height={heightBottom} transform="translate(0,{height-heightBottom})">
+      <slot {matrix} name="bottom"></slot>
+    </G>
+  </g>
+
   <g transform="scale(1,-1) translate(0,{-chartHeight-heightTop-offset})">
     <G bind:width={widthLeft}>
       <slot {matrix} name="left"></slot>
