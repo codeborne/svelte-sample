@@ -4,12 +4,12 @@
   export let width = 1000
   export let height = 500
   export let offset = 25
-  export let windowWidth = 1
-  export let windowHeight = 1
-  export let xMax = 1
+  export let windowWidth = width
+  export let windowHeight = height
+  export let xMax = windowWidth
   export let xMin = 0
-  export let chartWidth = 0
-  export let chartHeight = 0
+  export let chartWidth = width
+  export let chartHeight = height
 
   let heightTop = 0
   let heightBottom = 0
@@ -91,7 +91,6 @@
     </G>
     <g clip-path="url(#chartClip)" transform="translate({widthLeft + offset},0)">
       <slot {chartHeight} {chartWidth} {matrix} name="chart"></slot>
-      <rect fill="transparent" height={chartHeight} stroke="black" width={chartWidth} x="0" y="0"/>
     </g>
   </g>
 </svg>

@@ -35,6 +35,7 @@
   </g>
   <g slot="chart" let:matrix let:chartHeight let:chartWidth >
     <Grid {chartHeight} {chartWidth} dataX={xTics} dataY={yTics} {matrix}/>
+    <rect fill="transparent" height={chartHeight} stroke="black" width={chartWidth}></rect>
     <Polyline class="stroke-red-500" data={sin} {matrix} stroke-width="2"/>
     <Polyline class="stroke-amber-500" data={cos} {matrix}/>
     <Polyline class="stroke-green-500" data={mix} {matrix}/>
