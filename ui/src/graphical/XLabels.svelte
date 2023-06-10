@@ -1,11 +1,13 @@
 <script lang="ts">
   import G from 'src/graphical/G.svelte'
+  import {getContext} from 'svelte'
+  import type {Writable} from 'svelte/store'
 
-  export let matrix: DOMMatrix
+  let matrix: Writable<DOMMatrix> = getContext('matrix')
   export let data: DOMPoint[] = []
 
   let points: DOMPoint[] = []
-  $: points = cratePath(data, matrix)
+  $: points = cratePath(data, $matrix)
 
   function cratePath(data: DOMPoint[], matrix: DOMMatrix) {
     return (data ?? []).map(p => matrix?.transformPoint(p) ?? p)

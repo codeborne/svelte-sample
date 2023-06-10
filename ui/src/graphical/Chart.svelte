@@ -1,5 +1,7 @@
 <script lang="ts">
   import G from 'src/graphical/G.svelte'
+  import {setContext} from 'svelte'
+  import {writable} from 'svelte/store'
 
   export let width = 1000
   export let height = 500
@@ -22,11 +24,13 @@
 
   $: chartWidth = width - widthLeft - widthRight - offset - offset
   $: chartHeight = height - heightTop - heightBottom - offset - offset
-  $: matrix = new DOMMatrix().scale(chartWidth / windowWidth, chartHeight / windowHeight).translate(offsetX, windowHeight / 2)
+  let matrix = writable(new DOMMatrix())
+  setContext('matrix',  matrix)
+  $: $matrix = new DOMMatrix().scale(chartWidth / windowWidth, chartHeight / windowHeight).translate(offsetX, windowHeight / 2)
   let screenToRealMatrix: DOMMatrix
 
   function startDrag(event: MouseEvent | TouchEvent) {
-    screenToRealMatrix = matrix.multiply(DOMMatrix.fromMatrix((event.target as SVGGraphicsElement).getScreenCTM() as DOMMatrix)).inverse()
+    screenToRealMatrix = $matrix.multiply(DOMMatrix.fromMatrix((event.target as SVGGraphicsElement).getScreenCTM() as DOMMatrix)).inverse()
     initialX = screenToRealMatrix.transformPoint(screenPoint(event)).x
     isDragging = true
     return false
@@ -75,22 +79,22 @@
   </defs>
   <g transform="translate({widthLeft + offset}, 0)">
     <G bind:height={heightTop} transform="translate(0, {0})">
-      <slot {matrix} name="top"></slot>
+      <slot matrix={$matrix} name="top"></slot>
     </G>
     <G bind:height={heightBottom} transform="translate(0,{height-heightBottom})">
-      <slot {matrix} name="bottom"></slot>
+      <slot matrix={$matrix} name="bottom"></slot>
     </G>
   </g>
 
   <g transform="scale(1,-1) translate(0,{-chartHeight-heightTop-offset})">
     <G bind:width={widthLeft}>
-      <slot {matrix} name="left"></slot>
+      <slot matrix={$matrix} name="left"></slot>
     </G>
     <G bind:width={widthRight} transform="translate({width-widthRight},0)">
-      <slot {matrix} name="right"></slot>
+      <slot matrix={$matrix} name="right"></slot>
     </G>
     <g clip-path="url(#chartClip)" transform="translate({widthLeft + offset},0)">
-      <slot {chartHeight} {chartWidth} {matrix} name="chart"></slot>
+      <slot {chartHeight} {chartWidth} matrix={$matrix} name="chart"></slot>
     </g>
   </g>
 </svg>

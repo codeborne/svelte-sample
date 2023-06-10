@@ -21,23 +21,23 @@
        {windowWidth} {windowHeight}
        xMax={360} xMin={0}
 >
-  <g slot="top" let:matrix >
-    <XLabels data={xTics} {matrix}/>
+  <g slot="top">
+    <XLabels data={xTics}/>
   </g>
-  <g slot="bottom" let:matrix >
-    <XLabels data={xTics} {matrix}/>
+  <g slot="bottom">
+    <XLabels data={xTics}/>
   </g>
-  <g slot="left" let:matrix >
-    <YLabels data={yTics} {matrix} textAnchor="end"/>
+  <g slot="left">
+    <YLabels data={yTics} textAnchor="end"/>
   </g>
-  <g slot="right" let:matrix >
-    <YLabels data={yTics} {matrix}/>
+  <g slot="right">
+    <YLabels data={yTics}/>
   </g>
   <g slot="chart" let:matrix let:chartHeight let:chartWidth >
-    <Grid {chartHeight} {chartWidth} dataX={xTics} dataY={yTics} {matrix}/>
+    <Grid {chartHeight} {chartWidth} dataX={xTics} dataY={yTics}/>
     <rect fill="transparent" height={chartHeight} stroke="black" width={chartWidth}></rect>
-    <Polyline class="stroke-red-500" data={sin} {matrix} stroke-width="2"/>
-    <Polyline class="stroke-amber-500" data={cos} {matrix}/>
-    <Polyline class="stroke-green-500" data={mix} {matrix}/>
+    <Polyline class="stroke-red-500" data={sin} stroke-width="2"/>
+    <Polyline class="stroke-amber-500" data={cos}/>
+    <Polyline class="stroke-green-500" data={mix}/>
   </g>
 </Chart>
