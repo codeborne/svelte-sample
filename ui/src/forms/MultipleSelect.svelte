@@ -30,7 +30,7 @@
 <FormField {label}>
   <div class="flex flex-row flex-wrap items-center gap-2">
     {#each values ?? [] as key}
-      <Badge>{options?.[key]} {#if !disabled}<a on:click={() => remove(key)}><Icon name="x"/></a>{/if}</Badge>
+      <Badge>{options?.[key]} {#if !disabled}<a on:click={() => remove(key)} role="button" tabindex="0"><Icon name="x"/></a>{/if}</Badge>
     {/each}
     {#if !disabled}
       <PlusSelectField {options} {values} bind:select on:change={add}/>

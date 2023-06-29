@@ -42,7 +42,7 @@
   const dispatch = createEventDispatcher<{change: number}>()
   function onUnitChanged() {
     if (updateUnitValue()) updateValue()
-    dispatch('change', value)
+    dispatch('change', value!)
   }
 </script>
 

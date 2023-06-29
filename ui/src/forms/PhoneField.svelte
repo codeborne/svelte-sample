@@ -8,8 +8,6 @@
   export let required = true
   export let countryCode = CountryCode.EE
 
-  interface $$Events {}
-
   $: areaCode = countries[countryCode as CountryCode]?.phoneAreaCode
   $: if (areaCode && value?.startsWith(areaCode)) value = '+' + value
   $: areaPrefix = areaCode ? '+' + areaCode : ''
