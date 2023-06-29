@@ -8,9 +8,13 @@
   import {showToast} from 'src/stores/toasts'
   import FormField from 'src/forms/FormField.svelte'
   import PhoneField from 'src/forms/PhoneField.svelte'
+  import RadioButton from 'src/forms/RadioButton.svelte'
+  import {objectToOptions} from 'src/forms/RadioButton'
+  import type {RadioOption} from 'src/forms/RadioButton'
 
   export let user: User = {} as User
   export let savePath = 'users'
+  let gender: RadioOption | undefined
 
   const dispatch = createEventDispatcher<{saved: User}>()
 
@@ -28,6 +32,7 @@
     <FormField label="contacts.email" type="email" bind:value={user.email}/>
     <PhoneField label="contacts.phone" bind:value={user.phone} required={false}/>
     <FormField label="person.personalCode" type="tel" bind:value={user.personalCode} required={false} minlength={11} maxlength={11} pattern="[0-6]\d\d[01]\d[0-3]\d\d\d\d\d"/>
+    <RadioButton bind:value={gender} class="classic" label="person.gender" options={objectToOptions(_('gender'))}/>
   </div>
 
   <div class="flex justify-end">

@@ -35,7 +35,11 @@
 
 <style global>
   label {
-    @apply block text-sm font-medium text-gray-700 mb-1
+    @apply block text-sm font-medium text-gray-700
+  }
+
+  .form-field label {
+    @apply mb-1
   }
 
   .form-field input, .form-field select, .form-field textarea {

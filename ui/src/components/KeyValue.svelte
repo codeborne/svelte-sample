@@ -7,10 +7,20 @@
 </script>
 
 {#if value || $$slots.default}
-  <div class={$$props.class}>
-    <p class="text-muted text-sm">{_(label)}</p>
-    <p class="text-gray-900 font-medium {valueClass}">
+  <div class="key-value-pair {$$props.class ?? ''}">
+    <p class="key">{_(label)}</p>
+    <p class="value {valueClass}">
       {#if value}{value}{:else}<slot/>{/if}
     </p>
   </div>
 {/if}
+
+<style>
+  .key {
+    @apply text-gray-400 text-xs
+  }
+
+  .value {
+    @apply font-medium
+  }
+</style>

@@ -24,7 +24,12 @@
     "firstName": "Eesnimi",
     "lastName": "Perekonnanimi",
     "name": "Nimi",
-    "age": "Vanus"
+    "age": "Vanus",
+    "gender": "Sugu"
+  },
+  "gender": {
+    "male": "Mees",
+    "female": "Naine"
   },
   "general": {
     "yes": "Jah",
