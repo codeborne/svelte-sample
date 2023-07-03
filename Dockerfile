@@ -1,7 +1,7 @@
 FROM node:18-alpine as build-ui
 WORKDIR /app
 
-COPY ui/*.json ./
+COPY ui/*.json ui/.npmrc ./
 RUN npm ci
 
 COPY ui ./
