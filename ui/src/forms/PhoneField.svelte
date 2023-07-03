@@ -1,12 +1,12 @@
 <script lang="ts">
   import FormField from './FormField.svelte'
   import countries from 'i18n/countries.json'
-  import {CountryCode} from 'src/api/types'
+  import type {CountryCode} from 'src/api/types'
 
   export let label: string|undefined = undefined
   export let value: string = ''
   export let required = true
-  export let countryCode = CountryCode.EE
+  export let countryCode: CountryCode|undefined = undefined
 
   $: areaCode = countries[countryCode as CountryCode]?.phoneAreaCode
   $: if (areaCode && value?.startsWith(areaCode)) value = '+' + value
