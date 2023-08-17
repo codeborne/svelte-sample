@@ -13,19 +13,36 @@
 </script>
 
 <MainPageLayout>
-  <div class="flex items-start gap-10">
-    <nav class="nav">
-      {#key path}
-        {#each Object.keys(groupedMenu) as dir}
-          <div class="nav-group">{dir}</div>
-          {#each groupedMenu[dir] as path}
-            <Link to="samples/{path}" class="nav-link {location.pathname.endsWith(path) ? 'active': ''}">
-              {path.split('/')[1]}
-            </Link>
+  <div class="sm:flex sm:items-start gap-10">
+
+    <div class="form-field w-full mb-4 sm:hidden">
+      <select bind:value={path}>
+        {#key path}
+          {#each Object.keys(groupedMenu) as group}
+            <optgroup label={group}>
+              {#each groupedMenu[group] as component}
+                <option value={component}>{component.split('/')[1]}</option>
+              {/each}
+            </optgroup>
           {/each}
-        {/each}
-      {/key}
-    </nav>
+        {/key}
+      </select>
+    </div>
+
+    <div class="hidden sm:flex">
+      <nav class="nav">
+        {#key path}
+          {#each Object.keys(groupedMenu) as dir}
+            <div class="nav-group">{dir}</div>
+            {#each groupedMenu[dir] as path}
+              <Link to="samples/{path}" class="nav-link {location.pathname.endsWith(path) ? 'active': ''}">
+                {path.split('/')[1]}
+              </Link>
+            {/each}
+          {/each}
+        {/key}
+      </nav>
+    </div>
 
     <div class="w-full">
       {#if path}
