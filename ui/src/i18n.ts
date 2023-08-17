@@ -9,7 +9,7 @@ export * from '@codeborne/i18n-json'
 export async function initTranslations(opts?: Partial<Options>, version = window['version']) {
   const lang = location.pathname.match(/^\/[a-z]{2}(\/|$)/) ? location.pathname.substring(1, 3) : undefined
   if (lang) rememberLang(lang)
-  await init({langs, lang, version, ...opts})
+  await init({langs, lang, fallbackToDefault: import.meta.env.DEV, version, ...opts})
 }
 
 export async function initTestTranslations(lang: string, dict: Dict) {
