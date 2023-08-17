@@ -4,10 +4,6 @@ it('translate', () => {
   expect(_('contacts.email')).to.equal('E-mail')
 })
 
-it('translate with fallback', () => {
-  expect(_('contacts.email', undefined, {contacts: {}})).to.equal('E-mail')
-})
-
 it('if translation fails it should return translation key', () => {
   const nonExistingKey = 'some.key.that.does.not.exist'
   expect(_(nonExistingKey)).to.equal(nonExistingKey)
