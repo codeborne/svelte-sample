@@ -24,11 +24,13 @@
     oldValue = value
   }
 
+  const roundToStep = (n: number) => parseFloat(n.toFixed(-Math.log10(step)))
+
   function updateUnitValue() {
     if (value === undefined) return unitValue = undefined
     const convert = unit == units[1]
     const ratio = convert ? unitRatio : 1 / unitRatio
-    unitValue = Math.round((unitValue ?? 0) * ratio / step) * step
+    unitValue = roundToStep((unitValue ?? 0) * ratio)
     unitMin = convert ? Math.round(unitMin * ratio) : min
     unitMax = convert ? Math.round(unitMax * ratio) : max
     return convert
@@ -36,7 +38,7 @@
 
   function updateValue() {
     if (unitValue != 0 && !unitValue) return value = undefined
-    oldValue = value = unit == units[0] ? unitValue : Math.round(unitValue / unitRatio / step) * step
+    oldValue = value = unit == units[0] ? unitValue : roundToStep(unitValue / unitRatio)
   }
 
   const dispatch = createEventDispatcher<{change: number}>()
