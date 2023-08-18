@@ -16,13 +16,8 @@ export default defineConfig({
     conditions: isTest ? ['browser'] : []
   },
   plugins: [
-    routify({
-      ssr: { enable: !!isTest },
-    }),
-    svelte({
-      hot: !process.env.VITEST,
-      hydratable: !!process.env.ROUTIFY_SSR_ENABLE
-    })
+    routify(),
+    svelte({hot: !process.env.VITEST})
   ],
   server: {
     port: isTest ? 8678 : 8000,
