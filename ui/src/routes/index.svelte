@@ -1,8 +1,10 @@
 <script lang="ts">
-  import {_, navigate} from 'src/i18n'
+  import {_} from 'src/i18n'
   import MainPageLayout from 'src/layout/MainPageLayout.svelte'
+  import {goto} from '@roxi/routify'
+  import {onMount} from 'svelte'
 
-  navigate('samples')
+  onMount(() => $goto('/samples'))
 </script>
 
 <MainPageLayout title={_('title')}>

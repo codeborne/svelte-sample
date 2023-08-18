@@ -1,5 +1,5 @@
 import {render} from '@testing-library/svelte'
-import SamplesPage from './SamplesPage.svelte'
+import SamplesPage from './index.svelte'
 
 describe('SamplesPage', () => {
   it('renders', async () => {

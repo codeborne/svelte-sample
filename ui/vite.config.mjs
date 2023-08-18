@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import {defineConfig} from 'vite'
 import {svelte} from '@sveltejs/vite-plugin-svelte'
+import routify from '@roxi/routify/vite-plugin'
 import * as path from 'path'
 
 const isTest = process.env.NODE_ENV === 'test'
@@ -14,7 +15,15 @@ export default defineConfig({
     },
     conditions: isTest ? ['browser'] : []
   },
-  plugins: [svelte({hot: !process.env.VITEST})],
+  plugins: [
+    routify({
+      ssr: { enable: !!isTest },
+    }),
+    svelte({
+      hot: !process.env.VITEST,
+      hydratable: !!process.env.ROUTIFY_SSR_ENABLE
+    })
+  ],
   server: {
     port: isTest ? 8678 : 8000,
     proxy: isTest ? undefined : {

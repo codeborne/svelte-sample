@@ -1,6 +1,6 @@
 <script>
   import Modal from 'src/components/Modal.svelte'
-  import UserForm from 'src/samples/UserForm.svelte'
+  import UserForm from 'src/routes/samples/UserForm.svelte'
   import Button from 'src/components/Button.svelte'
 
   let showNormal = false, showWide = false

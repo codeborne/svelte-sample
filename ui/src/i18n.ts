@@ -1,8 +1,6 @@
 import langs from '../i18n/langs.json'
 import type {Dict, Options} from '@codeborne/i18n-json'
 import {_, formatAmount, formatUuid, init, lang, rememberLang} from '@codeborne/i18n-json'
-import {navigate as navigatorNavigate} from 'svelte-navigator'
-import type {NavigateOptions} from 'svelte-navigator/types/history'
 
 export * from '@codeborne/i18n-json'
 
@@ -29,11 +27,6 @@ export function formatTokenAmount(amount: number) {
 
 export function path(to: string) {
   return `/${to}`
-}
-
-export function navigate(to: string, opts?: NavigateOptions) {
-  navigatorNavigate(path(to), opts)
-  setTimeout(() => scrollTo({top: 0}))
 }
 
 export const defaultCurrency = 'EUR'

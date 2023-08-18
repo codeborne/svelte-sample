@@ -1,5 +1,5 @@
 <script lang="ts">
-  import UserForm from 'src/samples/UserForm.svelte'
+  import UserForm from 'src/routes/samples/UserForm.svelte'
   import Form from 'src/forms/Form.svelte'
   import FormField from 'src/forms/FormField.svelte'
 </script>

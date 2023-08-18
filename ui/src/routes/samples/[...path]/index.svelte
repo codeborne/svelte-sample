@@ -1,46 +1,39 @@
 <script lang="ts">
   import MainPageLayout from 'src/layout/MainPageLayout.svelte'
   import Link from 'src/components/Link.svelte'
-  import {navigate} from 'src/i18n'
   import Card from 'src/components/Card.svelte'
+  import {goto, params} from '@roxi/routify'
+  import {samples} from 'src/routes/samples/samples'
 
-  export let path: string
+  $: path = $params.path.join('/')
 
-  const samples = Object.entries(import.meta.glob('src/**/*.samples.svelte', {eager: true})).map(([p, f]) => [p.replace('/src/', '').replace('.samples.svelte', ''), f]).toObject()
   const groupedMenu = Object.keys(samples).groupBy(p => p.split('/')[0])
-
-  if (!path) navigate('samples/' + Object.keys(samples)[0])
 </script>
 
 <MainPageLayout>
   <div class="sm:flex sm:items-start gap-10">
-
     <div class="form-field w-full mb-4 sm:hidden">
-      <select bind:value={path}>
-        {#key path}
-          {#each Object.keys(groupedMenu) as group}
-            <optgroup label={group}>
-              {#each groupedMenu[group] as component}
-                <option value={component}>{component.split('/')[1]}</option>
-              {/each}
-            </optgroup>
-          {/each}
-        {/key}
+      <select value={path} on:change={e => $goto('/samples/' + e.currentTarget.value)}>
+        {#each Object.keys(groupedMenu) as group}
+          <optgroup label={group}>
+            {#each groupedMenu[group] as component}
+              <option value={component}>{component.split('/')[1]}</option>
+            {/each}
+          </optgroup>
+        {/each}
       </select>
     </div>
 
     <div class="hidden sm:flex">
       <nav class="nav">
-        {#key path}
-          {#each Object.keys(groupedMenu) as dir}
-            <div class="nav-group">{dir}</div>
-            {#each groupedMenu[dir] as path}
-              <Link to="samples/{path}" class="nav-link {location.pathname.endsWith(path) ? 'active': ''}">
-                {path.split('/')[1]}
-              </Link>
-            {/each}
+        {#each Object.keys(groupedMenu) as dir}
+          <div class="nav-group">{dir}</div>
+          {#each groupedMenu[dir] as p}
+            <Link to="samples/{p}" class="nav-link {p == path ? 'active': ''}">
+              {p.split('/')[1]}
+            </Link>
           {/each}
-        {/key}
+        {/each}
       </nav>
     </div>
 
