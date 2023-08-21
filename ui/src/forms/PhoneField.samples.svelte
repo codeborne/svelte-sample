@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import PhoneField from 'src/forms/PhoneField.svelte'
   import {CountryCode} from 'src/api/types'
 </script>

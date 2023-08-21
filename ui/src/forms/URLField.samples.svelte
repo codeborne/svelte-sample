@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import URLField from 'src/forms/URLField.svelte'
 </script>
 
