@@ -30,7 +30,7 @@ export default defineConfig({
     cssCodeSplit: false
   },
   optimizeDeps: {
-    include: isTest ? ['@testing-library/svelte', 'chai', 'sinon', 'sinon-chai'] : undefined
+    include: isTest ? ['@testing-library/svelte', 'chai'] : undefined
   },
   test: {
     globals: true,
