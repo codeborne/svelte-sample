@@ -26,7 +26,7 @@
     </label>
   {/if}
   <slot {id}>
-    <div class="flex">
+    <div class="flex relative">
       <input {id} bind:this={input} bind:value on:input on:change on:focus on:blur on:keydown on:paste {minlength} {maxlength} {required} {...$$restProps} class="">
       <slot name="after"/>
     </div>
