@@ -1,7 +1,5 @@
 import {fireEvent, render} from '@testing-library/svelte'
 import LangSelect from './LangSelect.svelte'
-import {stub} from 'sinon'
-import api from 'src/api/api'
 import {user} from 'src/stores/auth'
 
 describe('LangSelect', () => {

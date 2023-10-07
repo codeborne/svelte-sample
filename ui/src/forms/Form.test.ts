@@ -1,6 +1,5 @@
 import {fireEvent, render} from '@testing-library/svelte'
 import Form from './Form.svelte'
-import {fake} from 'sinon'
 
 describe('Form', () => {
   const submit = () => {}
@@ -16,9 +15,9 @@ describe('Form', () => {
   })
 
   it('calls submit on valid submit', async () => {
-    const submit = fake()
+    const submit = vi.fn()
     const {container} = render(Form, {submit})
     await fireEvent.submit(container.querySelector('form')!)
-    expect(submit).called
+    expect(submit).toHaveBeenCalled()
   })
 })

@@ -1,54 +1,53 @@
 import api, {headers} from './api'
-import type {SinonStub} from 'sinon'
-import {stub, useFakeTimers} from 'sinon'
 import {toastStore} from '../stores/toasts'
 import {get} from 'svelte/store'
 import {_} from 'src/i18n'
+import type {SpyInstance} from 'vitest'
 
 const successfulResponse = {status: 200, headers: {get: () => undefined}, json: () => 'data'} as any
 
 describe('api', () => {
-  let fetch: SinonStub
+  let fetch: SpyInstance
 
   beforeEach(() => {
-    fetch = stub(global, 'fetch').resolves(successfulResponse)
+    fetch = vi.spyOn(global, 'fetch').mockResolvedValue(successfulResponse)
   })
 
   it('extracts json', async () => {
     const promise = api.requestJson('path', {body: {data: 'data'}})
     expect(document.documentElement.classList.contains('loading')).to.equal(true)
-    expect(fetch).calledWith('/api/path', {headers, body: '{"data":"data"}'})
+    expect(fetch).toHaveBeenCalledWith('/api/path', {headers, body: '{"data":"data"}'})
     expect(await promise).to.equal('data')
     expect(document.documentElement.classList.contains('loading')).to.equal(false)
   })
 
   it('offers to refresh if version mismatch', async () => {
-    const clock = useFakeTimers()
+    vi.useFakeTimers()
     window['apiVersion'] = '2.3'
-    fetch.resolves({...successfulResponse, headers: {get: () => '2.2'}})
+    fetch.mockResolvedValue({...successfulResponse, headers: {get: () => '2.2'}})
     await api.requestJson('path', {body: {data: 'data'}})
     expect(get(toastStore)).to.be.empty
 
-    clock.tick(10000)
+    vi.advanceTimersByTime(10000)
     expect(get(toastStore)[0]?.title).to.eq(_('home.apiVersionUpdate.title'))
-    clock.restore()
+    vi.useRealTimers()
     window['apiVersion'] = undefined
   })
 
   it('supports null json response', async () => {
-    fetch.resolves({...successfulResponse, json: () => null})
+    fetch.mockResolvedValue({...successfulResponse, json: () => null})
     const promise = api.requestJson('path', {body: {data: 'data'}})
     expect(await promise).to.be.null
   })
 
   it('supports No Content response', async () => {
-    fetch.resolves({...successfulResponse, status: 204, text: () => ''})
+    fetch.mockResolvedValue({...successfulResponse, status: 204, text: () => ''})
     const promise = api.requestJson('path', {body: {data: 'data'}})
     expect(await promise).to.eq('')
   })
 
   it('handles http error', () => {
-    fetch.resolves({status: 403, json: () => Promise.resolve({statusCode: 403, message: '', reason: 'Forbidden'})})
+    fetch.mockResolvedValue({status: 403, json: () => Promise.resolve({statusCode: 403, message: '', reason: 'Forbidden'})})
     return api.requestJson('path', {headers}).then(() => {
       throw 'should be rejected'
     }, e => {
@@ -58,32 +57,33 @@ describe('api', () => {
   })
 
   describe('requests', () => {
-    let requestJson: SinonStub
-    beforeEach(() => requestJson = stub(api, 'requestJson'))
+    beforeEach(() => {
+      vi.spyOn(api, 'requestJson')
+    })
 
-    it('get', () => {
+    it('get', async () => {
       api.get('path')
-      expect(requestJson).calledWith('path')
+      expect(api.requestJson).toHaveBeenCalledWith('path')
     })
 
     it('post', () => {
       api.post('path', {data: 'data'}, {header1: 'val'})
-      expect(requestJson).calledWith('path', {method: 'POST', body: {data: 'data'}, headers: {header1: 'val'}})
+      expect(api.requestJson).toHaveBeenCalledWith('path', {method: 'POST', body: {data: 'data'}, headers: {header1: 'val'}})
     })
 
     it('delete', () => {
       api.delete('path')
-      expect(requestJson).calledWith('path', {method: 'DELETE'})
+      expect(api.requestJson).toHaveBeenCalledWith('path', {method: 'DELETE'})
     })
 
     it('patch', () => {
       api.patch('path', {data: 'data'})
-      expect(requestJson).calledWith('path', {method: 'PATCH', body: {data: 'data'}})
+      expect(api.requestJson).toHaveBeenCalledWith('path', {method: 'PATCH', body: {data: 'data'}})
     })
   })
 
   it('gives a specific error when failed to parse JSON', () => {
-    fetch.resolves({
+    fetch.mockResolvedValue({
       json: () => {
         throw 'Invalid json'
       }
@@ -96,7 +96,7 @@ describe('api', () => {
   })
 
   it('gives a network error', () => {
-    fetch.rejects(new Error('Failed to fetch'))
+    fetch.mockRejectedValue(new Error('Failed to fetch'))
     return api.requestJson('path').then(() => {
       throw 'should be rejected'
     }, e => {
