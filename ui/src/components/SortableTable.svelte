@@ -3,19 +3,23 @@
   import Spinner from 'src/components/Spinner.svelte'
   import {debounce} from 'src/shared/debounce'
 
+  type Column = keyof T | '' | false | undefined
+  type Field = Column | ((item: T) => any)
   type T = $$Generic
-  type Field = keyof T | ((item: T) => any) | false | '' | undefined
 
   export let id: string|undefined = undefined
   export let items: T[]|undefined
   export let labels: string = ''
-  export let columns: (string|false|undefined)[]
-  export let sortFields: Field[] = columns as Field[]
-  export let rightAlign: string[] = ['amount', 'amountWithVAT']
+  export let columns: (Column | [string, Field])[]
+  export let rightAlignFrom: keyof T | undefined = undefined
+  export let rightAlign: (Column | string)[] = []
   export let sortedBy: Field = undefined, asc = 1
   export let renderMax = 100
 
-  if (location.origin.includes('localhost') && columns.length != sortFields.length) throw Error('columns and fields must be of the same length')
+  $: fields = columns.map(c => c instanceof Array ? c[1] ?? c[0] : c) as Field[]
+  $: columnLabels = columns.map(c => c instanceof Array ? c[0] : c) as (string|undefined)[]
+  $: if (rightAlignFrom) rightAlign = columnLabels.slice(fields.indexOf(rightAlignFrom))
+  $: rightAlignIndices = new Set(rightAlign.map(c => columnLabels.indexOf(c as string)))
 
   function get(item: T, by: Field) {
     const v = by instanceof Function ? by(item) : by && item[by]
@@ -48,16 +52,16 @@
 
 <div class="-mx-6 overflow-x-auto md:mx-0 md:overflow-visible {$$props.class ?? ''}">
   <div class="min-w-full pb-3">
-    <table {id}>
+    <table {id} class={labels.replace('.', '-')}>
       <thead>
       <tr>
-        {#each columns as column, i}
+        {#each columnLabels as column, i}
           {#if column || column === ''}
-            <th on:click={() => items = items && !!column ? sortBy(items, sortFields[i]) : items}
+            <th on:click={() => items = items && !!column ? sortBy(items, fields[i]) : items}
                 scope="col"
-                class="text-muted {asc === 1 ? 'asc' : 'desc'} {rightAlign.includes(column) ? 'text-right' : ''}"
+                class="text-muted {asc === 1 ? 'asc' : 'desc'} {rightAlignIndices.has(i) ? 'text-right' : ''}"
                 class:sortable={!!column}
-                class:sorted={sortedBy === sortFields[i]}>
+                class:sorted={sortedBy === fields[i]}>
               {#if column}
                 <span class="pr-1">{_((labels && !column.includes('.') ? labels + '.' : '') + column)}</span>
               {/if}
@@ -77,7 +81,13 @@
           </tr>
         {:else}
           {#each items.slice(0, renderMax) as item, i (item['id'] ?? i)}
-            <slot {item} {i}/>
+            <slot {item} {i}>
+              <tr>
+                {#each fields as f, fi}
+                  <td class:text-right={rightAlignIndices.has(fi)}>{get(item, f)}</td>
+                {/each}
+              </tr>
+            </slot>
           {/each}
           {#if renderMax < items.length}
             <td colspan={columns.length} class="text-center" style="height: {window.innerHeight}px"><Spinner class="py-24 h-11"/></td>

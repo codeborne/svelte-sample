@@ -6,9 +6,8 @@ describe('SortableTable', () => {
   it('sorts items by clicking on headers', async () => {
     const items = [{a: 2, b: 'zzz'}, {a: 1, b: 'aaa'}]
     const labels = 'backoffice.events'
-    const columns = ['id', 'time']
-    const fields = ['a', 'b']
-    const {container, component} = render(SortableTable, {labels, items, columns, fields, class: 'another-class'})
+    const columns: any[] = [['id', 'a'], ['time', 'b']]
+    const {container, component} = render(SortableTable, {labels, items, columns, class: 'another-class'})
     expect(container.querySelector('.another-class')).to.be.ok
     expect(container.textContent).to.contain(_('backoffice.events.id'))
     expect(container.textContent).to.contain(_('backoffice.events.time'))
@@ -28,9 +27,8 @@ describe('SortableTable', () => {
   it('do not sort columns with empty headers', async () => {
     const items = [{a: 2, b: 'zzz'}, {a: 1, b: 'aaa'}]
     const labels = 'backoffice.events'
-    const columns = ['', 'time']
-    const fields = ['a', 'b']
-    const {container, component} = render(SortableTable, {labels, items, columns, fields, class: 'another-class'})
+    const columns: any[] = [['', 'a'], ['time', 'b']]
+    const {container, component} = render(SortableTable, {labels, items, columns, class: 'another-class'})
 
     const headers = container.querySelectorAll('th')
     await fireEvent.click(headers[0])
