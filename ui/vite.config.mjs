@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import {defineConfig} from 'vite'
 import {svelte} from '@sveltejs/vite-plugin-svelte'
+import { run } from 'vite-plugin-run';
 import * as path from 'path'
 
 const isTest = process.env.NODE_ENV === 'test'
@@ -14,7 +15,19 @@ export default defineConfig({
     },
     conditions: isTest ? ['browser'] : []
   },
-  plugins: [svelte({hot: !process.env.VITEST})],
+  plugins: [
+    svelte({hot: !process.env.VITEST}),
+    run({
+      silent: !!process.env.VITEST,
+      input: [
+        {
+          name: 'typecheck',
+          run: ['npm', 'run', 'check'],
+          pattern: ['src/**/*.ts', 'src/**/*.svelte'],
+        }
+      ]
+    })
+  ],
   server: {
     port: isTest ? 8678 : 8000,
     proxy: isTest ? undefined : {

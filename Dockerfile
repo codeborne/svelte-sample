@@ -1,4 +1,4 @@
-FROM node:18-alpine as build-ui
+FROM node:20-alpine as build-ui
 WORKDIR /app
 
 COPY ui/*.json ui/.npmrc ./
