@@ -39,7 +39,7 @@
 
   function findScrollParent(el: HTMLElement | null): HTMLElement {
     if (!el) return document.documentElement;
-    const overflow = el.computedStyleMap().get('overflow-y');
+    const overflow = el.computedStyleMap?.().get('overflow-y');
     return overflow == 'auto' || overflow == 'scroll' ? el : findScrollParent(el.parentElement);
   }
 
