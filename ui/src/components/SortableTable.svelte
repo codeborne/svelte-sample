@@ -37,20 +37,31 @@
     })
   }
 
-  function onScroll() {
-    if (!items || renderMax >= items.length) return
-    const scrollMax = document.body.scrollHeight - window.innerHeight
-    if (window.scrollY == scrollMax) {
-      renderMax = items.length
-      setTimeout(() => scrollTo(0, document.body.scrollHeight))
-    }
-    else if (window.scrollY > scrollMax - window.innerHeight) renderMax += 50
+  function findScrollParent(el: HTMLElement | null): HTMLElement {
+    if (!el) return document.documentElement;
+    const overflow = el.computedStyleMap().get('overflow-y');
+    return overflow == 'auto' || overflow == 'scroll' ? el : findScrollParent(el.parentElement);
+  }
+
+  let scrollable: HTMLElement;
+  function renderMoreOnScroll(el: HTMLElement) {
+    scrollable = findScrollParent(el);
+
+    const onScroll = debounce(() => {
+      if (!items || renderMax >= items.length) return;
+      const scrollMax = scrollable.scrollHeight - scrollable.clientHeight;
+      if (scrollable.scrollTop == scrollMax) {
+        renderMax = items.length;
+        queueMicrotask(() => scrollTo(0, document.body.scrollHeight));
+      } else if (scrollable.scrollTop > scrollMax - scrollable.clientHeight) renderMax += 10;
+    }, 300);
+
+    scrollable.addEventListener('scroll', onScroll);
+    return { destroy: () => scrollable.removeEventListener('scroll', onScroll) };
   }
 </script>
 
-<svelte:window on:scroll={debounce(onScroll, 300)}/>
-
-<div class="-mx-6 overflow-x-auto md:mx-0 md:overflow-visible {$$props.class ?? ''}">
+<div class="-mx-6 overflow-x-auto md:mx-0 md:overflow-visible {$$props.class ?? ''}" use:renderMoreOnScroll>
   <div class="min-w-full pb-3">
     <table {id} class={labels.replace('.', '-')}>
       <thead>
@@ -90,7 +101,9 @@
             </slot>
           {/each}
           {#if renderMax < items.length}
-            <td colspan={columns.length} class="text-center" style="height: {window.innerHeight}px"><Spinner class="py-24 h-11"/></td>
+            <td colspan={columns.length} class="text-center" style="height: {scrollable?.clientHeight}px">
+              <Spinner class="py-24 h-11"/>
+            </td>
           {/if}
         {/if}
       {:else}
