@@ -53,7 +53,7 @@
       if (scrollable.scrollTop == scrollMax) {
         renderMax = items.length;
         queueMicrotask(() => scrollable.scrollTo(0, scrollable.scrollHeight));
-      } else if (scrollable.scrollTop > scrollMax - scrollable.clientHeight) renderMax += 10;
+      } else if (scrollable.scrollTop > scrollMax - scrollable.clientHeight) renderMax += 50;
     }, 300);
 
     scrollable.addEventListener('scroll', onScroll);
