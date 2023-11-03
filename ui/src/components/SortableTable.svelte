@@ -52,7 +52,7 @@
       const scrollMax = scrollable.scrollHeight - scrollable.clientHeight;
       if (scrollable.scrollTop == scrollMax) {
         renderMax = items.length;
-        queueMicrotask(() => scrollTo(0, document.body.scrollHeight));
+        queueMicrotask(() => scrollable.scrollTo(0, scrollable.scrollHeight));
       } else if (scrollable.scrollTop > scrollMax - scrollable.clientHeight) renderMax += 10;
     }, 300);
 
