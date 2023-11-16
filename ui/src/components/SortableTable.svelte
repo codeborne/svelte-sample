@@ -49,12 +49,11 @@
 
     const onScroll = debounce(() => {
         if (!items || renderMax >= items.length) return
-        const scrollMax = scrollable.scrollHeight - scrollable.clientHeight
-        console.log(scrollable.scrollTop, scrollMax)
-        if (scrollable.scrollTop == scrollMax) {
+        const scrollMax = scrollable.scrollHeight - scrollable.clientHeight * 1.2
+        if (scrollable.scrollTop >= scrollMax) {
           renderMax = items.length
           queueMicrotask(() => scrollable.scrollTo(0, scrollable.scrollHeight))
-        } else if (scrollable.scrollTop > scrollMax - scrollable.clientHeight) renderMax += 50
+        } else if (scrollable.scrollTop + scrollable.clientHeight > scrollMax) renderMax += 50
       }, 300)
 
     ;(scrollable === document.documentElement ? window : scrollable).addEventListener('scroll', onScroll)
