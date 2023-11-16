@@ -38,26 +38,27 @@
   }
 
   function findScrollParent(el: HTMLElement | null): HTMLElement {
-    if (!el) return document.documentElement;
-    const overflow = el.computedStyleMap?.().get('overflow-y');
-    return overflow == 'auto' || overflow == 'scroll' ? el : findScrollParent(el.parentElement);
+    if (!el) return document.documentElement
+    const overflow = el.computedStyleMap?.().get('overflow-y')
+    return overflow == 'auto' || overflow == 'scroll' ? el : findScrollParent(el.parentElement)
   }
 
-  let scrollable: HTMLElement;
+  let scrollable: HTMLElement
   function renderMoreOnScroll(el: HTMLElement) {
-    scrollable = findScrollParent(el);
+    scrollable = findScrollParent(el)
 
     const onScroll = debounce(() => {
-      if (!items || renderMax >= items.length) return;
-      const scrollMax = scrollable.scrollHeight - scrollable.clientHeight;
-      if (scrollable.scrollTop == scrollMax) {
-        renderMax = items.length;
-        queueMicrotask(() => scrollable.scrollTo(0, scrollable.scrollHeight));
-      } else if (scrollable.scrollTop > scrollMax - scrollable.clientHeight) renderMax += 50;
-    }, 300);
+        if (!items || renderMax >= items.length) return
+        const scrollMax = scrollable.scrollHeight - scrollable.clientHeight
+        console.log(scrollable.scrollTop, scrollMax)
+        if (scrollable.scrollTop == scrollMax) {
+          renderMax = items.length
+          queueMicrotask(() => scrollable.scrollTo(0, scrollable.scrollHeight))
+        } else if (scrollable.scrollTop > scrollMax - scrollable.clientHeight) renderMax += 50
+      }, 300)
 
-    scrollable.addEventListener('scroll', onScroll);
-    return { destroy: () => scrollable.removeEventListener('scroll', onScroll) };
+    ;(scrollable === document.documentElement ? window : scrollable).addEventListener('scroll', onScroll)
+    return { destroy: () => scrollable.removeEventListener('scroll', onScroll) }
   }
 </script>
 
