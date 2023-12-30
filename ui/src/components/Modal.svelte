@@ -10,43 +10,47 @@
   export let wide = false
   export let flyParams: FlyParams = {y: -500, duration: window['e2eTest'] ? 0 : 400}
 
-  let modal: HTMLElement
-  $: if (modal) document.body.appendChild(modal)
-  $: document.body.classList.toggle('modal-open', show)
+  let dialog: HTMLDialogElement
 
   function close() {
+    dialog.classList.remove('open')
     show = false
   }
 
-  function onKeyUp(e: KeyboardEvent) {
-    if (show && e.code === 'Escape') close()
+  $: if (dialog) {
+    dialog.showModal()
+    dialog.classList.add('open')
   }
-
-  onDestroy(() => {
-    document.body.classList.remove('modal-open')
-    setTimeout(() => modal?.remove())
-  })
 </script>
 
-<svelte:window on:keyup={onKeyUp}/>
-
 {#if show}
-  <div bind:this={modal} class="modal transition-opacity fixed z-20 inset-0 overflow-y-auto" transition:fade={{duration: flyParams.duration}}>
-    <div class="flex items-center justify-center min-h-screen p-4 md:pb-20 text-center">
-      <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-
-      <div class="w-full {wide ? 'max-w-7xl': 'max-w-xl'} relative inline-block bg-white rounded-lg p-6 md:p-10 text-left overflow-hidden shadow-xl transform transition-all align-middle"
-           role="dialog" transition:fly={flyParams}>
-        <div class="block absolute top-0 right-0 pt-4 md:pt-8 pr-4 md:pr-8">
-          <button type="button" class="bg-white flex items-center justify-center text-gray-400 hover:text-gray-500 h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" on:click={close}>
-            <span class="sr-only">{_('general.close')}</span>
-            <Icon name="x"/>
-          </button>
-        </div>
-
-        {#if title}<h3 class="mb-4">{title}</h3>{/if}
-        <slot/>
-      </div>
+  <dialog bind:this={dialog} class="w-full {wide ? 'max-w-7xl': 'max-w-xl'}" transition:fly={flyParams}>
+    <div class="absolute top-0 right-0 pt-4 md:pt-8 pr-4 md:pr-8">
+      <button type="button" title={_('general.close')} class="close" on:click={close}>
+        <Icon name="x"/>
+      </button>
     </div>
-  </div>
+
+    {#if title}<h3 class="mb-4">{title}</h3>{/if}
+    <slot/>
+  </dialog>
 {/if}
+
+<style>
+  dialog {
+    @apply relative bg-white rounded-lg p-6 md:p-10 shadow-xl;
+  }
+
+  button.close {
+    @apply bg-none flex items-center justify-center text-gray-400 hover:text-gray-500 h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500;
+  }
+
+  dialog::backdrop {
+    @apply bg-gray-500 opacity-0;
+    transition: opacity 0.4s;
+  }
+
+  dialog:global(.open)::backdrop {
+    @apply opacity-75;
+  }
+</style>
