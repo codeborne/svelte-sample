@@ -11,7 +11,7 @@
 </script>
 
 {#if show}
-  <dialog bind:this={dialog} class="w-full {wide ? 'max-w-7xl': 'max-w-xl'}" on:close={() => setTimeout(() => show = false, 500)}>
+  <dialog bind:this={dialog} class="modal w-full {wide ? 'max-w-7xl': 'max-w-xl'}" on:close={() => setTimeout(() => show = false, 500)}>
     <form method="dialog" class="absolute top-0 right-0 pt-4 md:pt-8 pr-4 md:pr-8">
       <button title={_('general.close')} class="close">
         <Icon name="x"/>
