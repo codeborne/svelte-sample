@@ -3,14 +3,14 @@
 ## New
 
 * Button group component
-* ~~* Toast component~~
+* ✅~~* Toast component~~
 
 ## Improvements
 
 * Spinner to look nicer by default
 
 * Button color (primary, success, violet etc) and variant (solid, soft, ghost) to be separated.
-* Button to include xs size by default
+* ✅~~Button and Icon to include xs size by default~~
 
 * Icon to include xs size by default
 * Icons to support stroke-width customisation
