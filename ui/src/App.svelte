@@ -5,6 +5,8 @@
   import NotFoundPage from './layout/NotFoundPage.svelte'
   import HomePage from 'src/pages/HomePage.svelte'
   import Spinner from 'src/components/Spinner.svelte'
+  import MockEmailsPage from 'src/prototyping/emails/MockEmailsPage.svelte'
+  import MockEmailNotifications from 'src/prototyping/emails/MockEmailNotifications.svelte'
 </script>
 
 <svelte:head>
@@ -24,5 +26,10 @@
       {/await}
     </Route>
     <Route component={NotFoundPage}/>
+
+    <!--  👇 Prototype only  -->
+    <Route path="emails" component={MockEmailsPage}/>
+    <Route path="emails/:slug" component={MockEmailsPage}/>
+    <MockEmailNotifications />
   </div>
 </Router>

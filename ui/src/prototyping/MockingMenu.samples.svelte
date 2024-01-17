@@ -1,6 +1,7 @@
 <script>
   import MockingMenu from 'src/prototyping/MockingMenu.svelte'
   import Button from 'src/components/Button.svelte'
+  import {Link} from 'svelte-navigator'
 
   let viewScope = 'future'
 </script>
@@ -9,7 +10,7 @@ Check the menu at the edge of the page ↘️
 
 <MockingMenu title="Scenarios">
   <div class="grid gap-2 text-xs">
-    <a href={'#'}>Some mock action</a>
+    <Link to="/emails">View mock e-mails</Link>
     <a href={'#'}>Another mock action</a>
   </div>
 </MockingMenu>
