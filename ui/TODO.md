@@ -2,8 +2,8 @@
 
 ## New
 
-* Toast component
 * Button group component
+* ~~* Toast component~~
 
 ## Improvements
 
