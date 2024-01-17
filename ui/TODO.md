@@ -11,8 +11,6 @@
 
 * Button color (primary, success, violet etc) and variant (solid, soft, ghost) to be separated.
 * ✅~~Button and Icon to include xs size by default~~
-
-* Icon to include xs size by default
 * Icons to support stroke-width customisation
 
 * Card component to support some sm, default and lg sizes
@@ -28,6 +26,6 @@
 
 Some components that are continuously needed in prototypes, it could be useful to have them included in samples.
 
-* E-mail mocking base
-* Mocking menu (log-in helper, mocking different results in flows)
+* ✅~~E-mail mocking base~~
+* ✅~~Mocking menu (log-in helper, mocking different results in flows)~~
 * Simple login with different roles
