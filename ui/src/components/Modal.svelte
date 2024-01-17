@@ -3,7 +3,7 @@
   import Icon from 'src/icons/Icon.svelte'
 
   export let title = ''
-  export let show: any|false = true
+  export let show: any | false = true
   export let wide = false
 
   let dialog: HTMLDialogElement
@@ -27,7 +27,7 @@
   dialog {
     @apply fixed bg-white rounded-lg p-6 md:p-10 shadow-xl;
     overflow: hidden;
-    animation: fade-out 0.3s ease-out;
+    animation: fade-out 0.2s ease-in;
   }
 
   dialog[open] {
@@ -38,7 +38,7 @@
   @keyframes fade-in {
     0% {
       opacity: 0;
-      transform: translateY(-500px);
+      transform: scale(0.95);
       display: none;
     }
 
@@ -56,7 +56,7 @@
 
     100% {
       opacity: 0;
-      transform: translateY(-500px);
+      transform: scale(0.95);
       display: none;
     }
   }
@@ -65,12 +65,31 @@
     @apply bg-none flex items-center justify-center text-gray-400 hover:text-gray-500 h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500;
   }
 
+  dialog::backdrop {
+    @apply bg-gray-500/70;
+    /* TODO: make the backdrop also fade out */
+    /*animation: backdrop-fade-out 0.2s ease-in;*/
+  }
+
   dialog[open]::backdrop {
-    animation: backdrop-fade-in 0.3s ease-out forwards;
+    animation: backdrop-fade-in 0.2s ease-out;
   }
 
   @keyframes backdrop-fade-in {
-    0% {opacity: 0}
-    100% {@apply bg-gray-500 opacity-75}
+    0% {
+      opacity: 0
+    }
+    100% {
+      opacity: 1
+    }
   }
+
+  /*@keyframes backdrop-fade-out {*/
+  /*  0% {*/
+  /*    opacity: 1*/
+  /*  }*/
+  /*  100% {*/
+  /*    opacity: 0*/
+  /*  }*/
+  /*}*/
 </style>
