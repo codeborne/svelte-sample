@@ -30,3 +30,4 @@ Some components that are continuously needed in prototypes, it could be useful t
 
 * E-mail mocking base
 * Mocking menu (log-in helper, mocking different results in flows)
+* Simple login with different roles
