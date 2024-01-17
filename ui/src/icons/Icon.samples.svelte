@@ -14,6 +14,7 @@
 <div class="grid grid-cols-6 gap-4">
   {#each names as name}
     <Card title={name} class="!mb-2 text-center">
+      <Icon {name} size="xs"/>
       <Icon {name} size="sm"/>
       <Icon {name}/>
       <Icon {name} size="lg" class="text-primary-500"/>

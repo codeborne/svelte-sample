@@ -3,7 +3,7 @@
   import Icon from 'src/icons/Icon.svelte'
 
   export let icon = ''
-  export let size: 'sm'|''|'lg' = ''
+  export let size: 'xs'|'sm'|''|'lg' = ''
   export let label = ''
   export let type: 'button'|'submit' = 'button'
 
@@ -44,6 +44,10 @@
 
   .btn.link {
     @apply text-primary-600 hover:text-primary-500 hover:bg-primary-100 focus:ring-primary-400
+  }
+
+  .btn.xs {
+    @apply py-1 px-2
   }
 
   .btn.sm {
