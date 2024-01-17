@@ -17,6 +17,13 @@
 
 * Card component to support some sm, default and lg sizes
 
+## Theming
+
+* By default only light theme, like it is now
+  OR
+* Include also dark by default and make it easy to get rid of it when not needed (e.g dark theme related styles always
+  on a separate line in style clauses make them easy to read and remove)
+
 ## Prototype only components
 
 Some components that are continuously needed in prototypes, it could be useful to have them included in samples.
