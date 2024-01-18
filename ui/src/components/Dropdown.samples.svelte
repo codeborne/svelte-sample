@@ -1,12 +1,13 @@
 <script>
   import Dropdown from 'src/components/Dropdown.svelte'
+  import Button from 'src/components/Button.svelte'
 </script>
 
 <div class="flex justify-between">
   <Dropdown>
-    <a class="btn default">
+    <Button>
       Sample dropdown
-    </a>
+    </Button>
     <svelte:fragment slot="open">
       <div class="w-80 px-3 py-2">
         Dropdown content
@@ -14,9 +15,9 @@
     </svelte:fragment>
   </Dropdown>
   <Dropdown class="right-0">
-    <a class="btn default">
+    <Button>
       Right-aligned dropdown
-    </a>
+    </Button>
     <svelte:fragment slot="open">
       <div class="w-80 px-3 py-2">
         Dropdown content

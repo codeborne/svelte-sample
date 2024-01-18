@@ -1,6 +1,7 @@
 <script>
   import Logo from 'src/layout/Logo.svelte'
   import {emailLegalText} from 'src/prototyping/emails/mockEmails'
+  import {Link} from 'svelte-navigator'
 
   export let linkRoute
   export let title
@@ -39,10 +40,10 @@ https://github.com/ls-age/svelte-mail
 
     <div>
       {#if callToAction}
-        <a href={linkRoute ? linkRoute : '#'}
-           class="btn primary btn-lg w-full !rounded-full">
+        <Link to={linkRoute ? linkRoute : '#'}
+              class="btn primary solid lg w-full !rounded-full">
           {callToAction}
-        </a>
+        </Link>
       {/if}
       {#if fallBackMessage}
         <div style="margin-top: 12px; font-size: 13px; color: #512b2b;">{@html fallBackMessage}</div>

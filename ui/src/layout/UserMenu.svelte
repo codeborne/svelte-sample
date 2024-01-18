@@ -5,12 +5,12 @@
   import Dropdown from 'src/components/Dropdown.svelte'
   import Button from 'src/components/Button.svelte'
 
-  let isDowpdownOpen = false
+  let isDropdownOpen = false
 </script>
 
 {#if $user}
-  <Dropdown class="right-0 !z-50" bind:open={isDowpdownOpen}>
-    <Button class="sm">
+  <Dropdown class="right-0 !z-50" bind:open={isDropdownOpen}>
+    <Button class="sm" color="primary" variant="soft">
       <div class="flex items-center gap-1 -mx-0.5">
         <Icon name="user"/>
         <div>{$user.firstName} {$user.lastName}</div>
@@ -19,7 +19,7 @@
     </Button>
     <svelte:fragment slot="open">
       <div class="py-0.5 px-1">
-        <Button class="sm" icon="logout" on:click={logout}>
+        <Button variant="ghost" size="sm" icon="logout" on:click={logout}>
           {_('login.logout')}
         </Button>
       </div>

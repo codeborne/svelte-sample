@@ -18,7 +18,7 @@ Check the menu at the edge of the page ↘️
 <MockingMenu position="bottom-right" icon="">
   <div class="flex gap-1">
     {#each [['mvp', 'MVP'], ['future', 'Future']] as [slug, title]}
-      <Button class="xs {viewScope === slug ? 'primary' : '' }"
+      <Button size="xs" color={viewScope === slug ? 'primary' : '' }
               on:click={() => viewScope = slug}>
         {title}
       </Button>

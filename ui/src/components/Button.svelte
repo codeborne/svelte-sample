@@ -12,7 +12,7 @@
   $: hasLabel = label || $$slots.default
 </script>
 
-<button {type} {...$$restProps} class="btn {$$props.class ?? 'default'} {size} {color} {variant} {icon ? 'inline-flex items-center' : ''}" class:icon-only={icon && !hasLabel} on:click>
+<button {type} {...$$restProps} class="btn {size} {color} {variant} {icon ? 'inline-flex items-center' : ''} {$$props.class ?? ''}" class:icon-only={icon && !hasLabel} on:click>
   {#if icon}
     <Icon name={icon} {size}/>
   {/if}
