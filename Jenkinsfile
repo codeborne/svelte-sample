@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     APP = "svelte-sample"
-    BUILD = "${JOB_NAME.replace('/', '-')}-${BUILD_NUMBER}"
+    BUILD = "${JOB_NAME.replace('/', '-').replace(' ', '-').toLowerCase()}-${BUILD_NUMBER}"
     EMAIL = sh(script: "git show -s --format='%ae' HEAD", returnStdout: true)
     GIT_LAST_CHANGE = sh(script: 'git show', returnStdout: true)
     EMAIL_BODY = "Project: ${JOB_NAME}\nBuild Number: ${BUILD_NUMBER}\n\nLast change:\n\n${env.GIT_LAST_CHANGE}"
