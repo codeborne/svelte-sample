@@ -19,7 +19,7 @@ module.exports = {
         'warning': colors.amber,
         'danger': colors.red,
         'primary': colors.blue,
-        'brand': colors.amber
+        'secondary': colors.gray
       },
     },
   },
