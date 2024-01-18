@@ -4,6 +4,8 @@
 
   export let icon = ''
   export let size: 'xs'|'sm'|''|'lg' = ''
+  export let variant: 'solid'|'soft'|'outlined'|'ghost' = 'solid'
+  export let color: 'primary'|'secondary'|'warning'|'success'|'danger' = 'secondary'
   export let label = ''
   export let type: 'button'|'submit' = 'button'
 
@@ -22,8 +24,8 @@
 <style global>
   .btn {
     @apply border border-transparent rounded-md text-center inline-flex
-           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-75
-           disabled:opacity-50 justify-center py-2 px-4 text-sm font-medium
+    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-75
+    disabled:opacity-50 justify-center py-2 px-4 text-sm font-medium
   }
 
   .btn.primary.solid {
@@ -52,8 +54,17 @@
     @apply text-secondary-500 hover:bg-secondary-100 hover:text-secondary-800
   }
 
-  .btn.danger {
-    @apply text-danger-500 border border-gray-300 hover:bg-gray-50
+  .btn.danger.solid {
+    @apply text-white hover:text-white bg-danger-600 hover:bg-danger-700 focus:ring-danger-500
+  }
+  .btn.danger.soft {
+    @apply text-danger-800 bg-danger-100 hover:bg-danger-200 focus:ring-danger-200
+  }
+  .btn.danger.outlined {
+    @apply border-danger-500 text-danger-500 hover:border-danger-400 hover:text-danger-400
+  }
+  .btn.danger.ghost {
+    @apply text-danger-500 hover:bg-danger-100 hover:text-danger-800
   }
 
   .btn.warning.solid {
