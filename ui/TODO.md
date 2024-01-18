@@ -3,12 +3,12 @@
 ## New
 
 * Button group component
-* ✅~~* Toast component~~
+* ✅ ~~Toast component~~
+* Transition wrapper to support tailwind animation state transitions
 
 ## Improvements
 
 * Spinner to look nicer by default
-
 * Button color (primary, success, violet etc) and variant (solid, soft, ghost) to be separated.
 * ✅~~Button and Icon to include xs size by default~~
 * Icons to support stroke-width customisation
