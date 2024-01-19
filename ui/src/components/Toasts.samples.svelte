@@ -21,14 +21,12 @@
   })
 </script>
 
-<div class="grid gap-6 max-w-[450px]">
-  <div>
+<div class="max-w-[450px] common-grid mb-4">
     <h4>Simple, short messages</h4>
     <p>It is OK to use just toast message/description. If it fits into a single line, it is a short message.</p>
-  </div>
+</div>
 
-  <div>
+  <div class="max-w-[450px] common-grid">
     <h4>Longer messages</h4>
     <p>Use a short title conveying the idea. The longer content should be as a message/description</p>
   </div>
-</div>
