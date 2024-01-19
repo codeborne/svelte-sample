@@ -14,6 +14,7 @@
 * ✅ ~~Icons to support stroke-width customisation~~
 
 * ✅ ~~Card component to support some sm, default and lg sizes~~
+* ✅ ~~Name copying functionality for icon names on the icon samples page~~
 
 ## Theming
 

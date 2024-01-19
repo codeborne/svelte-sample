@@ -8,7 +8,8 @@
   export let smDownFullWidth = false
 </script>
 
-<div class="card bg-white shadow card-{size} {split ? 'card-split' : ''} {$$props.class ?? ''} {smDownFullWidth ? 'mobile-full-w' : ''}">
+<div class="card bg-white shadow card-{size} {split ? 'card-split' : ''} {$$props.class ?? ''} {smDownFullWidth ? 'mobile-full-w' : ''}"
+     on:click>
   <div class="grid md:grid-cols-3">
     {#if title}
       <div class="card-header {split ? 'md:col-span-1': 'md:col-span-3'}">

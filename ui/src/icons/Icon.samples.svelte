@@ -3,8 +3,15 @@
   import Icon from './Icon.svelte'
   import Card from 'src/components/Card.svelte'
   import Button from 'src/components/Button.svelte'
+  import {showToast, ToastType} from 'src/stores/toasts'
 
   const names = Object.keys(icons).sort()
+
+  function copy(element: string) {
+    console.log('copying')
+    navigator.clipboard.writeText(element)
+    showToast('Copied!', {type: ToastType.SUCCESS})
+  }
 </script>
 
 <div class="text-lg common-grid mb-4">
@@ -46,7 +53,7 @@
 <h4>List of icons</h4>
 <div class="grid grid-cols-6 gap-4">
   {#each names as name}
-    <Card size="sm">
+    <Card size="sm" on:click={() => copy(name)}>
       <div class="flex flex-col gap-1">
         <Icon {name} size="xs"/>
         <Icon {name} size="sm"/>
