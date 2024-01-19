@@ -10,10 +10,10 @@
 
 * Spinner to look nicer by default
 * Button color (primary, success, violet etc) and variant (solid, soft, ghost) to be separated.
-* ✅~~Button and Icon to include xs size by default~~
-* Icons to support stroke-width customisation
+* ✅ ~~Button and Icon to include xs size by default~~
+* ✅ ~~Icons to support stroke-width customisation~~
 
-* Card component to support some sm, default and lg sizes
+* ✅ ~~Card component to support some sm, default and lg sizes~~
 
 ## Theming
 
