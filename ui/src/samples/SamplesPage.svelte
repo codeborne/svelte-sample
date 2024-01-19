@@ -46,7 +46,7 @@
 
     <div class="w-full">
       {#if path}
-        <Card title={path.replace('/', ' / ')}>
+        <Card title={path.replace('/', ' / ')} smDownFullWidth>
           <div class="common-grid">
             <svelte:component this={samples[path].default}/>
           </div>
