@@ -12,7 +12,7 @@
   <Dropdown class="right-0 !z-50" bind:open={isDropdownOpen}>
     <Button class="sm" color="primary" variant="soft">
       <div class="flex items-center gap-1 -mx-0.5">
-        <Icon name="user"/>
+        <Icon name="user" strokeWidth="1.5"/>
         <div>{$user.firstName} {$user.lastName}</div>
         <Icon name="chevron-down" class="opacity-50"/>
       </div>

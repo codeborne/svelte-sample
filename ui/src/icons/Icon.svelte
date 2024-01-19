@@ -3,9 +3,10 @@
 
   export let name: string
   export let size: 'xs' | 'sm' | '' | 'lg' = ''
+  export let strokeWidth: string = '2'
 </script>
 
-{@html icons[name].replace('<svg', `<svg class="icon ${name} ${size} ${$$props.class ?? ''}" focusable="false"`)}
+{@html icons[name].replace('<svg', `<svg class="icon ${name} ${size} ${$$props.class ?? ''}" stroke-width=${strokeWidth} focusable="false"`)}
 
 <style global>
   .icon {
