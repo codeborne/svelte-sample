@@ -94,7 +94,7 @@
   }
 
   .btn.xs {
-    @apply py-1 px-2
+    @apply py-1 px-2 text-xs
   }
 
   .btn.sm {
@@ -102,7 +102,7 @@
   }
 
   .btn.lg {
-    @apply py-3 px-4 font-semibold
+    @apply py-3 px-4 font-semibold text-base
   }
 
   .btn.icon-only {
