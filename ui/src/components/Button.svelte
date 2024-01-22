@@ -14,7 +14,7 @@
 
 <button {type} {...$$restProps} class="btn {size} {color} {variant} {icon ? 'inline-flex items-center' : ''} {$$props.class ?? ''}" class:icon-only={icon && !hasLabel} on:click>
   {#if icon}
-    <Icon name={icon} {size} strokeWidth={size === 'xs' ? '2.5' : undefined ? '2`' : undefined}/>
+    <Icon name={icon} {size} strokeWidth={size === 'xs' ? '2.5' : '2'}/>
   {/if}
   {#if hasLabel}
     <span class:ml-2={icon}><slot>{_(label)}</slot></span>
