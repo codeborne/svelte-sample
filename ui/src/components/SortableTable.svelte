@@ -119,12 +119,12 @@
   </div>
 </div>
 
-<style>
+<style global>
   table {
-    @apply relative bg-white min-w-full divide-y divide-gray-200 md:rounded-lg md:shadow border-separate border-spacing-0
+    @apply relative bg-white min-w-full divide-y divide-gray-200 border-separate border-spacing-0
   }
 
-  table :global(th), table :global(td) {
+  table th, table td {
     @apply px-4 py-3 border-b border-gray-200
   }
 
@@ -132,7 +132,7 @@
     @apply text-xs font-medium uppercase tracking-wider sticky top-0 bg-white border-b-2 border-gray-200 border-solid;
   }
 
-  table :global(th:last-child), :global(td:last-child:not(:first-child)) {
+  table th:last-child, td:last-child:not(:first-child) {
     text-align: right;
   }
 
