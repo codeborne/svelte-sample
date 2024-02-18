@@ -25,8 +25,7 @@
 
 <style>
   dialog {
-    @apply fixed bg-white rounded-lg p-6 md:p-10 shadow-xl;
-    overflow: hidden;
+    @apply fixed bg-white rounded-lg p-6 md:p-10 shadow-xl overflow-y-auto;
     animation: fade-out 0.2s ease-in;
   }
 
