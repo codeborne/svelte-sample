@@ -1,7 +1,5 @@
 import api, {headers} from './api'
-import {toastStore} from '../stores/toasts'
-import {get} from 'svelte/store'
-import {_} from 'src/i18n'
+import * as i18n from 'src/i18n'
 import type {SpyInstance} from 'vitest'
 
 const successfulResponse = {status: 200, headers: {get: () => undefined}, json: () => 'data'} as any
@@ -21,16 +19,12 @@ describe('api', () => {
     expect(document.documentElement.classList.contains('loading')).to.equal(false)
   })
 
-  it('offers to refresh if version mismatch', async () => {
-    vi.useFakeTimers()
+  it('refreshes on next navigate if version mismatch', async () => {
     window['apiVersion'] = '2.3'
+    vi.spyOn(i18n, 'refreshOnNextNavigate')
     fetch.mockResolvedValue({...successfulResponse, headers: {get: () => '2.2'}})
     await api.requestJson('path', {body: {data: 'data'}})
-    expect(get(toastStore)).to.be.empty
-
-    vi.advanceTimersByTime(10000)
-    expect(get(toastStore)[0]?.title).to.eq(_('home.apiVersionUpdate.title'))
-    vi.useRealTimers()
+    expect(i18n.refreshOnNextNavigate).toHaveBeenCalled()
     window['apiVersion'] = undefined
   })
 
