@@ -29,4 +29,5 @@ export function handleUnhandledRejection(event: PromiseRejectionEvent) {
 export function initErrorHandlers() {
   window.onerror = jsErrorHandler
   window.addEventListener('unhandledrejection', handleUnhandledRejection)
+  window.addEventListener('vite:preloadError', () => location.reload())
 }
