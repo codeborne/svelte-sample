@@ -68,12 +68,7 @@
     "noUser": "Sisenemine ebaõnnestus"
   },
   "home": {
-    "title": "Avaleht",
-    "apiVersionUpdate": {
-      "title": "Rakendus uuenes",
-      "message": "Lehe värskendamine on vajalik korrektse töö jätkamiseks",
-      "action": "Värskenda nüüd"
-    }
+    "title": "Avaleht"
   },
   "samples": {
     "title": "Näidised"

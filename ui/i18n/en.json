@@ -69,12 +69,7 @@
     "noUser": "Invalid credentials"
   },
   "home": {
-    "title": "Home",
-    "apiVersionUpdate": {
-      "title": "Application updated",
-      "message": "Refreshing the page is needed for correct functioning",
-      "action": "Refresh now"
-    }
+    "title": "Home"
   },
   "samples": {
     "title": "Samples"

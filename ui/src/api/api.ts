@@ -1,5 +1,5 @@
-import {versionRefreshNeeded} from '../stores/toasts'
 import mocks from './mocks'
+import {refreshOnNextNavigate} from 'src/i18n'
 
 export const headers = {'Content-Type': 'application/json; charset=UTF-8', 'Accept': 'application/json'} as HeadersInit
 
@@ -44,7 +44,7 @@ class Api {
       data.message = data.message || data.reason
       throw data
     } else if (apiVersion && apiVersion != window['version']) {
-      setTimeout(versionRefreshNeeded, 1000)
+      refreshOnNextNavigate()
     }
     return data
   }

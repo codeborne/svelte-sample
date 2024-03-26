@@ -31,7 +31,13 @@ export function path(to: string) {
   return `/${to}`
 }
 
+let refreshNavigate = false
+export function refreshOnNextNavigate() {
+  refreshNavigate = true
+}
+
 export function navigate(to: string, opts?: NavigateOptions) {
+  if (refreshNavigate) return location.href = path(to)
   navigatorNavigate(path(to), opts)
   setTimeout(() => scrollTo({top: 0}))
 }
