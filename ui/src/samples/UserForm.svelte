@@ -13,8 +13,7 @@
   export let user: User = {} as User
   export let savePath = 'users'
 
-  const genders = {M: 'Male', 'F': 'Female'}
-  let gender: keyof typeof genders | undefined
+  let gender: keyof typeof t.gender | undefined
 
   const dispatch = createEventDispatcher<{saved: User}>()
 
@@ -32,7 +31,7 @@
     <FormField label={t.contacts.email} type="email" bind:value={user.email}/>
     <PhoneField label={t.contacts.phone} bind:value={user.phone} required={false}/>
     <FormField label={t.person.personalCode} type="tel" bind:value={user.personalCode} required={false} minlength={11} maxlength={11} pattern="[0-6]\d\d[01]\d[0-3]\d\d\d\d\d"/>
-    <RadioButton bind:value={gender} class="classic" label={t.person.gender} options={genders}/>
+    <RadioButton bind:value={gender} class="classic" label={t.person.gender} options={t.gender}/>
   </div>
 
   <div class="flex justify-end">
