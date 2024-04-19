@@ -8,7 +8,7 @@ describe('api', () => {
   let fetch: SpyInstance
 
   beforeEach(() => {
-    fetch = vi.spyOn(global, 'fetch').mockResolvedValue(successfulResponse)
+    fetch = vi.spyOn(window, 'fetch').mockResolvedValue(successfulResponse)
   })
 
   it('extracts json', async () => {
