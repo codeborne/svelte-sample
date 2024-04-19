@@ -9,12 +9,12 @@
   import FormField from 'src/forms/FormField.svelte'
   import PhoneField from 'src/forms/PhoneField.svelte'
   import RadioButton from 'src/forms/RadioButton.svelte'
-  import type {RadioOption} from 'src/forms/RadioButton'
-  import {objectToOptions} from 'src/forms/RadioButton'
 
   export let user: User = {} as User
   export let savePath = 'users'
-  let gender: RadioOption | undefined
+
+  const genders = {M: 'Male', 'F': 'Female'}
+  let gender: keyof typeof genders | undefined
 
   const dispatch = createEventDispatcher<{saved: User}>()
 
@@ -32,7 +32,7 @@
     <FormField label={t.contacts.email} type="email" bind:value={user.email}/>
     <PhoneField label={t.contacts.phone} bind:value={user.phone} required={false}/>
     <FormField label={t.person.personalCode} type="tel" bind:value={user.personalCode} required={false} minlength={11} maxlength={11} pattern="[0-6]\d\d[01]\d[0-3]\d\d\d\d\d"/>
-    <RadioButton bind:value={gender} class="classic" label={t.person.gender} options={objectToOptions(t.gender)}/>
+    <RadioButton bind:value={gender} class="classic" label={t.person.gender} options={genders}/>
   </div>
 
   <div class="flex justify-end">

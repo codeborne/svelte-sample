@@ -1,19 +1,13 @@
 <script lang="ts">
-  import type {RadioOption} from 'src/forms/RadioButton'
-
   export let label: string
-  export let value: RadioOption | undefined
+  export let value: string | undefined
   export let required = true
-  export let options: RadioOption[]
+  export let options: Record<string, string>
   export let id = Math.floor(Math.random() * 100).toString()
 
-  $: resetOption(options)
+  $: if (value && options[value!] == undefined) value = undefined
 
-  function resetOption(o: RadioOption[] | undefined) {
-    if (!o || value && !o.includes(value)) value = undefined
-  }
-
-  function deselect(option: RadioOption) {
+  function deselect(option?: string) {
     if (value === option) value = undefined
   }
 
@@ -22,19 +16,14 @@
 
 <fieldset {...$$restProps} class="{$$props.class}" id={`group-${id}`} role="radiogroup">
   <legend id={`label-${id}`} class="w-full">{label}</legend>
-  {#each options as option}
+  {#each Object.entries(options) as [option, label]}
+    {@const oid = id + slugify(option)}
     <div class="flex items-center">
-      <input id={id + slugify(option.value)}
-             {required}
-             name={`radio-${id}`}
-             on:click={()=> deselect(option)}
-             type="radio"
-             value={option}
-             bind:group={value}/>
-      <label for={id + slugify(option.value)}>
-        <slot option={option}>
-          {option.label ?? option.value}
-        </slot>
+      <input id={oid} type="radio" {required} bind:group={value}
+             on:click={() => deselect(option)}
+             name={id} value={option}>
+      <label for={oid}>
+        <slot option={option}>{label}</slot>
       </label>
     </div>
   {/each}
