@@ -5,7 +5,7 @@
   export let label: string|undefined = undefined
   export let value: string = ''
   export let maxlength = 1000
-  export let rows = 2
+  export let rows = value.split('\n').length
   export let inBytes = false
   export let required = true
 
@@ -16,6 +16,11 @@
   let textarea: HTMLTextAreaElement
   $: tooLong = inBytes ? encoder.encode(value).length > maxlength : value?.length > maxlength
   $: textarea?.setCustomValidity(tooLong ? t.errors.tooLong : '')
+
+  $: {
+    const lines = value.split('\n').length
+    if (lines > rows) rows = lines
+  }
 </script>
 
 <FormField {label} let:id>
