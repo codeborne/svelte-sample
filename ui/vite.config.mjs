@@ -22,7 +22,7 @@ export default defineConfig({
       input: [
         {
           name: 'typecheck',
-          run: ['npm', 'run', 'check'],
+          run: ['npm', 'run', process.env.NODE_ENV == 'production' ? 'check' : 'check:vite'],
           pattern: ['src/**/*.ts', 'src/**/*.svelte'],
         }
       ]
