@@ -1,94 +1,52 @@
 <script lang="ts">
-  import {t} from 'src/i18n'
+  import {_} from 'src/i18n'
+  import type {FlyParams} from 'svelte/transition'
+  import {fade, fly} from 'svelte/transition'
   import Icon from 'src/icons/Icon.svelte'
+  import {onDestroy} from 'svelte'
 
-  export let title = ''
-  export let show: any | false = true
+  export let title: string = ''
+  export let show: any|false = true
   export let wide = false
+  export let flyParams: FlyParams = {y: -500, duration: window['e2eTest'] ? 0 : 400}
 
-  let dialog: HTMLDialogElement
-  $: if (dialog) dialog.showModal()
+  let modal: HTMLElement
+  $: if (modal) document.body.appendChild(modal)
+  $: document.body.classList.toggle('modal-open', show)
+
+  function close() {
+    show = false
+  }
+
+  function onKeyUp(e: KeyboardEvent) {
+    if (show && e.code === 'Escape') close()
+  }
+
+  onDestroy(() => {
+    document.body.classList.remove('modal-open')
+    setTimeout(() => modal?.remove())
+  })
 </script>
 
+<svelte:window on:keyup={onKeyUp}/>
+
 {#if show}
-  <dialog bind:this={dialog} class="modal w-full {wide ? 'max-w-7xl': 'max-w-xl'}" on:close={() => setTimeout(() => show = false, 500)}>
-    <form method="dialog" class="absolute top-0 right-0 pt-4 md:pt-8 pr-4 md:pr-8">
-      <button title={t.general.close} class="close">
-        <Icon name="x"/>
-      </button>
-    </form>
+  <div bind:this={modal} class="modal transition-opacity fixed z-40 inset-0 overflow-y-auto" transition:fade={{duration: flyParams.duration}}>
+    <div class="flex items-center justify-center min-h-screen p-4 md:pb-20 text-center">
+      <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-    {#if title}<h3 class="mb-4">{title}</h3>{/if}
-    <slot/>
-  </dialog>
+      <div class="w-full {wide ? 'max-w-7xl': 'max-w-xl'} relative inline-block bg-white rounded-lg p-6 md:p-10 text-left overflow-hidden shadow-xl transform transition-all align-middle"
+           role="dialog" transition:fly={flyParams}>
+        <div class="block absolute top-0 right-0 pt-4 md:pt-8 pr-4 md:pr-8">
+          <button type="button" class="bg-white flex items-center justify-center text-gray-400 hover:text-gray-500 h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" on:click={close}>
+            <span class="sr-only">{_('general.close')}</span>
+            <Icon name="x"/>
+          </button>
+        </div>
+
+        {#if title}<h3 class="mb-4">{title}</h3>{/if}
+        <slot/>
+      </div>
+    </div>
+  </div>
 {/if}
-
-<style>
-  dialog {
-    @apply fixed bg-white rounded-lg p-6 md:p-10 shadow-xl overflow-y-auto;
-    animation: fade-out 0.2s ease-in;
-  }
-
-  dialog[open] {
-    @apply opacity-100;
-    animation: fade-in 0.3s ease-out;
-  }
-
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-      transform: scale(0.95);
-      display: none;
-    }
-
-    100% {
-      opacity: 1;
-      display: block;
-    }
-  }
-
-  @keyframes fade-out {
-    0% {
-      opacity: 1;
-      display: block;
-    }
-
-    100% {
-      opacity: 0;
-      transform: scale(0.95);
-      display: none;
-    }
-  }
-
-  button.close {
-    @apply bg-none flex items-center justify-center text-gray-400 hover:text-gray-500 h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500;
-  }
-
-  dialog::backdrop {
-    @apply bg-gray-500/70;
-    /* TODO: make the backdrop also fade out */
-    /*animation: backdrop-fade-out 0.2s ease-in;*/
-  }
-
-  dialog[open]::backdrop {
-    animation: backdrop-fade-in 0.2s ease-out;
-  }
-
-  @keyframes backdrop-fade-in {
-    0% {
-      opacity: 0
-    }
-    100% {
-      opacity: 1
-    }
-  }
-
-  /*@keyframes backdrop-fade-out {*/
-  /*  0% {*/
-  /*    opacity: 1*/
-  /*  }*/
-  /*  100% {*/
-  /*    opacity: 0*/
-  /*  }*/
-  /*}*/
-</style>
