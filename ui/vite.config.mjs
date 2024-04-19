@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
 import {defineConfig} from 'vite'
 import {svelte} from '@sveltejs/vite-plugin-svelte'
-import { run } from 'vite-plugin-run';
+import {run} from 'vite-plugin-run'
 import * as path from 'path'
 
 const isTest = process.env.NODE_ENV === 'test'
@@ -11,7 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       src: path.resolve(__dirname, './src'),
-      i18n: path.resolve(__dirname, './i18n')
+      i18n: path.resolve(__dirname, process.env.NODE_ENV == 'production' ? 'build/i18n' : 'i18n')
     },
     conditions: isTest ? ['browser'] : []
   },
