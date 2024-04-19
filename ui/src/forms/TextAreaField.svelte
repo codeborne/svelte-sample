@@ -5,7 +5,7 @@
   export let label: string|undefined = undefined
   export let value: string = ''
   export let maxlength = 1000
-  export let rows = value.split('\n').length
+  export let rows = (value?.split('\n').length ?? 0) + 1
   export let inBytes = false
   export let required = true
 
@@ -18,7 +18,7 @@
   $: textarea?.setCustomValidity(tooLong ? t.errors.tooLong : '')
 
   $: {
-    const lines = value.split('\n').length
+    const lines = value?.split('\n').length ?? 0
     if (lines > rows) rows = lines
   }
 </script>
