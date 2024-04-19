@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {_} from 'src/i18n'
+  import {t} from 'src/i18n'
   import MainPageLayout from './MainPageLayout.svelte'
   import {onMount} from 'svelte'
 
@@ -17,8 +17,8 @@
       <h1 class="text-primary-500 sm:text-5xl">404</h1>
       <div class="sm:ml-6">
         <div class="sm:border-l sm:border-gray-200 sm:pl-6">
-          <h1 class="tracking-tight sm:text-5xl">{_('errors.notFound')}</h1>
-          <p class="mt-1 text-base text-gray-500">{_('errors.notFoundInstructions')}</p>
+          <h1 class="tracking-tight sm:text-5xl">{t.errors.notFound}</h1>
+          <p class="mt-1 text-base text-gray-500">{t.errors.notFoundInstructions}</p>
         </div>
       </div>
     </div>

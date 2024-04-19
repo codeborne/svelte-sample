@@ -1,6 +1,6 @@
 <script lang="ts">
   import {debounce} from 'src/shared/debounce'
-  import {_} from 'src/i18n'
+  import {t} from 'src/i18n'
   import type {AddressSearch, EstonianAddress, EstonianAddressApartment} from 'src/api/estonianAddressRegister'
   import estonianAddressRegister, {ApartmentSearch} from 'src/api/estonianAddressRegister'
   import CustomAutocompleteField from 'src/forms/CustomAutocompleteField.svelte'
@@ -69,7 +69,7 @@
   {#if loading}<Spinner class="absolute w-8 h-8 p-1 right-8"/>{/if}
   {#if apartments}
     <select class="-ml-1 !rounded-l-none !w-auto !pl-2 !pr-7" on:change={e => refreshAddressWithApartment(e.currentTarget.value)} autofocus required>
-      <option value="">{_('addresses.selectApartment')}</option>
+      <option value="">{t.addresses.selectApartment}</option>
       {#each apartments as apartment}
         <option value={apartment.adr_id}>{apartment.tahis}</option>
       {/each}

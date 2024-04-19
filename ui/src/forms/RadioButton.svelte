@@ -1,6 +1,5 @@
 <script lang="ts">
   import type {RadioOption} from 'src/forms/RadioButton'
-  import {_} from '@codeborne/i18n-json'
 
   export let label: string
   export let value: RadioOption | undefined
@@ -22,7 +21,7 @@
 </script>
 
 <fieldset {...$$restProps} class="{$$props.class}" id={`group-${id}`} role="radiogroup">
-  <legend id={`label-${id}`} class="w-full">{_(label)}</legend>
+  <legend id={`label-${id}`} class="w-full">{label}</legend>
   {#each options as option}
     <div class="flex items-center">
       <input id={id + slugify(option.value)}
@@ -34,7 +33,7 @@
              bind:group={value}/>
       <label for={id + slugify(option.value)}>
         <slot option={option}>
-          {_(option.label ?? option.value)}
+          {option.label ?? option.value}
         </slot>
       </label>
     </div>

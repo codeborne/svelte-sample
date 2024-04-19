@@ -1,6 +1,5 @@
 import {render} from '@testing-library/svelte'
 import FormField from './FormField.svelte'
-import {_} from 'src/i18n'
 
 it('generates id', () => {
   const {container} = render(FormField, {label: 'merchant.firstName'})
@@ -9,7 +8,7 @@ it('generates id', () => {
   expect(input.type).to.eq('text')
   expect(input.required).to.be.true
   expect(input.maxLength).to.eq(100)
-  expect(container.querySelector('label')!.textContent!.trim()).to.eq(_('merchant.firstName'))
+  expect(container.querySelector('label')!.textContent!.trim()).to.eq('merchant.firstName')
 })
 
 it('can redefine class', () => {

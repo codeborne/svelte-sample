@@ -1,7 +1,8 @@
-import {_, detectLang, ensureSupportedLang, formatAmount, formatCurrency, formatDate, formatDateTime, path, rememberLang} from './i18n'
+import {_, detectLang, dt, ensureSupportedLang, formatAmount, formatCurrency, formatDate, formatDateTime, path, rememberLang, t} from './i18n'
 
 it('translate', () => {
   expect(_('contacts.email')).to.equal('E-mail')
+  expect(dt('contacts.email')).to.equal(t.contacts.email)
 })
 
 it('if translation fails it should return translation key', () => {

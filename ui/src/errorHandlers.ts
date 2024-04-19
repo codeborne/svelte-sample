@@ -1,5 +1,5 @@
 import api from './api/api'
-import {_, navigate} from './i18n'
+import {_, navigate, t} from './i18n'
 import {showToast, ToastType} from './stores/toasts'
 
 export function jsErrorHandler(message: Event|string, source?: string, line?: number, column?: number, error?: Error) {
@@ -21,7 +21,7 @@ export function handleUnhandledRejection(event: PromiseRejectionEvent) {
   if (e?.stack) return jsErrorHandler(e.message, undefined, undefined, undefined, e)
   let message = e?.message
   if (message) message = _(message)
-  else message = _('errors.technical') + ': ' + e
+  else message = t.errors.technical + ': ' + e
   showToast(message, {type: ToastType.ERROR})
   if (e?.statusCode === 401 || e?.statusCode === 403) setTimeout(() => navigate(''), 1000)
 }

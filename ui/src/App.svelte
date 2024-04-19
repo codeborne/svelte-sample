@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {_} from 'src/i18n'
+  import {t} from 'src/i18n'
   import {Route, Router} from 'svelte-navigator'
   import Toasts from './components/Toasts.svelte'
   import NotFoundPage from './layout/NotFoundPage.svelte'
@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-  <title>{_('title')}</title>
+  <title>{t.title}</title>
 </svelte:head>
 
 <Toasts/>

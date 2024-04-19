@@ -1,5 +1,4 @@
 <script lang="ts">
-  import {_} from '../i18n'
   import Icon from 'src/icons/Icon.svelte'
 
   export let icon = ''
@@ -17,7 +16,7 @@
     <Icon name={icon} {size} strokeWidth={size === 'xs' ? '2.5' : '2'}/>
   {/if}
   {#if hasLabel}
-    <span class:ml-2={icon}><slot>{_(label)}</slot></span>
+    <span class:ml-2={icon}><slot>{label}</slot></span>
   {/if}
 </button>
 

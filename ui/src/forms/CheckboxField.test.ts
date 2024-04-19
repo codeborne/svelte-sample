@@ -1,6 +1,5 @@
 import {render} from '@testing-library/svelte'
 import CheckboxField from './CheckboxField.svelte'
-import {_} from 'src/i18n'
 
 it('generates id', () => {
   const {container} = render(CheckboxField, {label: 'merchant.consent'})
@@ -9,5 +8,5 @@ it('generates id', () => {
   expect(input.type).to.eq('checkbox')
   expect(input.checked).to.be.false
   expect(input.required).to.be.false
-  expect(container.querySelector('label')!.textContent).to.eq(_('merchant.consent'))
+  expect(container.querySelector('label')!.textContent).to.eq('merchant.consent')
 })

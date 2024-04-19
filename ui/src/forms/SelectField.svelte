@@ -1,5 +1,4 @@
 <script lang="ts">
-  import {_} from 'src/i18n'
   import FormField from './FormField.svelte'
   import {onMount} from 'svelte'
 
@@ -26,7 +25,7 @@
 <FormField bind:id {label} {required} class={$$props.class}>
   <select {id} bind:this={select} class={$$props.selectClass ?? ''}
           bind:value {required} {disabled} on:change>
-    {#if emptyOption !== false}<option value="">{_(emptyOption)}</option>{/if}
+    {#if emptyOption !== false}<option value="">{emptyOption}</option>{/if}
     {#each Object.entries(options) as [v, l] (v)}
       {#if l}<option value={v} disabled={!v?.trim()}>{l}</option>{/if}
     {/each}

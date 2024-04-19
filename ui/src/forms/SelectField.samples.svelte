@@ -1,5 +1,5 @@
 <script>
-  import {_} from 'src/i18n'
+  import {t} from 'src/i18n'
   import SelectField from 'src/forms/SelectField.svelte'
 
   const options = {'1': 'a', '2': 'b', '5': 'c'}
@@ -10,5 +10,5 @@
   <SelectField label="With empty option" {options} emptyOption=""/>
   <SelectField label="No empty option" {options}/>
   <SelectField label="Disabled" {options} disabled/>
-  <SelectField label="Options from translations" options={_('general')}/>
+  <SelectField label="Options from translations" options={t.general}/>
 </div>

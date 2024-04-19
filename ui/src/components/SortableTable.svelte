@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {_} from 'src/i18n'
+  import {dt, t} from 'src/i18n'
   import Spinner from 'src/components/Spinner.svelte'
   import {debounce} from 'src/shared/debounce'
 
@@ -9,16 +9,16 @@
 
   export let id: string|undefined = undefined
   export let items: T[]|undefined
-  export let labels: string = ''
+  export let labels: Record<string, any> = {}
   export let columns: (Column | [string, Field])[]
-  export let rightAlignFrom: keyof T | undefined = undefined
+  export let rightAlignFrom: keyof T | number | undefined = undefined
   export let rightAlign: (Column | string)[] = []
   export let sortedBy: Field = undefined, asc = 1
   export let renderMax = 100
 
   $: fields = columns.map(c => c instanceof Array ? c[1] ?? c[0] : c) as Field[]
   $: columnLabels = columns.map(c => c instanceof Array ? c[0] : c) as (string|undefined)[]
-  $: if (rightAlignFrom) rightAlign = columnLabels.slice(fields.indexOf(rightAlignFrom))
+  $: if (rightAlignFrom) rightAlign = columnLabels.slice(typeof rightAlignFrom == 'number' ? rightAlignFrom : fields.indexOf(rightAlignFrom))
   $: rightAlignIndices = new Set(rightAlign.map(c => columnLabels.indexOf(c as string)))
 
   function get(item: T, by: Field) {
@@ -57,13 +57,13 @@
       }, 300)
 
     ;(scrollable === document.documentElement ? window : scrollable).addEventListener('scroll', onScroll)
-    return { destroy: () => scrollable.removeEventListener('scroll', onScroll) }
+    return {destroy: () => scrollable.removeEventListener('scroll', onScroll)}
   }
 </script>
 
-<div class="-mx-6 overflow-x-auto md:mx-0 md:overflow-visible {$$props.class ?? ''}" use:renderMoreOnScroll>
+<div class="-mx-4 overflow-x-auto md:mx-0 md:overflow-visible {$$props.class ?? ''}" use:renderMoreOnScroll>
   <div class="min-w-full pb-3">
-    <table {id} class={labels.replace('.', '-')}>
+    <table {id}>
       <thead>
       <tr>
         {#each columnLabels as column, i}
@@ -74,7 +74,7 @@
                 class:sortable={!!column}
                 class:sorted={sortedBy === fields[i]}>
               {#if column}
-                <span class="pr-1">{_((labels && !column.includes('.') ? labels + '.' : '') + column)}</span>
+                <span class="pr-1">{dt(column, column.includes('.') ? undefined : labels) ?? column}</span>
               {/if}
             </th>
           {/if}
@@ -84,11 +84,11 @@
         <slot name="thead"/>
       {/if}
       </thead>
-      <tbody class="divide-y divide-gray-200">
+      <tbody>
       {#if items}
         {#if !items.length}
           <tr>
-            <td colspan={columns.length} class="text-center">{_('general.noItems')}</td>
+            <td colspan={columns.length} class="text-center">{t.general.noItems}</td>
           </tr>
         {:else}
           {#each items.slice(0, renderMax) as item, i (item['id'] ?? i)}
@@ -112,19 +112,19 @@
         </tr>
       {/if}
       </tbody>
-      {#if items}
+      {#if items?.length}
         <slot name="tfoot"/>
       {/if}
     </table>
   </div>
 </div>
 
-<style global>
+<style>
   table {
-    @apply relative bg-white min-w-full divide-y divide-gray-200 border-separate border-spacing-0
+    @apply relative bg-white text-black min-w-full md:shadow border-separate border-spacing-0
   }
 
-  table th, table td {
+  table :global(th), table :global(td) {
     @apply px-4 py-3 border-b border-gray-200
   }
 
@@ -132,7 +132,7 @@
     @apply text-xs font-medium uppercase tracking-wider sticky top-0 bg-white border-b-2 border-gray-200 border-solid;
   }
 
-  table th:last-child, td:last-child:not(:first-child) {
+  table :global(th:last-child), :global(td:last-child:not(:first-child)) {
     text-align: right;
   }
 

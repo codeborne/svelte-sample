@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {_} from 'src/i18n'
+  import {t} from 'src/i18n'
   import Icon from 'src/icons/Icon.svelte'
 
   export let title = ''
@@ -13,7 +13,7 @@
 {#if show}
   <dialog bind:this={dialog} class="modal w-full {wide ? 'max-w-7xl': 'max-w-xl'}" on:close={() => setTimeout(() => show = false, 500)}>
     <form method="dialog" class="absolute top-0 right-0 pt-4 md:pt-8 pr-4 md:pr-8">
-      <button title={_('general.close')} class="close">
+      <button title={t.general.close} class="close">
         <Icon name="x"/>
       </button>
     </form>

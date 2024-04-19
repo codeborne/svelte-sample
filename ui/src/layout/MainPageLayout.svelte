@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {_} from 'src/i18n'
+  import {t} from 'src/i18n'
   import Container from 'src/layout/Container.svelte'
   import Header from 'src/layout/Header.svelte'
 
@@ -9,7 +9,7 @@
 
 <svelte:head>
   {#if title}
-    <title>{_('title')} - {title}</title>
+    <title>{t.title} - {title}</title>
   {/if}
 </svelte:head>
 

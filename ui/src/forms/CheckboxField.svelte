@@ -1,6 +1,4 @@
 <script lang="ts">
-  import {_} from 'src/i18n'
-
   export let label: string|undefined = undefined
   export let checked = false
 
@@ -15,7 +13,7 @@
   </div>
   {#if label}
     <div class="ml-3 text-sm">
-      <label for={id} class="text-gray-900 mb-0">{_(label)}</label>
+      <label for={id} class="text-gray-900 mb-0">{label}</label>
     </div>
   {/if}
   <slot/>

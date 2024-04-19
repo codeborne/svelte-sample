@@ -1,8 +1,8 @@
 <script lang="ts">
-  import {_, __} from 'src/i18n'
+  import {t} from 'src/i18n'
 
   export let label: string|undefined = undefined
-  export let helpText = label && __(label + 'Help')
+  export let helpText = ''
   export let value: string|number = ''
   export let validator: ((value: string) => string)|undefined = undefined
   export let id = label?.replace(/\./g, '-')
@@ -20,9 +20,9 @@
 <div class="form-field {$$props.class ?? ''}">
   {#if label}
     <label for={id}>
-      {_(label)}
+      {label}
       {#if helpText}<span class="help-text" title={helpText}>ⓘ</span>{/if}
-      {#if !required}<span class="text-muted">({_('general.optional')})</span>{/if}
+      {#if !required}<span class="text-muted">({t.general.optional})</span>{/if}
     </label>
   {/if}
   <slot {id}>

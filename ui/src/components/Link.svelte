@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {_, navigate, path} from 'src/i18n'
+  import {navigate, path} from 'src/i18n'
 
   export let to: string
   export let target: string|undefined = undefined
@@ -14,5 +14,5 @@
 
 <a href={path(to)} on:click={clicked} {target} {...$$restProps} class={$$props.class ?? 'text-link'}>
   <slot/>
-  <span>{_(label)}</span>
+  <span>{label}</span>
 </a><slot name="suffix"/>

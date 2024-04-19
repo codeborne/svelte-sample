@@ -1,5 +1,4 @@
 import {render} from '@testing-library/svelte'
-import {_} from 'src/i18n'
 import UnitsField from './UnitsField.svelte'
 import {fillInput} from 'src/test-utils'
 
@@ -13,7 +12,7 @@ describe('UnitsField', () => {
     expect(input.min).to.eq('1')
     expect(input.max).to.eq('34')
     expect(input.value).to.eq('100')
-    expect(container.querySelector('label')!.textContent!.trim()).to.eq(_('items.number'))
+    expect(container.querySelector('label')!.textContent!.trim()).to.eq('items.number')
     expect(container.querySelector('select')!.value).to.eq('€')
   })
 
