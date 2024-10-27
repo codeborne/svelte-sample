@@ -1,10 +1,10 @@
 <script lang="ts">
-  import {Route} from 'svelte-navigator'
   import PrivateRouteGuard from './PrivateRouteGuard.svelte'
-  import type {SvelteComponentTyped} from 'svelte'
+  import {Route} from 'svelte-routing'
+  import type {Component} from 'svelte'
 
   export let path: string
-  export let component: (new (args: { target: any; props?: any; }) => SvelteComponentTyped) | undefined = undefined
+  export let component: Component | undefined = undefined
 </script>
 
 <Route {path} let:params>

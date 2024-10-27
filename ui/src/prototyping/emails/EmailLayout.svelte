@@ -1,7 +1,7 @@
 <script>
   import Logo from 'src/layout/Logo.svelte'
   import {emailLegalText} from 'src/prototyping/emails/mockEmails'
-  import {Link} from 'svelte-navigator'
+  import Link from 'src/components/Link.svelte'
 
   export let linkRoute
   export let title
@@ -32,7 +32,6 @@ https://github.com/ls-age/svelte-mail
         {title}
       </h1>
     {/if}
-
 
     <div class="mb-5">
       <slot/>

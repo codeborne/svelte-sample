@@ -1,7 +1,6 @@
 import langs from '../i18n/langs.json'
 import {defaultLang, detectLang, type Dict, init, langs as allLangs, mergeDicts, type Options, rememberLang, resolve} from '@codeborne/i18n-json'
-import {navigate as navigatorNavigate} from 'svelte-navigator'
-import type {NavigateOptions} from 'svelte-navigator/types/history'
+import {navigate as navigatorNavigate} from 'svelte-routing'
 import type enDict from 'i18n/en.json'
 
 export * from '@codeborne/i18n-json'
@@ -49,7 +48,7 @@ export function refreshOnNextNavigate() {
   refreshNavigate = true
 }
 
-export function navigate(to: string, opts?: NavigateOptions) {
+export function navigate(to: string, opts?: object) {
   if (refreshNavigate) return location.href = path(to)
   navigatorNavigate(path(to), opts)
   setTimeout(() => scrollTo({top: 0}))

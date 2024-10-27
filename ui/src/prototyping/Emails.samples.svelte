@@ -1,7 +1,7 @@
 <script>
-  import {Link} from 'svelte-navigator'
   import Button from 'src/components/Button.svelte'
   import {mockEmailNotifications} from 'src/prototyping/emails/mockEmails'
+  import Link from 'src/components/Link.svelte'
 
   function showMockEmailSending() {
     mockEmailNotifications.showMockEmailNotification('password-reset')

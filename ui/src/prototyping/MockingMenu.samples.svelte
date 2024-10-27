@@ -1,7 +1,7 @@
 <script>
   import MockingMenu from 'src/prototyping/MockingMenu.svelte'
   import Button from 'src/components/Button.svelte'
-  import {Link} from 'svelte-navigator'
+  import {Link} from 'svelte-routing'
 
   let viewScope = 'future'
 </script>
