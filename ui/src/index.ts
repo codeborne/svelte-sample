@@ -6,6 +6,7 @@ import {initErrorHandlers} from './errorHandlers'
 import App from './App.svelte'
 import {initSession} from 'src/stores/auth'
 import type {AuthenticatedUser} from 'src/api/types'
+import {mount} from 'svelte'
 
 (async function() {
   initErrorHandlers()
@@ -14,5 +15,5 @@ import type {AuthenticatedUser} from 'src/api/types'
   if (auth) initSession(auth as AuthenticatedUser)
 
   document.body.innerHTML = ''
-  new App({target: document.body})
+  mount(App, {target: document.body})
 }())

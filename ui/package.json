@@ -18,11 +18,11 @@
   ],
   "dependencies": {
     "@codeborne/i18n-json": "^0.3.7",
-    "svelte": "^4.2.15",
+    "svelte": "^5.0.0",
     "svelte-navigator": "^3.2.2"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^3.1.0",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0",
     "@tailwindcss/forms": "^0.5.5",
     "@testing-library/svelte": "^4.0.5",
     "@tsconfig/svelte": "^3.0.0",
@@ -38,7 +38,7 @@
     "svelte-preprocess": "^5.1.4",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",
-    "vite": "^5.2.9",
+    "vite": "5.4.6",
     "vite-plugin-run": "^0.5.1",
     "vitest": "^1.5.0"
   }
