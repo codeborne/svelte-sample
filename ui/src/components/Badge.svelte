@@ -1,8 +1,8 @@
 <script lang="ts">
-  export let title: string|undefined = undefined
+  let {title, ...props}: {title?: string, class?: string} = $props()
 </script>
 
-<span class="badge {$$props.class ?? ''}" {title}>
+<span class="badge {props.class ?? ''}" {title}>
   <slot/>
 </span>
 

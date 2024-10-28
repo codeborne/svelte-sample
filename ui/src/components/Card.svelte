@@ -1,15 +1,24 @@
 <script lang="ts">
-  import {_} from '@codeborne/i18n-json'
-
-  export let title: string = ''
-  export let subtitle: string = ''
-  export let size: 'xs' | 'sm' | 'md' | 'lg' = 'md'
-  export let split = false
-  export let smDownFullWidth = false
+  let {
+    title,
+    subtitle,
+    size = 'md',
+    split = false,
+    smDownFullWidth = false,
+    onclick,
+    ...props
+  }: {
+    title?: string
+    subtitle?: string,
+    size?: 'xs' | 'sm' | 'md' | 'lg'
+    split?: boolean
+    smDownFullWidth?: boolean
+    class?: string
+    onclick?: () => void
+  } = $props()
 </script>
 
-<div class="card bg-white shadow card-{size} {split ? 'card-split' : ''} {$$props.class ?? ''} {smDownFullWidth ? 'mobile-full-w' : ''}"
-     on:click>
+<div class="card bg-white shadow card-{size} {split ? 'card-split' : ''} {props.class ?? ''} {smDownFullWidth ? 'mobile-full-w' : ''}" {onclick}>
   <div class="grid md:grid-cols-3">
     {#if title}
       <div class="card-header {split ? 'md:col-span-1': 'md:col-span-3'}">
