@@ -1,7 +1,6 @@
 <script lang="ts">
   import Icon from 'src/icons/Icon.svelte'
-  import type {HTMLProps} from 'svelte/svelte-html'
-  import type {HTMLAttributes} from 'svelte/elements'
+  import type {HTMLButtonAttributes} from 'svelte/elements'
 
   const {
     icon = '',
@@ -17,7 +16,7 @@
     variant?: 'solid'|'soft'|'outlined'|'ghost'
     color?: 'primary'|'secondary'|'warning'|'success'|'danger'
     label?: string
-  } & HTMLProps<'button', HTMLAttributes<any>> = $props()
+  } & HTMLButtonAttributes = $props()
 
   const hasLabel = $derived(label || $$slots.default)
 </script>
