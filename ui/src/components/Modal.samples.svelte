@@ -6,8 +6,8 @@
   let showNormal = false, showWide = false
 </script>
 
-<Button label="Show Normal Modal" on:click={() => showNormal = true}/>
-<Button label="Show Wide Modal" on:click={() => showWide = true}/>
+<Button label="Show Normal Modal" onclick={() => showNormal = true}/>
+<Button label="Show Wide Modal" onclick={() => showWide = true}/>
 
 <Modal title="Normal Modal" bind:show={showNormal}>
   <UserForm/>

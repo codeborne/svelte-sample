@@ -13,7 +13,7 @@
       {#each colors as color}
         <div class="grid gap-2">
         {#each variants as variant}
-          <Button label={color + ' ' + variant} {color} {size} {variant}/>
+          <Button label="{color} {variant}" {color} {size} {variant}/>
         {/each}
         </div>
       {/each}

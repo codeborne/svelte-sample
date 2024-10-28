@@ -1,17 +1,28 @@
 <script lang="ts">
   import Icon from 'src/icons/Icon.svelte'
+  import type {HTMLProps} from 'svelte/svelte-html'
+  import type {HTMLAttributes} from 'svelte/elements'
 
-  export let icon = ''
-  export let size: 'xs'|'sm'|''|'lg' = ''
-  export let variant: 'solid'|'soft'|'outlined'|'ghost' = 'solid'
-  export let color: 'primary'|'secondary'|'warning'|'success'|'danger' = 'secondary'
-  export let label = ''
-  export let type: 'button'|'submit' = 'button'
+  const {
+    icon = '',
+    size = '',
+    variant = 'solid',
+    color = 'secondary',
+    label = '',
+    type = 'button',
+    ...restProps
+  }: {
+    icon?: string
+    size?: 'xs'|'sm'|''|'lg'
+    variant?: 'solid'|'soft'|'outlined'|'ghost'
+    color?: 'primary'|'secondary'|'warning'|'success'|'danger'
+    label?: string
+  } & HTMLProps<'button', HTMLAttributes<any>> = $props()
 
-  $: hasLabel = label || $$slots.default
+  const hasLabel = $derived(label || $$slots.default)
 </script>
 
-<button {type} {...$$restProps} class="btn {size} {color} {variant} {icon ? 'inline-flex items-center' : ''} {$$props.class ?? ''}" class:icon-only={icon && !hasLabel} on:click>
+<button {type} {...restProps} class="btn {size} {color} {variant} {icon ? 'inline-flex items-center' : ''} {restProps.class ?? ''}" class:icon-only={icon && !hasLabel}>
   {#if icon}
     <Icon name={icon} {size} strokeWidth={size === 'xs' ? '2.5' : '2'}/>
   {/if}

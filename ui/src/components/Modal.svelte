@@ -38,7 +38,8 @@
       <div class="w-full {wide ? 'max-w-7xl': 'max-w-xl'} relative inline-block bg-white rounded-lg p-6 md:p-10 text-left overflow-hidden shadow-xl transform transition-all align-middle"
            role="dialog" transition:fly={flyParams}>
         <div class="block absolute top-0 right-0 pt-4 md:pt-8 pr-4 md:pr-8">
-          <button type="button" class="bg-white flex items-center justify-center text-gray-400 hover:text-gray-500 h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" on:click={close}>
+          <button type="button" onclick={close}
+                  class="bg-white flex items-center justify-center text-gray-400 hover:text-gray-500 h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
             <span class="sr-only">{_('general.close')}</span>
             <Icon name="x"/>
           </button>

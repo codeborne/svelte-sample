@@ -19,7 +19,7 @@
     </Button>
     <svelte:fragment slot="open">
       <div class="py-0.5 px-1">
-        <Button variant="ghost" size="sm" icon="logout" on:click={logout}>
+        <Button variant="ghost" size="sm" icon="logout" onclick={logout}>
           {t.login.logout}
         </Button>
       </div>

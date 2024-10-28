@@ -13,10 +13,10 @@
   }
 </script>
 
-<svelte:body on:click={handleOutsideClick} on:keyup={handleEscape}/>
+<svelte:body onclick={handleOutsideClick} onkeyup={handleEscape}/>
 
 <div class="shrink-0 relative md:inline-block" bind:this={dropdown}>
-  <div on:click={() => open = !open} role="menu" tabindex="0">
+  <div onclick={() => open = !open} role="menu" tabindex="0">
     <slot/>
   </div>
 

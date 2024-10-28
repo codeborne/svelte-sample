@@ -37,7 +37,8 @@
               </p>
             </div>
             <div class="ml-4 shrink-0 flex">
-              <button on:click={() => hideToast(toast)} class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+              <button onclick={() => hideToast(toast)}
+                      class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                 <Icon name="x"/>
               </button>
             </div>

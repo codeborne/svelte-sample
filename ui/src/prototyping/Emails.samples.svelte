@@ -17,5 +17,5 @@
 
   <h3>Mock e-mail notification</h3>
   <p>To reflect the idea that for some action an e-mail is sent we can mimic the email sending by showing a system notification that an e-mail was received by the user.</p>
-  <Button on:click={() => showMockEmailSending()}>Show a mock email notification</Button>
+  <Button onclick={() => showMockEmailSending()}>Show a mock email notification</Button>
 </div>

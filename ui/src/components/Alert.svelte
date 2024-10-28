@@ -1,4 +1,8 @@
-<div class="alert {$$props.class ?? 'primary'}" role="alert">
+<script lang="ts">
+  let props = $props()
+</script>
+
+<div class="alert {props.class ?? 'primary'}" role="alert">
   <p class="font-bold">
     <slot/>
   </p>
