@@ -48,7 +48,7 @@ export function refreshOnNextNavigate() {
   refreshNavigate = true
 }
 
-export function navigate(to: string, opts?: object) {
+export const navigate: typeof navigatorNavigate = function(to, opts) {
   if (refreshNavigate) return location.href = path(to)
   navigatorNavigate(path(to), opts)
   setTimeout(() => scrollTo({top: 0}))
