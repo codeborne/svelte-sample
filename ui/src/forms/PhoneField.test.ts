@@ -1,10 +1,9 @@
-import {act, createEvent, fireEvent, render} from '@testing-library/svelte'
+import {createEvent, fireEvent, render} from '@testing-library/svelte'
 import PhoneField from './PhoneField.svelte'
 import {CountryCode} from 'src/api/types'
 import {expect} from 'vitest'
 
 describe('PhoneField', () => {
-
   const pasteEvent = (input: HTMLInputElement, content: string) => createEvent.paste(input, {
     clipboardData: {
       getData: () => content,
@@ -12,12 +11,12 @@ describe('PhoneField', () => {
   })
 
   it('with known country', async () => {
-    const {container, component} = render(PhoneField, {value: '3725626262', countryCode: CountryCode.EE})
+    const {container, rerender} = render(PhoneField, {value: '3725626262', countryCode: 'EE'})
     const input = container.querySelector('input')!
     expect(input.value).to.eq('+3725626262')
     expect(input.type).to.eq('tel')
 
-    await act(() => component.$$set!({value: undefined}))
+    await rerender({value: undefined})
     expect(input.value).to.eq('')
 
     await fireEvent.focus(input)
