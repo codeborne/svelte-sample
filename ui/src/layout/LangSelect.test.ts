@@ -13,12 +13,16 @@ describe('LangSelect', () => {
   it('updates locale', async () => {
     user.set(null as any)
     location.pathname = '/en'
-    const {container} = render(LangSelect, {location})
+    let updatedHref = ''
+    Object.defineProperty(location, 'href', {
+      set: href => updatedHref = href
+    })
+    const {container, component} = render(LangSelect, {location})
     const selection = container.querySelector('select')!
     expect(selection.value).eq('en')
-    await fireEvent.change(selection, { target: { value: 'et' } });
+    await fireEvent.change(selection, {target: {value: 'et'}});
     expect(selection.value).eq('et')
-    expect(location.href).to.eq('/et')
+    expect(updatedHref).to.eq('/et')
   })
 
   it('saves user locale when changing language', async () => {
