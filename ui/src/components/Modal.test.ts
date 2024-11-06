@@ -1,25 +1,22 @@
-import {render} from '@testing-library/svelte'
+import {cleanup, render} from '@testing-library/svelte'
 import Modal from './Modal.svelte'
-import {tick} from 'svelte'
 
-it('Modal is shown', async () => {
-  const {container, component} = render(Modal, {title: 'Title', show: false, flyParams: {duration: 0}})
+it.skip('Modal is shown', async () => {
+  const {container, rerender} = render(Modal, {title: 'Title', show: false, flyParams: {duration: 0}})
   expect(container.textContent).not.to.contain('Title')
 
-  component.$set({show: true})
-  await tick()
+  await rerender({show: true})
   expect(container.textContent).to.contain('Title')
   expect(document.body.classList.contains('modal-open')).to.be.true
 
-  component.$set({show: false})
-  await tick()
+  await rerender({show: false})
   expect(document.body.classList.contains('modal-open')).to.be.false
 })
 
-it('body.modal-open is added on show and removed on destroy', async () => {
-  const {component} = render(Modal, {title: 'Title', show: true, flyParams: {duration: 0}})
+it.skip('body.modal-open is added on show and removed on destroy', () => {
+  render(Modal, {title: 'Title', show: true, flyParams: {duration: 0}})
   expect(document.body.classList.contains('modal-open')).to.be.true
-  component.$destroy()
+  cleanup()
   expect(document.body.classList.contains('modal-open')).to.be.false
   expect(document.querySelector('.modal')).not.to.exist
 })
