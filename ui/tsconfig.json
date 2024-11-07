@@ -4,7 +4,6 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
       "src/*": ["./src/*"]
@@ -16,7 +15,6 @@
     "resolveJsonModule": true,
     "useDefineForClassFields": true,
     "allowSyntheticDefaultImports": true,
-    "importsNotUsedAsValues": "error",
     "esModuleInterop": true,
     "alwaysStrict": true,
     "strictNullChecks": true,
@@ -24,6 +22,7 @@
     "strictFunctionTypes": true,
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "strictPropertyInitialization": true
+    "strictPropertyInitialization": true,
+    "ignoreDeprecations": "5.0"
   }
 }

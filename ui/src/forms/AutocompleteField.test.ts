@@ -24,7 +24,7 @@ describe('AutocompleteField', () => {
     expect(api.get).not.toHaveBeenCalled()
     vi.advanceTimersByTime(500)
     expect(api.get).toHaveBeenCalledWith('customers/search?q=Cod%20')
-    await act(api.get)
+    await act(() => api.get)
     expect([...datalist.options].map(o => o.value)).to.deep.eq(['1!', '2!', '3!'])
     expect(component.selected).to.be.undefined
 

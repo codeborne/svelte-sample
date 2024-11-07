@@ -1,11 +1,11 @@
 import api, {headers} from './api'
 import * as i18n from 'src/i18n'
-import type {SpyInstance} from 'vitest'
+import type {MockInstance} from 'vitest'
 
 const successfulResponse = {status: 200, headers: {get: () => undefined}, json: () => 'data'} as any
 
 describe('api', () => {
-  let fetch: SpyInstance
+  let fetch: MockInstance
 
   beforeEach(() => {
     fetch = vi.spyOn(window, 'fetch').mockResolvedValue(successfulResponse)

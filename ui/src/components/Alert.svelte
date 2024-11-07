@@ -19,18 +19,18 @@
   }
 
   .alert.primary {
-    @apply bg-primary-100 text-primary-700 before:bg-primary-500
+    @apply bg-primary-100 text-primary-700 before:bg-primary-500;
   }
 
   .alert.success {
-    @apply bg-success-100 text-success-700 before:bg-success-500
+    @apply bg-success-100 text-success-700 before:bg-success-500;
   }
 
   .alert.warning {
-    @apply bg-warning-100 text-warning-700 before:bg-warning-500
+    @apply bg-warning-100 text-warning-700 before:bg-warning-500;
   }
 
   .alert.danger {
-    @apply bg-danger-100 text-danger-700 before:bg-danger-500
+    @apply bg-danger-100 text-danger-700 before:bg-danger-500;
   }
 </style>

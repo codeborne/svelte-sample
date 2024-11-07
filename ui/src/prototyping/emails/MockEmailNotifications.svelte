@@ -1,6 +1,6 @@
 <script lang="ts">
   import {fly} from 'svelte/transition'
-  import {mockEmails, mockEmailNotifications, mockEmailSender} from './mockEmails'
+  import {mockEmailNotifications, mockEmails, mockEmailSender} from './mockEmails'
   import Button from 'src/components/Button.svelte'
   import Icon from 'src/icons/Icon.svelte'
 
@@ -25,7 +25,6 @@
         </div>
         <Button icon="x"
                 title="Close"
-                circular
                 class="ml-auto -my-1.5 -mx-1.5"
                 on:click={() => onClose(notification)}
         />
