@@ -6,11 +6,12 @@
   export let strokeWidth: string = '2'
 </script>
 
-{@html icons[name].replace('<svg', `<svg class="icon shrink-0 ${name} ${size} ${$$props.class ?? ''}" stroke-width=${strokeWidth} focusable="false"`)}
+{@html icons[name]?.replace('<svg', `<svg class="icon shrink-0 ${name} ${size} ${$$props.class ?? ''}" stroke-width=${strokeWidth} focusable="false"`) ?? 'NO-ICON-' + name}
 
-<style global>
+<style lang="postcss" global>
   .icon {
-    @apply w-5 h-5
+    width: 1em;
+    height: 1em;
   }
 
   .icon.xs {
