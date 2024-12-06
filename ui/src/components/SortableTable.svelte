@@ -119,7 +119,7 @@
   </div>
 </div>
 
-<style>
+<style lang="postcss">
   table {
     @apply relative bg-white text-black min-w-full md:shadow border-separate border-spacing-0
   }

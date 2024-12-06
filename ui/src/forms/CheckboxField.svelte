@@ -19,7 +19,7 @@
   <slot/>
 </div>
 
-<style global>
+<style lang="postcss" global>
   input[type=checkbox] {
     @apply focus:ring-primary-500 h-4 w-4 text-primary-500 border-gray-300 rounded
   }

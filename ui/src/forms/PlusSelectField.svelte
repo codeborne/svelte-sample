@@ -14,7 +14,7 @@
   <SelectField id={selectId} bind:select options={filteredOptions.toObject()} value="" emptyOption="+" on:change required={false} class={$$props.class} selectClass="plus"/>
 {/if}
 
-<style global>
+<style lang="postcss" global>
   select.plus {
     background-image: none !important;
     @apply !py-1 !pl-2.5 !pr-0 w-8;

@@ -34,7 +34,7 @@
   </div>
 </div>
 
-<style global>
+<style lang="postcss" global>
   .card-lg > .grid > .card-header > .card-title { @apply text-2xl font-semibold }
   .card-lg > .grid > .card-text { @apply text-base }
   .card-lg > .grid > .card-header { @apply px-4 py-5 sm:px-8 sm:pt-8 pb-0 }

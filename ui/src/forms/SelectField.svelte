@@ -32,7 +32,7 @@
   </select>
 </FormField>
 
-<style>
+<style lang="postcss">
   select {
     padding-right: 2em !important;
   }

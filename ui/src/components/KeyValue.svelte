@@ -13,7 +13,7 @@
   </div>
 {/if}
 
-<style>
+<style lang="postcss">
   .key {
     @apply text-gray-400 text-xs
   }

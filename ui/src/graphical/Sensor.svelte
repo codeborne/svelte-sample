@@ -51,7 +51,7 @@
     <text class="label text-muted" transform="scale(0.50,-0.50)" y="30">{label}</text>
   </g>
 </svg>
-<style>
+<style lang="postcss">
   svg text {
     text-anchor: middle;
     dominant-baseline: middle;

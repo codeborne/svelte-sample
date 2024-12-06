@@ -56,7 +56,7 @@
   </div>
 </MainPageLayout>
 
-<style>
+<style lang="postcss">
   .nav {
     @apply flex flex-col
   }

@@ -33,7 +33,7 @@
   </slot>
 </div>
 
-<style global>
+<style lang="postcss" global>
   label {
     @apply block text-sm font-medium text-gray-700
   }

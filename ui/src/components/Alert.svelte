@@ -8,7 +8,7 @@
   </p>
 </div>
 
-<style global>
+<style lang="postcss" global>
   .alert {
     @apply relative p-4 rounded-lg;
   }

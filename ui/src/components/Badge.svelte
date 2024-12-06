@@ -6,7 +6,7 @@
   <slot/>
 </span>
 
-<style global>
+<style lang="postcss" global>
   .badge {
     @apply inline-flex items-center px-2.5 py-0.5 rounded-md font-medium text-gray-800 bg-primary-100
   }

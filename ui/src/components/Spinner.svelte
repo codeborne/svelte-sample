@@ -7,7 +7,7 @@
   </svg>
 </div>
 
-<style>
+<style lang="postcss">
   .animate-spin {
     @apply h-full;
     animation: spin 1s infinite linear;

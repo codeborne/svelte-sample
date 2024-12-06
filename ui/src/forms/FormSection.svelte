@@ -29,7 +29,7 @@
   </div>
 </div>
 
-<style global>
+<style lang="postcss" global>
   .form-section {
     @apply grid grid-cols-12 gap-4
   }

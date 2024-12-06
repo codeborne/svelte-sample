@@ -11,7 +11,7 @@
   {max}
 </div>
 
-<style>
+<style lang="postcss">
   input {
     @apply appearance-none py-4;
   }

@@ -29,7 +29,7 @@
   {/if}
 </div>
 
-<style>
+<style lang="postcss">
   .dropdown {
     @apply origin-top-left min-w-min
     bg-white ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden text-sm

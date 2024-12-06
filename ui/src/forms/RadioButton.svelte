@@ -30,7 +30,7 @@
 </fieldset>
 
 
-<style>
+<style lang="postcss">
   fieldset {
     @apply pt-1 text-sm font-medium text-gray-700
   }

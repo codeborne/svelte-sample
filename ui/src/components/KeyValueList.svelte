@@ -6,7 +6,7 @@
   <slot />
 </div>
 
-<style global>
+<style lang="postcss" global>
   .key-value-list .key-value-pair {
     @apply flex justify-between py-1.5 items-center
   }

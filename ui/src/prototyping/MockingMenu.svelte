@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<style>
+<style lang="postcss">
   .right {
     @apply right-0 top-1/2 my-6 translate-x-3/4 hover:translate-x-0 w-[200px];
   }

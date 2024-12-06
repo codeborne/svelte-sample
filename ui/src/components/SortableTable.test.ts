@@ -11,7 +11,7 @@ describe('SortableTable', () => {
     expect(container.querySelector('.another-class')).to.be.ok
     expect(container.textContent).to.contain(enDict.addresses.country)
     expect(container.textContent).to.contain(enDict.addresses.street)
-    expect(component.items).to.equal(items)
+    expect(component.items).to.deep.equal(items)
 
     const headers = container.querySelectorAll('th')
     await fireEvent.click(headers[0])

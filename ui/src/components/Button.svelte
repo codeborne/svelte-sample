@@ -30,7 +30,7 @@
   {/if}
 </button>
 
-<style global>
+<style lang="postcss" global>
   .btn {
     @apply border border-transparent rounded-md text-center inline-flex
     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-75
