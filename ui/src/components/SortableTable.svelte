@@ -23,7 +23,7 @@
 
   function get(item: T, by: Field) {
     const v = by instanceof Function ? by(item) : by && item[by]
-    return v?.toLowerCase ? v.toLowerCase() : v ?? ''
+    return v?.toLowerCase ? v.toLowerCase() : v
   }
 
   function sortBy(array: T[], by: Field) {
@@ -61,7 +61,7 @@
   }
 </script>
 
-<div class="-mx-4 overflow-x-auto md:mx-0 md:overflow-visible {$$props.class ?? ''}" use:renderMoreOnScroll>
+<div class="-mx-4 overflow-x-auto md:mx-0 md:overflow-visible {$$props.class }" use:renderMoreOnScroll>
   <div class="min-w-full pb-3">
     <table {id}>
       <thead>

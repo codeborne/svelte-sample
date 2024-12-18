@@ -23,7 +23,7 @@
 </script>
 
 <FormField bind:id {label} {required} class={$$props.class}>
-  <select {id} bind:this={select} class={$$props.selectClass ?? ''}
+  <select {id} bind:this={select} class={$$props.selectClass }
           bind:value {required} {disabled} on:change>
     {#if emptyOption !== false}<option value="">{emptyOption}</option>{/if}
     {#each Object.entries(options) as [v, l] (v)}

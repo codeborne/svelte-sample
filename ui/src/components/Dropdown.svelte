@@ -22,7 +22,7 @@
 
   {#if open}
     <div out:fade|local={{duration: 200}}
-         class="dropdown overflow-y-auto {$$props.class ?? ''}"
+         class="dropdown overflow-y-auto {$$props.class }"
          role="menu">
       <slot name="open"/>
     </div>

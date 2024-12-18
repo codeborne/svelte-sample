@@ -9,7 +9,7 @@
   if (!from) from = yesterday
 </script>
 
-<div class={$$props.class ?? ''}>
+<div class={$$props.class }>
   <div class="md:flex align-items-center">
     <FormField type="date" bind:value={from}/>
     <span class="mx-1 my-2">-</span>

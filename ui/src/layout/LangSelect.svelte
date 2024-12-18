@@ -1,8 +1,6 @@
 <script lang="ts">
   import {lang, langs, rememberLang} from 'src/i18n'
   import SelectField from 'src/forms/SelectField.svelte'
-  import {user} from 'src/stores/auth'
-  import api from 'src/api/api'
 
   export let location = window.location
 
@@ -13,4 +11,4 @@
   }
 </script>
 
-<SelectField class="lang {$$props.class ?? ''}" value={lang} options={langs.indexBy(l => l, l => l)} on:change={onChange}/>
+<SelectField class="lang {$$props.class }" value={lang} options={langs.indexBy(l => l, l => l)} on:change={onChange}/>

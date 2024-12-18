@@ -17,7 +17,7 @@
   $: if (input && validator) input.setCustomValidity(validator(value as string))
 </script>
 
-<div class="form-field {$$props.class ?? ''}">
+<div class="form-field {$$props.class }">
   {#if label}
     <label for={id}>
       {label}

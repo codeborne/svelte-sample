@@ -21,7 +21,7 @@
   const hasLabel = $derived(label || $$slots.default)
 </script>
 
-<button {type} {...restProps} class="btn {size} {color} {variant} {icon ? 'inline-flex items-center' : ''} {restProps.class ?? ''}" class:icon-only={icon && !hasLabel}>
+<button {type} {...restProps} class="btn {size} {color} {variant} {icon ? 'inline-flex items-center' : ''} {restProps.class }" class:icon-only={icon && !hasLabel}>
   {#if icon}
     <Icon name={icon} {size} strokeWidth={size === 'xs' ? '2.5' : '2'}/>
   {/if}

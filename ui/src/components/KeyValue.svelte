@@ -5,7 +5,7 @@
 </script>
 
 {#if value || $$slots.default}
-  <div class="key-value-pair {$$props.class ?? ''}">
+  <div class="key-value-pair {$$props.class }">
     <p class="key">{label}</p>
     <p class="value {valueClass}">
       {#if value}{value}{:else}<slot/>{/if}

@@ -18,7 +18,7 @@
   } = $props()
 </script>
 
-<div class="card bg-white shadow card-{size} {split ? 'card-split' : ''} {props.class ?? ''} {smDownFullWidth ? 'mobile-full-w' : ''}" {onclick}>
+<div class="card bg-white shadow card-{size} {split ? 'card-split' : ''} {props.class } {smDownFullWidth ? 'mobile-full-w' : ''}" {onclick}>
   <div class="grid md:grid-cols-3">
     {#if title}
       <div class="card-header {split ? 'md:col-span-1': 'md:col-span-3'}">

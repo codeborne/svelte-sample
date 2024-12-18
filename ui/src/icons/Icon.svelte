@@ -6,7 +6,7 @@
   export let strokeWidth: string = '2'
 </script>
 
-{@html icons[name]?.replace('<svg', `<svg class="icon shrink-0 ${name} ${size} ${$$props.class ?? ''}" stroke-width=${strokeWidth} focusable="false"`) ?? 'NO-ICON-' + name}
+{@html icons[name]?.replace('<svg', `<svg class="icon shrink-0 ${name} ${size} ${$$props.class }" stroke-width=${strokeWidth} focusable="false"`) ?? 'NO-ICON-' + name}
 
 <style lang="postcss" global>
   .icon {

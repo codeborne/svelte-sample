@@ -5,7 +5,7 @@
   export let step = 1
 </script>
 
-<div class="text-sm text-muted flex items-center {$$props.class ?? ''}">
+<div class="text-sm text-muted flex items-center {$$props.class }">
   {min}
   <input type="range" class="mx-3 w-full h-3 rounded-xl" bind:value {min} {max} {step}>
   {max}

@@ -7,7 +7,7 @@
   interface $$Events {change: FormEvent}
 </script>
 
-<div class="relative flex items-start {$$props.class ?? ''}">
+<div class="relative flex items-start {$$props.class }">
   <div class="flex items-center h-5">
     <input {id} type="checkbox" bind:checked on:change {...$$restProps}>
   </div>
