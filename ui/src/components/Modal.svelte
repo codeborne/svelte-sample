@@ -8,7 +8,7 @@
   export let title: string = ''
   export let show: any|false = true
   export let wide = false
-  export let flyParams: FlyParams = {y: -500, duration: window['e2eTest'] ? 0 : 400}
+  export let flyParams: FlyParams = {y: -500, duration: window.e2eTest? 0 : 400}
 
   let modal: HTMLElement
   $: if (modal) document.body.appendChild(modal)

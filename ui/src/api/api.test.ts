@@ -20,12 +20,12 @@ describe('api', () => {
   })
 
   it('refreshes on next navigate if version mismatch', async () => {
-    window['apiVersion'] = '2.3'
+    window.apiVersion = '2.3'
     vi.spyOn(i18n, 'refreshOnNextNavigate')
     fetch.mockResolvedValue({...successfulResponse, headers: {get: () => '2.2'}})
     await api.requestJson('path', {body: {data: 'data'}})
     expect(i18n.refreshOnNextNavigate).toHaveBeenCalled()
-    window['apiVersion'] = undefined
+    window.apiVersion = undefined
   })
 
   it('supports null json response', async () => {

@@ -1,25 +1,12 @@
 <script lang="ts">
-  import {Link} from 'svelte-routing'
   import EmailLayout from '../emails/EmailLayout.svelte'
   import {mockEmails, mockEmailSender} from './mockEmails'
-  import type {GetPropsParams} from 'svelte-routing/types/Link'
+  import Link from 'src/components/Link.svelte'
 
   export let slug = ''
 
   $: selectedEmailSlug = slug ?? mockEmails[0].slug
   $: selectedEmail = mockEmails.find(x => x.slug === selectedEmailSlug)!
-
-  function getProps({isPartiallyCurrent}: GetPropsParams) {
-    if (isPartiallyCurrent) {
-      return {
-        class: $$props.class + ' text-gray-800 hover:text-gray-800 bg-white group px-4 py-4 flex items-center text-sm  border-gray-100 dark:border-gray-800 ring-2 ring-inset ring-blue-600'
-      }
-    } else {
-      return {
-        class: $$props.class + ' text-gray-600 hover:text-gray-800 bg-gray-50 hover:bg-gray-50-700 group px-4 py-4 flex items-center text-sm border-gray-100 dark:border-gray-800'
-      }
-    }
-  }
 </script>
 
 <div class="sm:h-screen bg-gray-50 p-6 md:py-20 md:px-20 w-full text-black relative">
@@ -29,14 +16,14 @@
     <div class="col-span-12 bg-gray-50 py-3 px-4 w-full border-b border-gray-100 dark:border-gray-800 flex justify-between">
       <strong class="text-muted font-bold">System e-mails</strong>
       <div>
-        <Link to="/" class="text-xs text-link">Close</Link>
+        <Link to="" class="text-xs text-link">Close</Link>
       </div>
     </div>
 
     <aside class="border-gray-100 dark:border-gray-800 sm:w-96 bg-gray-50 border-r">
       <nav class="divide-y divide-gray-100">
         {#each mockEmails as email}
-          <Link to={'/emails/' + email.slug} {getProps}>
+          <Link to="/emails/{email.slug}" class="{$$props.class} text-gray-800 hover:text-gray-800 bg-white group px-4 py-4 flex items-center text-sm  border-gray-100 dark:border-gray-800 ring-2 ring-inset ring-blue-600">
             <div class="w-full">
               <div class="flex items-center justify-between">
                 <div>{mockEmailSender}</div>

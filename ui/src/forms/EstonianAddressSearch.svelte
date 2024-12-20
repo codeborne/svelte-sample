@@ -37,7 +37,7 @@
           unik: !showNonAddressObjects,
           iTappAsendus: true
         } as AddressSearch)
-      } catch (e) {
+      } catch (e: any) {
         if (e.name !== 'AbortError') throw e
       } finally {
         loading = false
@@ -59,7 +59,7 @@
       selectedApartment = adrId ? await estonianAddressRegister.getByAdrId(adrId) : undefined
       addresses = [selectedApartment ?? selectedAddress!]
       query = addresses[0]?.ipikkaadress || ''
-    } catch (e) {
+    } catch (e: any) {
       if (e.name !== 'AbortError') throw e
     }
   }

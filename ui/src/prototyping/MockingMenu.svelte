@@ -1,5 +1,4 @@
 <script lang="ts">
-
   import Icon from 'src/icons/Icon.svelte'
 
   export let position: 'right' | 'bottom-right' = 'right'
@@ -26,12 +25,8 @@
 </div>
 
 <style lang="postcss">
-  .right {
-    @apply right-0 top-1/2 my-6 translate-x-3/4 hover:translate-x-0 w-[200px];
-  }
-
   .right > div {
-    @apply -translate-y-1/2
+    @apply -translate-y-1/2;
   }
 
   .bottom-right {

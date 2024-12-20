@@ -26,8 +26,8 @@ Array.prototype.countBy = function<T>(by: (e: T) => string|number) {
   return this.indexBy(by, (_: T, r: number) => r + 1, 0)
 }
 
-Array.prototype.toObject = function<T>() {
-  return this.indexBy((e: T) => e[0], (e: T) => e[1])
+Array.prototype.toObject = function() {
+  return Object.fromEntries(this)
 }
 
 Array.prototype.remove = function<T>(i: number) {
