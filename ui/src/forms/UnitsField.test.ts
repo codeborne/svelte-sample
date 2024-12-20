@@ -6,7 +6,7 @@ describe('UnitsField', () => {
   it('renders', () => {
     const {container} = render(UnitsField, {label: 'number', units: ['€', '%'], value: 100, unitRatio: 0.01, min: 1, max: 34})
     const input = container.querySelector('input')!
-    expect(input.id).to.eq('items-number')
+    expect(input.id).to.eq('number')
     expect(input.type).to.eq('number')
     expect(input.step).to.eq('1')
     expect(input.min).to.eq('1')

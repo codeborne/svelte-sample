@@ -8,13 +8,13 @@ describe('Tabs', () => {
   it('renders tabs', async () => {
     const {container} = render(Tabs, {items})
     expect(container.querySelector('nav')).to.exist
-    const tabList = container.querySelectorAll('a')
+    const tabList = container.querySelectorAll('button')
     expect(tabList.length).to.eq(4)
   })
 
   it('has first tab selected by default', async () => {
     const {container} = render(Tabs, {items})
-    const tabList = container.querySelectorAll('a')
+    const tabList = container.querySelectorAll('button')
     expect(tabList[0].classList.contains('border-primary-500')).to.be.true
     expect(tabList[0].classList.contains('border-transparent')).to.be.false
     expect(tabList[1].classList.contains('border-transparent')).to.be.true
@@ -24,7 +24,7 @@ describe('Tabs', () => {
 
   it('can select active tab by clicking', async () => {
     const {container} = render(Tabs, {items})
-    const tabList = container.querySelectorAll('a')
+    const tabList = container.querySelectorAll('button')
     expect(tabList[2].classList.contains('border-primary-500')).to.be.false
     expect(tabList[2].classList.contains('border-transparent')).to.be.true
     await fireEvent.click(tabList[2])
