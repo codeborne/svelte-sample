@@ -53,7 +53,7 @@
 <h4>List of icons</h4>
 <div class="grid grid-cols-6 gap-4">
   {#each names as name}
-    <Card size="sm" on:click={() => copy(name)}>
+    <Card size="sm" onclick={() => copy(name)}>
       <div class="flex flex-col gap-1">
         <Icon {name} size="xs"/>
         <Icon {name} size="sm"/>

@@ -1,6 +1,5 @@
 <script lang="ts">
   import FormField from './FormField.svelte'
-  import {createEventDispatcher} from 'svelte'
 
   export let label: string | undefined = undefined
   export let value: number | undefined
@@ -10,6 +9,7 @@
   export let step: number = 1
   export let required = true
   export let helpText = ''
+  export let onchange: ((v: number | undefined) => void) | undefined = undefined
 
   $: digits = -Math.log10(step)
 
@@ -41,19 +41,18 @@
     oldValue = value = unit == units[0] ? unitValue : roundToStep(unitValue / unitRatio)
   }
 
-  const dispatch = createEventDispatcher<{change: number}>()
   function onUnitChanged() {
     if (updateUnitValue()) updateValue()
-    dispatch('change', value!)
+    onchange?.(value)
   }
 </script>
 
 <FormField {label} {helpText} class={$$props.class} let:id>
   <div class="flex">
     <input {id} type="number" {...$$restProps} min={unitMin.toFixed(digits)} max={unitMax.toFixed(digits)} {step} {required}
-           bind:value={unitValue} on:change={updateValue}
+           bind:value={unitValue} onchange={updateValue}
            class="!rounded-r-none !border-r-0">
-    <select class="!rounded-l-none !w-auto !pl-1 !pr-7" bind:value={unit} on:change={onUnitChanged}>
+    <select class="!rounded-l-none !w-auto !pl-1 !pr-7" bind:value={unit} onchange={onUnitChanged}>
       {#each units as unit}<option>{unit}</option>{/each}
     </select>
   </div>

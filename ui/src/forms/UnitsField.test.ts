@@ -4,7 +4,7 @@ import {fillInput} from 'src/test-utils'
 
 describe('UnitsField', () => {
   it('renders', () => {
-    const {container} = render(UnitsField, {label: 'items.number', units: ['€', '%'], value: 100, unitRatio: 0.01, min: 1, max: 34})
+    const {container} = render(UnitsField, {label: 'number', units: ['€', '%'], value: 100, unitRatio: 0.01, min: 1, max: 34})
     const input = container.querySelector('input')!
     expect(input.id).to.eq('items-number')
     expect(input.type).to.eq('number')
@@ -12,7 +12,7 @@ describe('UnitsField', () => {
     expect(input.min).to.eq('1')
     expect(input.max).to.eq('34')
     expect(input.value).to.eq('100')
-    expect(container.querySelector('label')!.textContent!.trim()).to.eq('items.number')
+    expect(container.querySelector('label')!.textContent!.trim()).to.eq('number')
     expect(container.querySelector('select')!.value).to.eq('€')
   })
 

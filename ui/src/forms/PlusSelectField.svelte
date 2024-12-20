@@ -11,7 +11,7 @@
 </script>
 
 {#if filteredOptions.length}
-  <SelectField id={selectId} bind:select options={filteredOptions.toObject()} value="" emptyOption="+" on:change required={false} class={$$props.class} selectClass="plus"/>
+  <SelectField id={selectId} bind:select options={filteredOptions.toObject()} value="" emptyOption="+" required={false} class={$$props.class} selectClass="plus" {...$$restProps}/>
 {/if}
 
 <style lang="postcss" global>

@@ -20,7 +20,7 @@
     {@const oid = id + slugify(option)}
     <div class="flex items-center">
       <input id={oid} type="radio" {required} bind:group={value}
-             on:click={() => deselect(option)}
+             onclick={() => deselect(option)}
              name={id} value={option}>
       <label for={oid}>
         <slot option={option}>{label}</slot>

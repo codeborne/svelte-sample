@@ -10,8 +10,7 @@
   export let required = true
   export let disabled = false
   export let select: HTMLSelectElement|undefined = undefined
-
-  interface $$Events {change: FormEvent}
+  export let selectClass = ''
 
   $: if (typeof value == 'number') value = value?.toString()
 
@@ -23,8 +22,8 @@
 </script>
 
 <FormField bind:id {label} {required} class={$$props.class}>
-  <select {id} bind:this={select} class={$$props.selectClass }
-          bind:value {required} {disabled} on:change>
+  <select {id} bind:this={select} class={selectClass}
+          bind:value {required} {disabled} {...$$restProps}>
     {#if emptyOption !== false}<option value="">{emptyOption}</option>{/if}
     {#each Object.entries(options) as [v, l] (v)}
       {#if l}<option value={v} disabled={!v?.trim()}>{l}</option>{/if}

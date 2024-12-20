@@ -19,7 +19,7 @@ Check the menu at the edge of the page ↘️
   <div class="flex gap-1">
     {#each [['mvp', 'MVP'], ['future', 'Future']] as [slug, title]}
       <Button size="xs" color={viewScope === slug ? 'primary' : '' }
-              on:click={() => viewScope = slug}>
+              onclick={() => viewScope = slug}>
         {title}
       </Button>
     {/each}

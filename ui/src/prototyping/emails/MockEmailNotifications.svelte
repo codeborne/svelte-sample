@@ -20,13 +20,13 @@
           <div>
             <div class="font-bold">{mockEmailSender}</div>
             <div>{mockEmails.find(x => x.slug === notification.slug)?.subject}</div>
-            <a target="_blank" href={'/emails/' + notification.slug} class="text-link !font-bold" on:click={ () => onClose(notification) }>View mock email</a>
+            <a target="_blank" href="/emails/{notification.slug}" class="text-link !font-bold" onclick={() => onClose(notification)}>View mock email</a>
           </div>
         </div>
         <Button icon="x"
                 title="Close"
                 class="ml-auto -my-1.5 -mx-1.5"
-                on:click={() => onClose(notification)}
+                onclick={() => onClose(notification)}
         />
       </div>
     </div>

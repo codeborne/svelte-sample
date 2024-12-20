@@ -5,22 +5,20 @@
   export let value: string = ''
   export let required = true
 
-  interface $$Events {}
-
   const prefix = 'https://'
 
-  async function focus(e: FormEvent) {
+  async function onfocus(e: FormEvent) {
     if (!value) {
       value = prefix
       setTimeout(() => e.currentTarget?.setSelectionRange(value.length, value.length))
     }
   }
 
-  function blur() {
+  function onblur() {
     if (value == prefix) value = ''
     value = value.replace(/#.*$/, '')
     if (value && !value.includes('://')) value = prefix + value
   }
 </script>
 
-<FormField type="url" bind:value {label} on:focus={focus} on:blur={blur} maxlength={500} autocomplete="off" {required} {...$$restProps}/>
+<FormField type="url" bind:value {label} {onfocus} {onblur} maxlength={500} autocomplete="off" {required} {...$$restProps}/>

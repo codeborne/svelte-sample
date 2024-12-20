@@ -8,28 +8,26 @@
   export let required = true
   export let countryCode = ''
 
-  interface $$Events {}
-
   $: areaCode = countries[countryCode as CountryCode]?.phoneAreaCode
   $: if (areaCode && value?.startsWith(areaCode)) value = '+' + value
   $: areaPrefix = areaCode ? '+' + areaCode : ''
 
-  async function focus(e: FormEvent) {
+  async function onfocus(e: FormEvent) {
     if (!value) {
       value = areaPrefix
       setTimeout(() => e.currentTarget?.setSelectionRange(value.length, value.length))
     }
   }
 
-  function blur() {
+  function onblur() {
     if (value == areaPrefix) value = ''
   }
 
-  function paste(e: ClipboardEvent) {
+  function onpaste(e: ClipboardEvent) {
     e.preventDefault()
     const pasted = (e.clipboardData || e.clipboardData)?.getData('text')
     value = (pasted?.startsWith("+") ? '' : areaPrefix) + pasted
   }
 </script>
 
-<FormField type="tel" on:paste={paste} bind:value {label} on:focus={focus} on:blur={blur} minlength={10} maxlength={15} {required} {...$$restProps}/>
+<FormField type="tel" {onpaste} bind:value {label} {onfocus} {onblur} minlength={10} maxlength={15} {required} {...$$restProps}/>

@@ -23,4 +23,4 @@
   }
 </script>
 
-<SelectField options={months} bind:value={month} on:change={e => setMonth(e.currentTarget?.['value'])} {...$$restProps}/>
+<SelectField options={months} bind:value={month} onchange={(e: FormEvent) => setMonth(e.currentTarget?.['value'])} {...$$restProps}/>

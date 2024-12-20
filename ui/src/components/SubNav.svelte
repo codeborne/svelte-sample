@@ -9,7 +9,7 @@
 <div class="spaced">
   <div class="md:flex md:flex-wrap md:space-x-3">
     {#each Object.entries(items) as [name, value]}
-      <a on:click={() => selected = name} class="{selected === name ? 'active' : 'inactive'} group menu-item" role="tab" tabindex="0">
+      <a onclick={() => selected = name} class="{selected === name ? 'active' : 'inactive'} group menu-item" role="tab" tabindex="0">
         <span>{(labelPrefix && labelPrefix + '.') + name}</span>
         {#if value !== undefined}
           <Badge class="{selected === name ? 'bg-white': 'bg-gray-100 text-gray-600 group-hover:bg-gray-200'} ml-2 inline-block">{value}</Badge>

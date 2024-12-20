@@ -12,7 +12,7 @@
   }
 </script>
 
-<a href={path(to)} on:click={clicked} {target} {...$$restProps} class={$$props.class ?? 'text-link'}>
+<a href={path(to)} onclick={clicked} {target} {...$$restProps} class={$$props.class ?? 'text-link'}>
   <slot/>
   <span>{label}</span>
 </a><slot name="suffix"/>

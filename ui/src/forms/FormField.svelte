@@ -11,13 +11,11 @@
   export let maxlength = 100
   export let required = true
 
-  interface $$Events {input: FormEvent; change: FormEvent; focus: FormEvent; blur: FormEvent; paste: ClipboardEvent, keydown: KeyboardEvent}
-
   let input: HTMLInputElement
   $: if (input && validator) input.setCustomValidity(validator(value as string))
 </script>
 
-<div class="form-field {$$props.class }">
+<div class="form-field {$$props.class}">
   {#if label}
     <label for={id}>
       {label}
@@ -27,7 +25,7 @@
   {/if}
   <slot {id}>
     <div class="flex relative">
-      <input {id} bind:this={input} bind:value on:input on:change on:focus on:blur on:keydown on:paste {minlength} {maxlength} {required} {...$$restProps} class="">
+      <input {id} bind:this={input} bind:value {minlength} {maxlength} {required} {...$$restProps} class="">
       <slot name="after"/>
     </div>
   </slot>

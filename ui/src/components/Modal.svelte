@@ -18,7 +18,7 @@
     show = false
   }
 
-  function onKeyUp(e: KeyboardEvent) {
+  function onkeyup(e: KeyboardEvent) {
     if (show && e.code === 'Escape') close()
   }
 
@@ -28,7 +28,7 @@
   })
 </script>
 
-<svelte:window on:keyup={onKeyUp}/>
+<svelte:window {onkeyup}/>
 
 {#if show}
   <div bind:this={modal} class="modal transition-opacity fixed z-40 inset-0 overflow-y-auto" transition:fade={{duration: flyParams.duration}}>

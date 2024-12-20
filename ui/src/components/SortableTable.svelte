@@ -68,7 +68,7 @@
       <tr>
         {#each columnLabels as column, i}
           {#if column || column === ''}
-            <th on:click={() => items = items && !!column ? sortBy(items, fields[i]) : items}
+            <th onclick={() => items = items && !!column ? sortBy(items, fields[i]) : items}
                 scope="col"
                 class="text-muted {asc === 1 ? 'asc' : 'desc'} {rightAlignIndices.has(i) ? 'text-right' : ''}"
                 class:sortable={!!column}

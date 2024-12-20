@@ -2,7 +2,6 @@
   import FormField from './FormField.svelte'
   import api from 'src/api/api'
   import {debounce} from '../shared/debounce'
-  import {createEventDispatcher} from 'svelte'
 
   type T = any
 
@@ -12,6 +11,7 @@
   export let selected: T|undefined = undefined
   export let query = selected ? optionMapper(selected) : ''
   export let selectSingleMatch = true
+  export let onselected: ((selected: T) => void) | undefined = undefined
 
   if ($$restProps.autofocus == undefined) $$restProps.autofocus = true
   else if ($$restProps.autofocus == false) $$restProps.autofocus = undefined
@@ -20,13 +20,12 @@
   let options: string[] = []
 
   export let id = apiPath.replace('/', '-')
-  const dispatch = createEventDispatcher<{selected: T}>()
 
   const request = debounce(async (q: string) => {
     const selectedIndex = options.indexOf(q)
     if (selectedIndex >= 0) {
       selected = matches[selectedIndex]
-      return dispatch('selected', selected)
+      return onselected?.(selected)
     }
     else selected = undefined
 

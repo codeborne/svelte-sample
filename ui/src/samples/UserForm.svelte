@@ -1,6 +1,5 @@
 <script lang="ts">
   import {replaceValues, t} from 'src/i18n'
-  import {createEventDispatcher} from 'svelte'
   import type {User} from 'src/api/types'
   import Form from 'src/forms/Form.svelte'
   import Button from 'src/components/Button.svelte'
@@ -12,15 +11,14 @@
 
   export let user: User = {} as User
   export let savePath = 'users'
+  export let onsaved = (user: User) => {}
 
   let gender: keyof typeof t.gender | undefined
-
-  const dispatch = createEventDispatcher<{saved: User}>()
 
   async function submit() {
     user = await api.post(savePath, user)
     showToast(replaceValues(t.general.saved, user))
-    dispatch('saved', user)
+    onsaved(user)
   }
 </script>
 

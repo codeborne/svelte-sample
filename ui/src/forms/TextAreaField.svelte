@@ -9,8 +9,6 @@
   export let inBytes = false
   export let required = true
 
-  interface $$Events {input: FormEvent; change: FormEvent}
-
   const encoder = new TextEncoder()
 
   let textarea: HTMLTextAreaElement
@@ -31,5 +29,5 @@
       {value?.length ?? 0} / {maxlength}
     {/if}
   </div>
-  <textarea {id} bind:this={textarea} bind:value on:input on:change {rows} {required} {...$$restProps}></textarea>
+  <textarea {id} bind:this={textarea} bind:value {rows} {required} {...$$restProps}></textarea>
 </FormField>
