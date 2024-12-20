@@ -88,10 +88,10 @@
 
   <g transform="scale(1,-1) translate(0,{-chartHeight-heightTop-offset})">
     <G bind:width={widthLeft}>
-      <slot matrix={$matrix} name="left"></slot>
+      <slot matrix={$matrix} name="left"/>
     </G>
     <G bind:width={widthRight} transform="translate({width-widthRight},0)">
-      <slot matrix={$matrix} name="right"></slot>
+      <slot matrix={$matrix} name="right"/>
     </G>
     <g clip-path="url(#chartClip)" transform="translate({widthLeft + offset},0)">
       <slot {chartHeight} {chartWidth} matrix={$matrix} name="chart"></slot>

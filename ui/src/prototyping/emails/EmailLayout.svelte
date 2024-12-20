@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
   import Logo from 'src/layout/Logo.svelte'
   import {emailLegalText} from 'src/prototyping/emails/mockEmails'
   import Link from 'src/components/Link.svelte'
 
-  export let linkRoute
-  export let title
-  export let callToAction
-  export let fallBackMessage
+  export let linkRoute: string
+  export let title: string
+  export let callToAction: string
+  export let fallBackMessage: string | undefined
 </script>
 
 <html lang="et">

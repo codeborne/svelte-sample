@@ -48,7 +48,6 @@ export const mockEmails = [
     title: 'Confirm your email',
     message: '<p>Click below to verify your email address and proceed with the sign up process</p>',
     callToAction: 'Confirm and proceed...',
-    fallbackMessage: null,
     linkRoute: "/apply-contract-data"
   },
   {

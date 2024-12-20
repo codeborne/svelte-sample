@@ -28,7 +28,7 @@
   function paste(e: ClipboardEvent) {
     e.preventDefault()
     const pasted = (e.clipboardData || e.clipboardData)?.getData('text')
-    value = (pasted.startsWith("+") ? '' : areaPrefix) + pasted
+    value = (pasted?.startsWith("+") ? '' : areaPrefix) + pasted
   }
 </script>
 

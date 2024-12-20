@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {t} from 'src/i18n'
   import {logout, user} from 'src/stores/auth'
   import Icon from 'src/icons/Icon.svelte'

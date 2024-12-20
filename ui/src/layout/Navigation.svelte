@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {Role} from 'src/api/types'
   import {user} from 'src/stores/auth'
   import Link from 'src/components/Link.svelte'
