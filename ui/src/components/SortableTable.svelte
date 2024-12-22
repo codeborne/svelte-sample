@@ -86,27 +86,25 @@
       </thead>
       <tbody>
       {#if items}
-        {#if !items.length}
+        {#each items.slice(0, renderMax) as item, i (item['id'] ?? i)}
+          <slot {item} {i}>
+            <tr>
+              {#each fields as f, fi}
+                <td class:text-right={rightAlignIndices.has(fi)}>{get(item, f)}</td>
+              {/each}
+            </tr>
+          </slot>
+        {:else}
           <tr>
             <td colspan={columns.length} class="text-center">{t.general.noItems}</td>
           </tr>
-        {:else}
-          {#each items.slice(0, renderMax) as item, i (item['id'] ?? i)}
-            <slot {item} {i}>
-              <tr>
-                {#each fields as f, fi}
-                  <td class:text-right={rightAlignIndices.has(fi)}>{get(item, f)}</td>
-                {/each}
-              </tr>
-            </slot>
-          {/each}
-          {#if renderMax < items.length}
-            <tr>
-              <td colspan={columns.length} class="text-center" style="height: {scrollable?.clientHeight}px">
-                <Spinner class="py-24 h-11"/>
-              </td>
-            </tr>
-          {/if}
+        {/each}
+        {#if renderMax < items.length}
+          <tr>
+            <td colspan={columns.length} class="text-center" style="height: {scrollable?.clientHeight}px">
+              <Spinner class="py-24 h-11"/>
+            </td>
+          </tr>
         {/if}
       {:else}
         <tr>

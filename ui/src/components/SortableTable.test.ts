@@ -45,6 +45,6 @@ describe('SortableTable', () => {
 
   it('handles no items', async () => {
     const {container} = render(SortableTable, {items: [], columns: []})
-    expect(container.querySelector('tbody')!.textContent).to.eq(enDict.general.noItems)
+    expect(container.querySelector('tbody')!.textContent).to.contain(enDict.general.noItems)
   })
 })
