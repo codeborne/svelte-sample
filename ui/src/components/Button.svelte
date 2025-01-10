@@ -1,6 +1,7 @@
 <script lang="ts">
   import Icon from 'src/icons/Icon.svelte'
   import type {HTMLButtonAttributes} from 'svelte/elements'
+  import type {Snippet} from 'svelte'
 
   const {
     icon = '',
@@ -8,6 +9,7 @@
     variant = 'solid',
     color = 'secondary',
     label = '',
+    children,
     type = 'button',
     ...restProps
   }: {
@@ -15,10 +17,11 @@
     size?: 'xs'|'sm'|''|'lg'
     variant?: 'solid'|'soft'|'outlined'|'ghost'
     color?: 'primary'|'secondary'|'warning'|'success'|'danger'
-    label?: string
+    label?: string,
+    children?: Snippet;
   } & HTMLButtonAttributes = $props()
 
-  const hasLabel = $derived(label || $$slots.default)
+  const hasLabel = $derived(label || children)
 </script>
 
 <button {type} {...restProps} class="btn {size} {color} {variant} {icon ? 'inline-flex items-center' : ''} {restProps.class }" class:icon-only={icon && !hasLabel}>
@@ -26,7 +29,13 @@
     <Icon name={icon} {size} strokeWidth={size === 'xs' ? '2.5' : '2'}/>
   {/if}
   {#if hasLabel}
-    <span class:ml-2={icon}><slot>{label}</slot></span>
+    <span class:ml-2={icon}>
+      {#if children}
+        {@render children()}
+      {:else}
+        {label}
+      {/if}
+    </span>
   {/if}
 </button>
 
