@@ -1,10 +1,13 @@
 <script lang="ts">
+  import type {Snippet} from 'svelte'
+
   let {
     title,
     subtitle,
     size = 'md',
     smDownFullWidth = false,
     onclick,
+    children,
     ...props
   }: {
     title?: string
@@ -13,6 +16,7 @@
     smDownFullWidth?: boolean
     class?: string
     onclick?: () => void
+    children?: Snippet;
   } = $props()
 </script>
 
@@ -26,7 +30,9 @@
     </div>
   {/if}
   <div class="card-body card-text">
-    <slot/>
+    {#if children}
+      {@render children()}
+    {/if}
   </div>
 </div>
 
