@@ -3,7 +3,6 @@
     title,
     subtitle,
     size = 'md',
-    split = false,
     smDownFullWidth = false,
     onclick,
     ...props
@@ -11,53 +10,46 @@
     title?: string
     subtitle?: string,
     size?: 'xs' | 'sm' | 'md' | 'lg'
-    split?: boolean
     smDownFullWidth?: boolean
     class?: string
     onclick?: () => void
   } = $props()
 </script>
 
-<div class="card bg-white shadow card-{size} {split ? 'card-split' : ''} {props.class } {smDownFullWidth ? 'mobile-full-w' : ''}" {onclick}>
-  <div class="grid md:grid-cols-3">
-    {#if title}
-      <div class="card-header {split ? 'md:col-span-1': 'md:col-span-3'}">
-        <h3 class="card-title">{title}</h3>
-        {#if subtitle}
-          <p class="mt-1 text-sm text-gray-500">{subtitle}</p>
-        {/if}
-      </div>
-    {/if}
-    <div class="card-body card-text {title && split ? 'md:col-span-2' : 'md:col-span-3'}">
-      <slot/>
+<div class="card bg-white shadow card-{size} {props.class} {smDownFullWidth ? 'mobile-full-w' : ''}" {onclick}>
+  {#if title}
+    <div class="card-header">
+      <h3 class="card-title">{title}</h3>
+      {#if subtitle}
+        <p class="mt-1 text-sm text-gray-500">{subtitle}</p>
+      {/if}
     </div>
+  {/if}
+  <div class="card-body card-text">
+    <slot/>
   </div>
 </div>
 
 <style lang="postcss" global>
-  .card-lg > .grid > .card-header > .card-title { @apply text-2xl font-semibold }
-  .card-lg > .grid > .card-text { @apply text-base }
-  .card-lg > .grid > .card-header { @apply px-4 py-5 sm:px-8 sm:pt-8 pb-0 }
-  .card-lg > .grid > .card-body { @apply px-4 py-5 sm:p-8 }
-  .card-lg.card-split > .grid > .card-header { @apply sm:p-8 }
+  .card-lg > .card-header > .card-title { @apply text-2xl font-semibold }
+  .card-lg > .card-text { @apply text-base }
+  .card-lg > .card-header { @apply px-4 py-5 sm:px-8 sm:pt-8 pb-0 }
+  .card-lg > .card-body { @apply px-4 py-5 sm:p-8 }
 
-  .card-md > .grid > .card-header .card-title { @apply text-lg font-medium leading-6 }
-  .card-md > .grid > .card-text { @apply text-base }
-  .card-md > .grid > .card-header { @apply px-4 py-5 sm:px-6 sm:pt-6 pb-0 }
-  .card-md > .grid > .card-body { @apply px-4 py-5 sm:p-6 }
-  .card-md.card-split > .grid > .card-header { @apply sm:p-6 }
+  .card-md > .card-header .card-title { @apply text-lg font-medium leading-6 }
+  .card-md > .card-text { @apply text-base }
+  .card-md > .card-header { @apply px-4 py-5 sm:px-6 sm:pt-6 pb-0 }
+  .card-md > .card-body { @apply px-4 py-5 sm:p-6 }
 
-  .card-sm > .grid > .card-header > .card-title { @apply text-base font-medium }
-  .card-sm > .grid > .card-text { @apply text-sm }
-  .card-sm > .grid > .card-header { @apply px-4 pt-3 pb-2 pb-0 }
-  .card-sm > .grid > .card-body { @apply px-4 py-3 }
-  .card-sm.card-split > .grid > .card-header { @apply sm:p-4 }
+  .card-sm > .card-header > .card-title { @apply text-base font-medium }
+  .card-sm > .card-text { @apply text-sm }
+  .card-sm > .card-header { @apply px-4 pt-3 pb-2 pb-0 }
+  .card-sm > .card-body { @apply px-4 py-3 }
 
-  .card-xs > .grid > .card-header > .card-title { @apply text-sm font-medium }
-  .card-xs > .grid > .card-text { @apply text-xs }
-  .card-xs > .grid > .card-header { @apply px-3 py-2 pb-0 }
-  .card-xs > .grid > .card-body { @apply p-3 }
-  .card-xs.card-split > .grid > .card-header { @apply sm:p-3 }
+  .card-xs > .card-header > .card-title { @apply text-sm font-medium }
+  .card-xs > .card-text { @apply text-xs }
+  .card-xs > .card-header { @apply px-3 py-2 pb-0 }
+  .card-xs > .card-body { @apply p-3 }
 
   .card.mobile-full-w {@apply -mx-4 sm:mx-0 rounded-none}
   .card-lg, .card-md {@apply rounded-lg}

@@ -11,10 +11,3 @@
     {text}
   </Card>
 {/each}
-
-<h4 class="mt-4">Cards split to 2 columns</h4>
-{#each sizes as size}
-  <Card title="Card title" {size} split>
-    {text}
-  </Card>
-{/each}
