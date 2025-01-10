@@ -62,6 +62,8 @@
     }
   }
 </script>
+
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <svg {...$$restProps}
      on:mousedown|preventDefault={startDrag}
      on:mouseleave|preventDefault={endDrag}
@@ -71,7 +73,9 @@
      on:touchend|preventDefault={endDrag}
      on:touchmove|preventDefault={mousemove}
      on:touchstart|preventDefault={startDrag}
-     viewBox="0,0,{width},{height}">
+     viewBox="0,0,{width},{height}"
+     role="application"
+>
   <defs>
     <clipPath id="chartClip">
       <rect height="{chartHeight}" width="{chartWidth}" x="0" y="0"></rect>
