@@ -15,11 +15,26 @@ module.exports = {
         large: '3rem',
       },
       colors: {
-        'success': colors.emerald,
-        'warning': colors.amber,
-        'danger': colors.red,
-        'primary': colors.blue,
-        'secondary': colors.gray
+        success: {
+          ...colors.emerald,
+          DEFAULT: colors.emerald[500],
+        },
+        warning: {
+          ...colors.amber,
+          DEFAULT: colors.amber[500],
+        },
+        danger: {
+          ...colors.red,
+          DEFAULT: colors.red[500],
+        },
+        primary: {
+          ...colors.blue,
+          DEFAULT: colors.blue[500],
+        },
+        secondary: {
+          ...colors.gray,
+          DEFAULT: colors.gray[500],
+        },
       },
     },
   },
