@@ -2,7 +2,7 @@
   import Alert from 'src/components/Alert.svelte'
 </script>
 
-<Alert>Primary</Alert>
-<Alert class="success">Success</Alert>
-<Alert class="warning">Warning</Alert>
-<Alert class="danger">Danger</Alert>
+<Alert>Default</Alert>
+<Alert color="success">Success</Alert>
+<Alert color="warning">Warning</Alert>
+<Alert color="danger">Danger</Alert>
