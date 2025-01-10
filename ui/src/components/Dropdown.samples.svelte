@@ -8,20 +8,20 @@
     <Button>
       Sample dropdown
     </Button>
-    <svelte:fragment slot="open">
+    {#snippet menu()}
       <div class="w-80 px-3 py-2">
         Dropdown content
       </div>
-    </svelte:fragment>
+    {/snippet}
   </Dropdown>
   <Dropdown class="right-0">
     <Button>
       Right-aligned dropdown
     </Button>
-    <svelte:fragment slot="open">
+    {#snippet menu()}
       <div class="w-80 px-3 py-2">
         Dropdown content
       </div>
-    </svelte:fragment>
+    {/snippet}
   </Dropdown>
 </div>

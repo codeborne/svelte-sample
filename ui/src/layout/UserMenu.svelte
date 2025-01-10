@@ -17,13 +17,13 @@
         <Icon name="chevron-down" class="opacity-50"/>
       </div>
     </Button>
-    <svelte:fragment slot="open">
+    {#snippet menu()}
       <div class="py-0.5 px-1">
         <Button variant="ghost" size="sm" icon="logout" onclick={logout}>
           {t.login.logout}
         </Button>
       </div>
-    </svelte:fragment>
+    {/snippet}
   </Dropdown>
 {:else}
   TODO {t.login.link}
