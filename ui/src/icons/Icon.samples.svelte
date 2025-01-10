@@ -53,8 +53,8 @@
 <h4>List of icons</h4>
 <div class="grid grid-cols-6 gap-4">
   {#each names as name}
-    <Card size="sm" onclick={() => copy(name)}>
-      <div class="flex flex-col gap-1">
+    <Card size="sm">
+      <div class="flex flex-col gap-1" onclick={() => copy(name)} onkeydown={() => copy(name)} role="button" tabindex="0">
         <Icon {name} size="xs"/>
         <Icon {name} size="sm"/>
         <Icon {name}/>

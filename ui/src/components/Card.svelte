@@ -20,7 +20,7 @@
   } = $props()
 </script>
 
-<div class="card bg-white shadow card-{size} {props.class} {smDownFullWidth ? 'mobile-full-w' : ''}" {onclick}>
+<div class="card bg-white shadow card-{size} {props.class} {smDownFullWidth ? 'mobile-full-w' : ''}">
   {#if title}
     <div class="card-header">
       <h3 class="card-title">{title}</h3>
