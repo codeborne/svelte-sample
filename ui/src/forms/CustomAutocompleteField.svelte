@@ -40,11 +40,15 @@
   </FormField>
 
   {#if showList && options.length}
-    <div class="absolute rounded shadow bg-white overflow-hidden flex flex-col w-full mt-0 border border-gray-200 text-sm">
+    <div class="absolute rounded shadow bg-white overflow-hidden flex flex-col w-full mt-0 border border-gray-200 text-sm" role="listbox">
       {#each options as o, i}
         <div class="cursor-pointer group border-t"
+             role="option"
+             tabindex="0"
              onmousedown={() => select(o)}
              onmouseover={() => selectedIndex = i}
+             onfocus={() => selectedIndex = i}
+             aria-selected={selectedIndex === i}
         >
           <div class="block p-2 border-transparent border-l-4"
                class:border-primary-600={i === selectedIndex}
