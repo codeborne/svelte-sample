@@ -4,7 +4,7 @@
 
 <div>
   <Badge>Primary</Badge>
-  <Badge class="success">Success</Badge>
-  <Badge class="warning">Warning</Badge>
-  <Badge class="danger">Danger</Badge>
+  <Badge color="success">Success</Badge>
+  <Badge color="warning">Warning</Badge>
+  <Badge color="danger">Danger</Badge>
 </div>
