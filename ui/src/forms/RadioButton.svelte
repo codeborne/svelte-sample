@@ -31,40 +31,43 @@
 
 
 <style lang="postcss">
+  @reference "./../global.css";
+
   fieldset {
-    @apply pt-1 text-sm font-medium text-gray-700
+    @apply pt-1 text-sm font-medium text-gray-700;
   }
 
   fieldset.classic {
-    @apply flex gap-x-3
+    @apply flex gap-x-3;
   }
 
   fieldset.classic input {
-    @apply w-4 h-4 mr-2 disabled:bg-gray-100
+    @apply w-4 h-4 mr-2 disabled:bg-gray-100;
   }
 
   fieldset.classic input:disabled ~ label {
-    @apply text-gray-400
+    @apply text-gray-400;
   }
 
   fieldset:not(.classic) input {
-    @apply text-transparent border-0 focus:ring-0 w-0 h-0
+    @apply text-transparent border-0 focus:ring-0 w-0 h-0;
   }
 
   fieldset:not(.classic) label {
     @apply w-full h-full
     border border-gray-300
     bg-white rounded-md shadow-sm
-    sm:text-sm focus:outline-none
+    sm:text-sm focus:outline-hidden
     hover:bg-gray-200
     focus:ring-primary-500 focus:ring-1 focus:border-primary-500
-    disabled:bg-gray-100
+    disabled:bg-gray-100;
   }
 
   fieldset:not(.classic) input:checked ~ label {
-    @apply bg-primary-300 text-white
+    @apply bg-primary-300 text-white;
   }
+
   legend {
-    white-space: nowrap;
+    @apply whitespace-nowrap;
   }
 </style>

@@ -15,6 +15,8 @@
 </span>
 
 <style lang="postcss">
+  @reference "./../global.css";
+
   .badge {
     @apply bg-primary-100 text-primary-950 inline-flex items-center rounded-full px-3 py-0.5 font-medium;
   }

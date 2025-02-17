@@ -15,6 +15,8 @@
 </div>
 
 <style lang="postcss">
+  @reference "./../global.css";
+
   .alert {
     @apply relative border-l-2 border-neutral-400 bg-neutral-200 px-4 py-3 font-medium dark:border-neutral-600 dark:bg-neutral-800;
   }

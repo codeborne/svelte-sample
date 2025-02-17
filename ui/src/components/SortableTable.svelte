@@ -120,12 +120,14 @@
 </div>
 
 <style lang="postcss">
+  @reference "./../global.css";
+
   table {
-    @apply relative bg-white text-black min-w-full md:shadow border-separate border-spacing-0
+    @apply relative bg-white text-black min-w-full md:shadow-sm border-separate border-spacing-0;
   }
 
   table :global(th), table :global(td) {
-    @apply px-4 py-3 border-b border-gray-200
+    @apply px-4 py-3 border-b border-gray-200;
   }
 
   table thead th {

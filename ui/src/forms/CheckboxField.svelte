@@ -18,7 +18,9 @@
 </div>
 
 <style lang="postcss" global>
+  @reference "./../global.css";
+
   input[type=checkbox] {
-    @apply focus:ring-primary-500 h-4 w-4 text-primary-500 border-gray-300 rounded
+    @apply focus:ring-primary-500 h-4 w-4 text-primary-500 border-gray-300 rounded;
   }
 </style>

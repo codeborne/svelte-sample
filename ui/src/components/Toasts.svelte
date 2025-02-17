@@ -8,7 +8,7 @@
 <div class="fixed z-50 inset-0 flex items-start pointer-events-none p-6" aria-live="assertive">
   <div class="w-full flex flex-col items-end space-y-4">
     {#each $toastStore as toast}
-      <div class="toast max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden" transition:fly={{y: -100}}>
+      <div class="toast max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black/5 overflow-hidden" transition:fly={{y: -100}}>
         <div class="p-4">
           <div class="flex items-start">
             <div class="shrink-0">
@@ -38,7 +38,7 @@
             </div>
             <div class="ml-4 shrink-0 flex">
               <button onclick={() => hideToast(toast)}
-                      class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                      class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
                 <Icon name="x"/>
               </button>
             </div>

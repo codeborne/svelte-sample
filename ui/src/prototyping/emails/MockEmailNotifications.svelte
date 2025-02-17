@@ -20,7 +20,7 @@
           <div>
             <div class="font-bold">{mockEmailSender}</div>
             <div>{mockEmails.find(x => x.slug === notification.slug)?.subject}</div>
-            <a target="_blank" href="/emails/{notification.slug}" class="text-link !font-bold" onclick={() => onClose(notification)}>View mock email</a>
+            <a target="_blank" href="/emails/{notification.slug}" class="text-link font-bold!" onclick={() => onClose(notification)}>View mock email</a>
           </div>
         </div>
         <Button icon="x"

@@ -12,6 +12,8 @@
 </div>
 
 <style lang="postcss">
+  @reference "./../global.css";
+
   input {
     @apply appearance-none py-4;
   }

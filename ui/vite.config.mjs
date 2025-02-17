@@ -3,6 +3,7 @@ import {defineConfig} from 'vite'
 import {svelte} from '@sveltejs/vite-plugin-svelte'
 import {run} from 'vite-plugin-run'
 import * as path from 'path'
+import tailwindcss from '@tailwindcss/vite'
 
 const isTest = process.env.NODE_ENV === 'test'
 
@@ -17,6 +18,7 @@ export default defineConfig({
   },
   plugins: [
     svelte({hot: !process.env.VITEST}),
+    tailwindcss(),
     run({
       silent: !!process.env.VITEST,
       input: [

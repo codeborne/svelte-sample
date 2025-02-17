@@ -40,7 +40,7 @@ https://github.com/ls-age/svelte-mail
     <div>
       {#if callToAction}
         <Link to={linkRoute ? linkRoute : '#'}
-              class="btn primary solid lg w-full !rounded-full">
+              class="btn primary solid lg w-full rounded-full!">
           {callToAction}
         </Link>
       {/if}

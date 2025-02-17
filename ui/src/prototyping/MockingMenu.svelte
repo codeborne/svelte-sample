@@ -25,6 +25,8 @@
 </div>
 
 <style lang="postcss">
+  @reference "./../global.css";
+
   .right > div {
     @apply -translate-y-1/2;
   }

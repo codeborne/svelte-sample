@@ -9,7 +9,7 @@
 </script>
 
 {#if $user}
-  <Dropdown class="right-0 !z-50" bind:open={isDropdownOpen}>
+  <Dropdown class="right-0 z-50!" bind:open={isDropdownOpen}>
     <Button class="sm" color="primary" variant="soft">
       <div class="flex items-center gap-1 -mx-0.5">
         <Icon name="user" strokeWidth="1.5"/>

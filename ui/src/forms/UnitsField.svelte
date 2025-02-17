@@ -51,8 +51,8 @@
   <div class="flex">
     <input {id} type="number" {...$$restProps} min={unitMin.toFixed(digits)} max={unitMax.toFixed(digits)} {step} {required}
            bind:value={unitValue} onchange={updateValue}
-           class="!rounded-r-none !border-r-0">
-    <select class="!rounded-l-none !w-auto !pl-1 !pr-7" bind:value={unit} onchange={onUnitChanged}>
+           class="rounded-r-none! border-r-0!">
+    <select class="rounded-l-none! w-auto! pl-1! pr-7!" bind:value={unit} onchange={onUnitChanged}>
       {#each units as unit}<option>{unit}</option>{/each}
     </select>
   </div>

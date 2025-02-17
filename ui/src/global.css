@@ -1,4 +1,138 @@
-@tailwind base;
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/forms';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: Inter, sans-serif;
+  --font-serif: serif;
+
+  --radius-large: 3rem;
+
+  --color-success-50: #ecfdf5;
+  --color-success-100: #d1fae5;
+  --color-success-200: #a7f3d0;
+  --color-success-300: #6ee7b7;
+  --color-success-400: #34d399;
+  --color-success-500: #10b981;
+  --color-success-600: #059669;
+  --color-success-700: #047857;
+  --color-success-800: #065f46;
+  --color-success-900: #064e3b;
+  --color-success-950: #022c22;
+  --color-success: #10b981;
+
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-200: #fde68a;
+  --color-warning-300: #fcd34d;
+  --color-warning-400: #fbbf24;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
+  --color-warning-800: #92400e;
+  --color-warning-900: #78350f;
+  --color-warning-950: #451a03;
+  --color-warning: #f59e0b;
+
+  --color-danger-50: #fef2f2;
+  --color-danger-100: #fee2e2;
+  --color-danger-200: #fecaca;
+  --color-danger-300: #fca5a5;
+  --color-danger-400: #f87171;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+  --color-danger-800: #991b1b;
+  --color-danger-900: #7f1d1d;
+  --color-danger-950: #450a0a;
+  --color-danger: #ef4444;
+
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
+  --color-primary: #3b82f6;
+
+  --color-secondary-50: #f9fafb;
+  --color-secondary-100: #f3f4f6;
+  --color-secondary-200: #e5e7eb;
+  --color-secondary-300: #d1d5db;
+  --color-secondary-400: #9ca3af;
+  --color-secondary-500: #6b7280;
+  --color-secondary-600: #4b5563;
+  --color-secondary-700: #374151;
+  --color-secondary-800: #1f2937;
+  --color-secondary-900: #111827;
+  --color-secondary-950: #030712;
+  --color-secondary: #6b7280;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility text-muted {
+  @apply text-gray-400;
+}
+
+@utility link-with-icon {
+  @apply flex items-center text-primary-900 hover:text-primary-500 focus:text-primary-700;
+}
+
+@utility card-title {
+  @apply text-lg font-medium leading-6 text-gray-900;
+}
+
+@utility modal-wide {
+  @apply w-full md:w-1/2;
+}
+
+@utility modal-narrow {
+  @apply w-full md:w-1/4;
+}
+
+@utility input-label {
+  @apply text-sm font-medium text-gray-700;
+}
+
+@utility common-grid {
+  @apply grid gap-6;
+}
+
+@utility spaced {
+  @apply space-y-6;
+}
+
+@utility justify-sides {
+  @apply flex justify-between items-center;
+}
+
+@utility section {
+  @apply max-w-5xl mx-auto w-full px-4;
+}
 
 @layer base {
   h1, h2, h3, h4, h5 {
@@ -48,57 +182,6 @@
 
   table th, table td {
     @apply px-0 py-2;
-  }
-}
-
-@tailwind components;
-@tailwind utilities;
-
-@layer utilities {
-  .text-muted {
-    @apply text-gray-400;
-  }
-
-  .link-with-icon {
-    @apply flex items-center text-primary-900 hover:text-primary-500 focus:text-primary-700
-  }
-
-  .card-title {
-    @apply text-lg font-medium leading-6 text-gray-900
-  }
-
-  .modal-wide {
-    @apply w-full md:w-1/2
-  }
-
-  .modal-narrow {
-    @apply w-full md:w-1/4
-  }
-
-  .input-label {
-    @apply text-sm font-medium text-gray-700
-  }
-
-  .common-grid {
-    @apply grid gap-6
-  }
-
-  .spaced {
-    @apply space-y-6
-  }
-
-  .justify-sides {
-    @apply flex justify-between items-center
-  }
-
-  .section {
-    @apply max-w-5xl mx-auto w-full px-4
-  }
-
-  .bg-noise {
-    background: linear-gradient(20deg, green, transparent), url(/img/noise.svg);
-    filter: contrast(170%) brightness(100%);
-    opacity: 0.2;
   }
 }
 

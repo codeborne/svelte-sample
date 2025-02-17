@@ -52,12 +52,14 @@
   </g>
 </svg>
 <style lang="postcss">
+  @reference "./../global.css";
+
   svg text {
     text-anchor: middle;
     dominant-baseline: middle;
   }
 
   .label {
-    @apply fill-gray-400 stroke-gray-400
+    @apply fill-gray-400 stroke-gray-400;
   }
 </style>

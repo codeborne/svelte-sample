@@ -32,19 +32,21 @@
 </div>
 
 <style lang="postcss" global>
+  @reference "./../global.css";
+
   label {
-    @apply block text-sm font-medium text-gray-700
+    @apply block text-sm font-medium text-gray-700;
   }
 
   .form-field label {
-    @apply mb-1
+    @apply mb-1;
   }
 
   .form-field input, .form-field select, .form-field textarea {
-    @apply block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm sm:text-sm focus:outline-none focus:ring-primary-500 focus:ring-1 focus:border-primary-500 disabled:bg-gray-100
+    @apply block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm sm:text-sm focus:outline-hidden focus:ring-primary-500 focus:ring-1 focus:border-primary-500 disabled:bg-gray-100;
   }
 
   .form-field.lg input, .form-field.lg select, .form-field.lg textarea {
-    @apply text-lg
+    @apply text-lg;
   }
 </style>

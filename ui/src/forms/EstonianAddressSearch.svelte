@@ -68,7 +68,7 @@
 <CustomAutocompleteField bind:query options={addresses} optionMapper={a => a.ipikkaadress} onselected={e => select(e)} {...$$restProps}>
   {#if loading}<Spinner class="absolute w-8 h-8 p-1 right-8"/>{/if}
   {#if apartments}
-    <select class="-ml-1 !rounded-l-none !w-auto !pl-2 !pr-7" onchange={e => refreshAddressWithApartment(e.currentTarget.value)} required>
+    <select class="-ml-1 rounded-l-none! w-auto! pl-2! pr-7!" onchange={e => refreshAddressWithApartment(e.currentTarget.value)} required>
       <option value="">{t.addresses.selectApartment}</option>
       {#each apartments as apartment}
         <option value={apartment.adr_id}>{apartment.tahis}</option>

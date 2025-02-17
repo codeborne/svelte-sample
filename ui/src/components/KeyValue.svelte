@@ -14,11 +14,13 @@
 {/if}
 
 <style lang="postcss">
+  @reference "./../global.css";
+
   .key {
-    @apply text-gray-400 text-xs
+    @apply text-gray-400 text-xs;
   }
 
   .value {
-    @apply font-medium
+    @apply font-medium;
   }
 </style>

@@ -10,7 +10,7 @@
 </script>
 
 <div class="sm:h-screen bg-gray-50 p-6 md:py-20 md:px-20 w-full text-black relative">
-  <div class="fixed inset-0 flex -z-0 from-gray-200 to-gray-100 bg-gradient-to-bl"></div>
+  <div class="fixed inset-0 flex -z-0 from-gray-200 to-gray-100 bg-linear-to-bl"></div>
   <div
     class="relative min-w-0 flex-1 flex-wrap border-gray-100 dark:border-gray-800 xl:flex bg-white rounded-lg sm:overflow-hidden shadow-xl">
     <div class="col-span-12 bg-gray-50 py-3 px-4 w-full border-b border-gray-100 dark:border-gray-800 flex justify-between">

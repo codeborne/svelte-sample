@@ -40,7 +40,7 @@
   </FormField>
 
   {#if showList && options.length}
-    <div class="absolute rounded shadow bg-white overflow-hidden flex flex-col w-full mt-0 border border-gray-200 text-sm" role="listbox">
+    <div class="absolute rounded-sm shadow-sm bg-white overflow-hidden flex flex-col w-full mt-0 border border-gray-200 text-sm" role="listbox">
       {#each options as o, i}
         <div class="cursor-pointer group border-t"
              role="option"

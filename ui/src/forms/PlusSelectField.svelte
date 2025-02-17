@@ -15,6 +15,8 @@
 {/if}
 
 <style lang="postcss" global>
+  @reference "./../global.css";
+
   select.plus {
     background-image: none !important;
     @apply !py-1 !pl-2.5 !pr-0 w-8;

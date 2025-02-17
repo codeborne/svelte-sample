@@ -30,11 +30,13 @@
 </div>
 
 <style lang="postcss" global>
+  @reference "./../global.css";
+
   .form-section {
-    @apply grid grid-cols-12 gap-4
+    @apply grid grid-cols-12 gap-4;
   }
 
   .form-section + .form-section {
-    @apply border-t pt-6 mt-6
+    @apply border-t pt-6 mt-6;
   }
 </style>
