@@ -5,10 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: Inter, sans-serif;
+  --font-sans: Satoshi, sans-serif;
   --font-serif: serif;
-
-  --radius-large: 3rem;
 
   --color-success-50: #ecfdf5;
   --color-success-100: #d1fae5;
