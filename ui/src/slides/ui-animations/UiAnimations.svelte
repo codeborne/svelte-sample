@@ -3,7 +3,7 @@
 
 </script>
 
-<div class="grid p-10 gap-10 grid-cols-2 ">
+<div class="grid p-10 gap-10">
   <Slide title="Meaningful animations">
     <p>Meaningful animations play a crucial role in UX by enhancing usability, guiding user interactions, and improving
       the overall experience. </p>
@@ -149,18 +149,3 @@
   </Slide>
 
 </div>
-
-<style>
-  @reference "../../global.css";
-
-  ul {
-    @apply list-disc;
-  }
-  ul li {
-    @apply ml-4;
-  }
-
-  p {
-    @apply text-lg;
-  }
-</style>
