@@ -1,7 +1,8 @@
 <script lang="ts">
   import CheckboxField from './CheckboxField.svelte'
-  import type {ComponentProps} from 'svelte'
 </script>
+
+<p>Choosing between default vs toggle – checkbox expects a save button, switch does not.</p>
 
 <h4>Default</h4>
 
@@ -10,8 +11,6 @@
     <CheckboxField label={item} checked={index === 0} disabled={index === 2}/>
   {/each}
 </div>
-
-<h4>Render as toggle</h4>
 
 <div class="mb-4 grid w-64 gap-3">
   {#each ["First switch", "Second switch", "Disabled switch"] as item, index}
