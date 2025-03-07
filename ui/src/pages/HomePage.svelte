@@ -1,10 +1,5 @@
 <script lang="ts">
-  import {navigate, t} from 'src/i18n'
-  import MainPageLayout from 'src/layout/MainPageLayout.svelte'
+  import {navigate} from 'src/i18n'
 
-  navigate('samples')
+  navigate('slides/ui-animations')
 </script>
-
-<MainPageLayout title={t.title}>
-  TODO
-</MainPageLayout>
