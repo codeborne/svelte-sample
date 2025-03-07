@@ -147,4 +147,21 @@
   .btn.icon-only.sm {
     @apply px-1.5;
   }
+
+  .btn.circular {
+    @apply rounded-full px-2.5;
+  }
+
+  .btn.xs.circular {
+    @apply px-1 py-1;
+  }
+
+  .btn.sm.circular {
+    @apply px-2 py-2;
+  }
+
+  .btn.lg.circular {
+    @apply px-3 py-3;
+  }
+
 </style>

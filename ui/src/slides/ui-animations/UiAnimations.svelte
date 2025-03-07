@@ -1,5 +1,6 @@
 <script>
   import Slide from 'src/slides/ui-animations/Slide.svelte'
+  import ExampleClarity from 'src/slides/ui-animations/ExampleClarity.svelte'
 
 </script>
 
@@ -14,9 +15,7 @@
       Animations help users <strong>understand changes</strong> in the interface, making complex applications feel more intuitive.
     </p>
     <div slot="example">
-      Code: Expand collapse a card within cards list.
-      Animations on/off toggle?
-      Show code: svelte:slide using is easy
+      <ExampleClarity />
     </div>
   </Slide>
 

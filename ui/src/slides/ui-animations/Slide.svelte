@@ -50,8 +50,8 @@
     @sm:text-2xl @md:text-3xl @lg:text-5xl;
   }
 
-
-  .slide :global(p) {
+  .slide :global(p),
+  .slide :global(li) {
     @apply leading-snug
     @sm:text-sm @md:text-lg @lg:text-xl @xl:text-2xl;
   }
