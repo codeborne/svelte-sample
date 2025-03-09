@@ -1,10 +1,11 @@
 <script>
   import Slide from 'src/slides/ui-animations/Slide.svelte'
   import ExampleClarity from 'src/slides/ui-animations/ExampleClarity.svelte'
+  import ExampleUserAttention from 'src/slides/ui-animations/ExampleUserAttention.svelte'
 
 </script>
 
-<div class="grid p-10 gap-10">
+<div class="grid grid-cols-2 p-10 gap-10">
   <Slide title="Meaningful animations">
     <p>Meaningful animations play a crucial role in UX by enhancing usability, guiding user interactions, and improving
       the overall experience. </p>
@@ -88,8 +89,7 @@
   <Slide title="Guide User Attention">
     <p>Animations direct focus to important elements, reducing errors and improving efficiency.</p>
     <div slot="example">
-      Example: A shake effect on an invalid form input or error message helps users quickly spot the issue.
-      Code: A login form submit and using multiple incorrect passwords
+      <ExampleUserAttention />
     </div>
   </Slide>
 
