@@ -35,7 +35,7 @@
   }
 
   .examples {
-    @apply bg-orange-50;
+    @apply relative bg-orange-50;
     grid-area: examples;
   }
 

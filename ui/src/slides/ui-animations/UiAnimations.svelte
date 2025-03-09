@@ -2,6 +2,7 @@
   import Slide from 'src/slides/ui-animations/Slide.svelte'
   import ExampleClarity from 'src/slides/ui-animations/ExampleClarity.svelte'
   import ExampleUserAttention from 'src/slides/ui-animations/ExampleUserAttention.svelte'
+  import ExampleMapAnimation from 'src/slides/ui-animations/ExampleMapAnimation.svelte'
 
 </script>
 
@@ -112,11 +113,9 @@
       </li>
     </ul>
     <div slot="example">
-      Example: A military defense system UI might use animations to highlight critical alerts without unnecessary
-      motion.
-      Code: Map implementation with many markers, one is important. Pulse animation for drawing attention on something
-      on a map
-      Code: Map implementation with a marker.
+
+        <ExampleMapAnimation />
+
     </div>
   </Slide>
 
