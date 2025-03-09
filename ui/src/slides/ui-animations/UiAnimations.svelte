@@ -137,6 +137,8 @@
       <ul>
         <li>Less friction for users using the application.</li>
         <li>Clients employees get their work done faster.</li>
+        <li>Clients customers are less likely to make mistakes</li>
+        <li>Clients customers are less likely to miss important information</li>
         <li>Clients customers are more satisfied with the service.</li>
         <li>Clients customers have higher conversion rates.</li>
         <li>Clients customers are more likely to return.</li>
