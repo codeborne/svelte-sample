@@ -42,18 +42,20 @@
 
   .slide-contents,
   .examples {
-    @apply p-8 @lg:p-12 space-y-4 @lg:space-y-8;
+    @apply @lg:space-y-8;
+    padding: 5cqi;
+    font-size: 2cqi;
   }
 
   .slide :global(h1) {
-    @apply font-semibold
-    @sm:text-2xl @md:text-3xl @lg:text-5xl;
+    @apply font-semibold;
+    font-size: 3cqi;
   }
 
   .slide :global(p),
   .slide :global(li) {
-    @apply leading-snug
-    @sm:text-sm @md:text-lg @lg:text-xl @xl:text-2xl;
+    @apply leading-snug;
+    font-size: 2cqi;
   }
 
   .slide :global(ul) {
