@@ -3,6 +3,7 @@
   import ExampleClarity from 'src/slides/ui-animations/ExampleClarity.svelte'
   import ExampleUserAttention from 'src/slides/ui-animations/ExampleUserAttention.svelte'
   import ExampleMapAnimation from 'src/slides/ui-animations/ExampleMapAnimation.svelte'
+  import ExampleChartAnimation from 'src/slides/ui-animations/ExampleChartAnimation.svelte'
 
 </script>
 
@@ -49,8 +50,7 @@
   <Slide topic="Reduce Cognitive Load" title="Guide User Focus">
     <p>Animations direct attention to important elements, helping users quickly understand changes.</p>
     <div slot="example">
-      Financial table, updated cell background color blinks
-      Tree navigation, expanding and collapsing
+      <ExampleChartAnimation />
     </div>
   </Slide>
   <Slide topic="Reduce Cognitive Load" title="Improve Navigation Clarity">
