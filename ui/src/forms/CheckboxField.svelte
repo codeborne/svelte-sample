@@ -20,7 +20,7 @@
 
 <div class="{renderAsToggle ? 'toggle-switch' : ''} relative flex items-start {disabled ? 'disabled' : ''}">
   <div class="check-container flex items-center">
-    <input {id} type="checkbox" bind:checked {...restProps} />
+    <input {id} {disabled} type="checkbox" bind:checked {...restProps}/>
     {#if renderAsToggle}
       <div class="line"></div>
       <div class="dot"></div>
