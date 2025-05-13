@@ -3,7 +3,7 @@
   import LangSelect from 'src/layout/LangSelect.svelte'
   import Navigation from 'src/layout/Navigation.svelte'
   import UserMenu from 'src/layout/UserMenu.svelte'
-  import {Link} from 'svelte-routing'
+  import Link from 'src/components/Link.svelte'
 </script>
 
 <header class="py-4 sm:py-8 flex justify-between items-center">
