@@ -21,7 +21,7 @@
 
     {#if title}
       <div class="mb-6 flex justify-between items-center">
-        <h1 class="text-3xl font-extrabold flex gap-6">{title}</h1>
+        <h1 class="text-3xl font-extrabold flex gap-6">{title}s</h1>
         <slot name="header"/>
       </div>
     {/if}
