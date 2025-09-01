@@ -11,6 +11,7 @@
     label = '',
     children,
     loading,
+    circular,
     type = 'button',
     ...restProps
   }: {
@@ -20,13 +21,17 @@
     color?: 'primary'|'secondary'|'warning'|'success'|'danger'
     label?: string,
     loading?: boolean;
+    circular?: boolean;
     children?: Snippet;
   } & HTMLButtonAttributes = $props()
 
   const hasLabel = $derived(label || children)
 </script>
 
-<button {type} {...restProps} class="btn {size} {color} {variant} {icon || loading ? 'has-icon' : ''} {restProps.class }" class:icon-only={icon && !hasLabel}>
+<button {type} {...restProps} class="btn {size} {color} {variant} {restProps.class }"
+        class:circular={circular}
+        class:has-icon={icon || loading}
+        class:icon-only={icon && !hasLabel}>
   {#if loading}
     <Icon name="spinner" {size} class="animate-spin" />
   {:else if icon}
@@ -152,5 +157,21 @@
 
   .btn.icon-only.sm {
     @apply px-1.5;
+  }
+
+  .btn.circular {
+    @apply aspect-square rounded-full px-2.5;
+  }
+
+  .btn.xs.circular {
+    @apply px-1 py-1;
+  }
+
+  .btn.sm.circular {
+    @apply px-2 py-2;
+  }
+
+  .btn.lg.circular {
+    @apply px-3 py-3;
   }
 </style>

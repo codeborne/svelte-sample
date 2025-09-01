@@ -37,6 +37,10 @@
       <div>
         <Button {size} icon="copy" title="Icon only"/>
       </div>
+
+      <div>
+        <Button icon="x" {size} circular title="Circular" />
+      </div>
     </div>
   {/each}
 </div>
