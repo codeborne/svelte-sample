@@ -1,8 +1,9 @@
 import {cleanup, render} from '@testing-library/svelte'
 import Modal from './Modal.svelte'
+import type {Snippet} from 'svelte'
 
 it.skip('Modal is shown', async () => {
-  const {container, rerender} = render(Modal, {title: 'Title', show: false, flyParams: {duration: 0}})
+  const {container, rerender} = render(Modal, {title: 'Title', show: false, children: (() => 'Modal content') as unknown as Snippet})
   expect(container.textContent).not.to.contain('Title')
 
   await rerender({show: true})
@@ -14,7 +15,7 @@ it.skip('Modal is shown', async () => {
 })
 
 it.skip('body.modal-open is added on show and removed on destroy', () => {
-  render(Modal, {title: 'Title', show: true, flyParams: {duration: 0}})
+  render(Modal, {title: 'Title', show: true, children: (() => 'Modal content') as unknown as Snippet})
   expect(document.body.classList.contains('modal-open')).to.be.true
   cleanup()
   expect(document.body.classList.contains('modal-open')).to.be.false

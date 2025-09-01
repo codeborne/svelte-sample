@@ -1,53 +1,182 @@
 <script lang="ts">
-  import {_} from 'src/i18n'
-  import type {FlyParams} from 'svelte/transition'
-  import {fade, fly} from 'svelte/transition'
+  import type { Snippet } from "svelte";
+  import type { FadeParams, FlyParams, ScaleParams } from "svelte/transition";
+  import { fade, fly, scale } from "svelte/transition";
+  import Button from "./Button.svelte";
   import Icon from 'src/icons/Icon.svelte'
-  import {onDestroy} from 'svelte'
 
-  export let title: string = ''
-  export let show: any|false = true
-  export let wide = false
-  export let flyParams: FlyParams = {y: 300, duration: window.e2eTest? 0 : 200}
+  type CloseReason = "backdrop" | "escape" | "close";
 
-  let modal: HTMLElement
-  $: if (modal) document.body.appendChild(modal)
-  $: document.body.classList.toggle('modal-open', show)
-
-  function close() {
-    show = false
+  interface Props {
+    show: boolean;
+    title?: string;
+    kind?: "xs" | "md" | "default" | "wide" | "side" | "side-wide" | "side-narrow" | "full-screen";
+    class?: string;
+    overlayClass?: string;
+    dialogClass?: string;
+    children: Snippet;
+    onclose?: (ev: MouseEvent | KeyboardEvent, reason: CloseReason) => void;
+    closeable?: boolean;
+    closeOnOutsideClick?: boolean;
   }
 
-  function onkeyup(e: KeyboardEvent) {
-    if (show && e.code === 'Escape') close()
+  let {
+    show = $bindable(),
+    title,
+    kind = "default",
+    class: modalClass = "",
+    overlayClass = "",
+    dialogClass = "",
+    children,
+    onclose,
+    closeable = true,
+    closeOnOutsideClick = false,
+  }: Props = $props();
+
+  const fadeParams: FadeParams = { duration: 300 };
+  const scaleParams: ScaleParams = { start: 0.9, duration: fadeParams.duration };
+  const flyParams: FlyParams = { x: 300, duration: 100 };
+
+  function close(ev: MouseEvent | KeyboardEvent, reason: CloseReason = "close") {
+    onclose?.(ev, reason);
+
+    if (!ev.defaultPrevented) {
+      show = false;
+    }
   }
 
-  onDestroy(() => {
-    document.body.classList.remove('modal-open')
-    setTimeout(() => modal?.remove())
-  })
+  function onKeyUp(ev: KeyboardEvent) {
+    if (show && ev.code === "Escape") {
+      close(ev, "escape");
+    }
+  }
+
+  function animateIn(node: Element) {
+    return kind === "side" || kind === "side-wide" || kind === "side-narrow"
+      ? fly(node, flyParams)
+      : scale(node, scaleParams);
+  }
+
+  function animateOut(node: Element) {
+    return fade(node, fadeParams);
+  }
+
+  function handleOverlayClick(ev: MouseEvent) {
+    if (closeOnOutsideClick) {
+      close(ev, "backdrop");
+    }
+  }
 </script>
 
-<svelte:window {onkeyup}/>
+<svelte:window on:keyup={onKeyUp} />
 
 {#if show}
-  <div bind:this={modal} class="modal transition-opacity fixed z-40 inset-0 overflow-y-auto" transition:fade={{duration: flyParams.duration}}>
-    <div class="flex items-center justify-center min-h-screen p-4 md:pb-20 text-center">
-      <div class="fixed inset-0 bg-gray-500/75 transition-opacity"></div>
+  <div class="modal {`modal-${kind}`} {modalClass}" transition:animateOut data-state={show ? "open" : "closed"}>
+    <div class="modal-positioner">
+      <div class="modal-overlay {overlayClass}" onclick={handleOverlayClick} role="presentation"></div>
 
-      <div class="w-full {wide ? 'max-w-7xl': 'max-w-xl'} relative inline-block bg-white rounded-lg p-6 md:p-10 text-left overflow-hidden shadow-xl transform transition-all align-middle"
-           role="dialog" transition:fly={flyParams}>
-        <div class="block absolute top-0 right-0 pt-4 md:pt-8 pr-4 md:pr-8">
-          <button type="button" onclick={close}
-                  class="bg-white flex items-center justify-center text-gray-400 hover:text-gray-500 h-10 w-10 rounded-full focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-primary-500">
-            <span class="sr-only">{_('general.close')}</span>
-            <Icon name="x"/>
-          </button>
+      <!-- This element is to trick the browser into centering the modal contents. -->
+      <span class="modal-vertical-aligner" aria-hidden="true">&ZeroWidthSpace;&ZeroWidthSpace;</span>
+
+      <div class="modal-dialog px-6 pb-6 {dialogClass}" role="dialog" transition:animateIn>
+        <div class="modal-header -mr-4">
+          {#if closeable}
+            <div class="absolute top-0 right-0 mt-2">
+              <Button circular size="lg" variant="ghost" onclick={(ev) => close(ev, "close")}>
+                <span class="sr-only">Close</span>
+                <Icon name="x" size="lg" />
+              </Button>
+            </div>
+          {/if}
+
+          {#if title}
+            <h4 class="p-0 pb-4 text-xl font-semibold">
+              {title}
+            </h4>
+          {/if}
         </div>
-
-        {#if title}<h3 class="mb-4">{title}</h3>{/if}
-        <slot/>
+        {@render children()}
       </div>
     </div>
   </div>
 {/if}
+
+<style lang="postcss">
+  @reference "./../global.css";
+
+  .modal {
+    @apply fixed inset-0 z-30 overflow-y-auto transition-opacity;
+  }
+
+  .modal-dialog {
+    @apply relative inline-block w-full transform overflow-hidden overflow-y-auto rounded-lg bg-white text-left shadow-xl transition-all dark:bg-black;
+  }
+
+  .modal-header {
+    @apply sticky top-0 z-50 bg-inherit pt-6;
+  }
+
+  .modal-overlay {
+    @apply bg-neutral-400/75 dark:bg-neutral-800/75 fixed inset-0 transition-opacity dark:opacity-75;
+  }
+
+  .modal-vertical-aligner {
+    @apply hidden sm:inline-block sm:h-screen sm:align-middle;
+  }
+
+  .modal-positioner {
+    @apply flex min-h-screen items-center justify-center p-4 text-center md:pb-20;
+  }
+
+  .modal-default .modal-dialog {
+    @apply relative inline-block rounded-lg sm:max-w-3xl;
+  }
+
+  .modal-default .modal-positioner {
+    @apply items-center justify-center px-4 py-4 sm:p-0;
+  }
+
+  .modal-wide .modal-positioner {
+    @apply items-center justify-center px-4 py-4 sm:p-0;
+  }
+
+  .modal-wide .modal-dialog {
+    @apply relative my-4 inline-block max-w-6xl rounded-lg;
+  }
+
+  .modal-md .modal-positioner {
+    @apply items-center justify-center px-4 py-4 sm:p-0;
+  }
+
+  .modal-md .modal-dialog {
+    @apply relative my-4 inline-block rounded-lg sm:max-w-4xl;
+  }
+
+  .modal-xs .modal-dialog {
+    @apply relative my-4 inline-block max-w-xl rounded-lg;
+  }
+
+  .modal-side .modal-positioner {
+    @apply justify-end;
+  }
+
+  .modal-side .modal-dialog {
+    @apply fixed inset-y-0 right-0 overflow-y-auto rounded-none sm:max-w-3xl;
+  }
+
+  .modal-side-wide .modal-dialog {
+    @apply fixed inset-y-0 right-0 max-w-6xl overflow-y-auto rounded-none;
+  }
+
+  .modal-side-narrow .modal-dialog {
+    @apply fixed inset-y-0 right-0 max-w-sm overflow-y-auto rounded-none shadow-2xl;
+  }
+
+  .modal-full-screen .modal-positioner {
+    @apply justify-end;
+  }
+
+  .modal-full-screen .modal-dialog {
+    @apply fixed inset-0 flex flex-col overflow-hidden;
+  }
+</style>
