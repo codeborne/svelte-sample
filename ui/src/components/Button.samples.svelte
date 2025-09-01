@@ -4,6 +4,8 @@
   const sizes = ['xs', 'sm', '', 'lg'] as const
   const colors = ['primary', 'secondary', 'danger', 'warning', 'success'] as const
   const variants = ['solid', 'soft', 'outlined', 'ghost'] as const
+
+  let isLoading = $state(false);
 </script>
 
 <div class="common-grid sm:grid-cols-4">
@@ -18,6 +20,20 @@
         </div>
       {/each}
       <Button label="With icon" {size} icon="link-external"/>
+      <Button label="Loading" {size} loading />
+      <Button
+        {size}
+        icon="chevron-right"
+        onclick={() => (isLoading = !isLoading)}
+        loading={isLoading}
+      >
+        {#if isLoading}
+          Loading
+        {:else}
+          Click to load
+        {/if}
+      </Button>
+
       <div>
         <Button {size} icon="copy" title="Icon only"/>
       </div>

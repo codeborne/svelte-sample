@@ -10,6 +10,7 @@
     color = 'secondary',
     label = '',
     children,
+    loading,
     type = 'button',
     ...restProps
   }: {
@@ -18,24 +19,25 @@
     variant?: 'solid'|'soft'|'outlined'|'ghost'
     color?: 'primary'|'secondary'|'warning'|'success'|'danger'
     label?: string,
+    loading?: boolean;
     children?: Snippet;
   } & HTMLButtonAttributes = $props()
 
   const hasLabel = $derived(label || children)
 </script>
 
-<button {type} {...restProps} class="btn {size} {color} {variant} {icon ? 'inline-flex items-center' : ''} {restProps.class }" class:icon-only={icon && !hasLabel}>
-  {#if icon}
+<button {type} {...restProps} class="btn {size} {color} {variant} {icon || loading ? 'has-icon' : ''} {restProps.class }" class:icon-only={icon && !hasLabel}>
+  {#if loading}
+    <Icon name="spinner" {size} class="animate-spin" />
+  {:else if icon}
     <Icon name={icon} {size} strokeWidth={size === 'xs' ? '2.5' : '2'}/>
   {/if}
   {#if hasLabel}
-    <span class:ml-2={icon}>
-      {#if children}
-        {@render children()}
-      {:else}
-        {label}
-      {/if}
-    </span>
+    {#if children}
+      {@render children()}
+    {:else}
+      {label}
+    {/if}
   {/if}
 </button>
 
@@ -46,6 +48,10 @@
     @apply border border-transparent rounded-md text-center inline-flex
     focus:outline-hidden focus:ring-2 focus:ring-offset-2
     disabled:opacity-50 justify-center py-2 px-4 text-sm font-medium;
+  }
+
+  .btn.has-icon {
+    @apply inline-flex items-center gap-1;
   }
 
   .btn.primary.solid {
