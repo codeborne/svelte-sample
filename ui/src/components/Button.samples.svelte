@@ -38,8 +38,10 @@
         <Button {size} icon="copy" title="Icon only"/>
       </div>
 
-      <div>
-        <Button icon="x" {size} circular title="Circular" />
+      <div class="flex gap-2">
+        {#each variants as variant}
+          <Button icon="x" {size} {variant} circular title="Circular" />
+        {/each}
       </div>
     </div>
   {/each}
