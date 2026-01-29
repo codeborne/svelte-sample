@@ -15,19 +15,19 @@
     <div class="text-warning-700">
       <Tooltip text={'Tooltip 2: ' + tooltipText}>
         Tooltip with custom icon
-        <svelte:fragment slot="trigger">
+        {#snippet trigger()}
           <Icon name="alert-triangle" size="sm"
                 class="cursor-help opacity-50 transition-opacity hover:opacity-100 relative"/>
-        </svelte:fragment>
+        {/snippet}
       </Tooltip>
     </div>
 
     <Tooltip text={'Tooltip 3: ' + tooltipText}>
-      <svelte:fragment slot="trigger">
+      {#snippet trigger()}
         Text is also a trigger
         <Icon name="alert-triangle" size="sm"
               class="cursor-help opacity-50 transition-opacity hover:opacity-100 relative"/>
-      </svelte:fragment>
+      {/snippet}
     </Tooltip>
   </div>
 </div>

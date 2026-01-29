@@ -1,35 +1,39 @@
 <script lang="ts">
   import {fade} from 'svelte/transition'
 
-  export let content: string
-  export let target: HTMLElement | null = null
-  export let visible = false
-  export let id: string
+  let { content, target = $bindable(null), visible = false, id }: { content: string, target?: HTMLElement | null, visible?: boolean, id: string } = $props()
 
-  let tooltipEl: HTMLDivElement | null = null
+  let tooltipEl = $state<HTMLDivElement | null>(null)
 
-  $: if (tooltipEl) {
-    document.body.appendChild(tooltipEl)
-  } else {
-    tooltipEl = null
-  }
-
-  $: if (tooltipEl && target && visible) {
-    const rect = target.getBoundingClientRect()
-    const tooltipRect = tooltipEl.clientWidth
-    const viewportWidth = window.innerWidth
-    const rightSpace = viewportWidth - rect.right
-    const placeOnLeft = rightSpace < rect.right - 400
-    const top = rect.top + window.scrollY - 10
-
-    if (placeOnLeft) {
-      tooltipEl.style.left = `${rect.left - tooltipRect - 12}px`
-      tooltipEl.style.top = `${top}px`
-    } else {
-      tooltipEl.style.left = `${rect.right + 12}px`
-      tooltipEl.style.top = `${top}px`
+  $effect(() => {
+    if (tooltipEl) {
+      document.body.appendChild(tooltipEl)
+      return () => {
+        if (tooltipEl && tooltipEl.parentNode) {
+          tooltipEl.parentNode.removeChild(tooltipEl)
+        }
+      }
     }
-  }
+  })
+
+  $effect(() => {
+    if (tooltipEl && target && visible) {
+      const rect = target.getBoundingClientRect()
+      const tooltipRect = tooltipEl.clientWidth
+      const viewportWidth = window.innerWidth
+      const rightSpace = viewportWidth - rect.right
+      const placeOnLeft = rightSpace < rect.right - 400
+      const top = rect.top + window.scrollY - 10
+
+      if (placeOnLeft) {
+        tooltipEl.style.left = `${rect.left - tooltipRect - 12}px`
+        tooltipEl.style.top = `${top}px`
+      } else {
+        tooltipEl.style.left = `${rect.right + 12}px`
+        tooltipEl.style.top = `${top}px`
+      }
+    }
+  })
 </script>
 
 <div class="hidden">
