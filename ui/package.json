@@ -4,7 +4,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "i18n-compile i18n build/i18n && rsync -a --update i18n/* build/i18n && vite build",
+    "build": "i18n-compile i18n build/i18n && cp -u i18n/* build/i18n && vite build",
     "preview": "vite preview",
     "check": "svelte-check --diagnostic-sources js,svelte --compiler-warnings a11y-missing-attribute:ignore,a11y-label-has-associated-control:ignore,a11y-click-events-have-key-events:ignore,security-anchor-rel-noreferrer:ignore,a11y-autofocus:ignore,a11y-no-static-element-interactions:ignore",
     "check:vite": "npm run check || true",
