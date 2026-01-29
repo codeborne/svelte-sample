@@ -2,7 +2,7 @@
   import type { Snippet } from "svelte";
 
   interface Props {
-    color?: "default" | "warning" | "success" | "danger";
+    color?: "default" | "primary" | "warning" | "success" | "danger";
     size?: "xs" | "sm" | "" | "lg";
     children: Snippet;
   }
@@ -19,6 +19,10 @@
 
   .alert {
     @apply relative border-l-2 border-neutral-400 bg-neutral-200 px-4 py-3 font-medium dark:border-neutral-600 dark:bg-neutral-800;
+  }
+
+  .alert.primary {
+    @apply bg-primary-100 text-primary-700 border-primary-300;
   }
 
   .alert.success {

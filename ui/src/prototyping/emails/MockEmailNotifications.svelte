@@ -7,7 +7,7 @@
   const onClose = (emailNotification: any) => {
     mockEmailNotifications.closeMockEmailNotification(emailNotification)
   }
-</script>️
+</script>
 
 <div class="z-50 fixed mt-4 mr-4 top-0 right-0">
   {#each $mockEmailNotifications as notification}

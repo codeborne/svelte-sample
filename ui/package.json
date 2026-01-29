@@ -19,7 +19,8 @@
   "dependencies": {
     "@codeborne/i18n-json": "^0.3.7",
     "svelte": "^5.15.0",
-    "svelte-routing": "github:Monadic-Cat/svelte-routing#c4d24dc4c4deb3d5b21f492006cf6d45a8ae4464"
+    "svelte-routing": "github:Monadic-Cat/svelte-routing#c4d24dc4c4deb3d5b21f492006cf6d45a8ae4464",
+    "uuid": "11.1.0"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^4.0.4",
