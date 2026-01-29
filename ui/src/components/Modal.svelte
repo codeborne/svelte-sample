@@ -37,6 +37,16 @@
   const scaleParams: ScaleParams = { start: 0.9, duration: fadeParams.duration };
   const flyParams: FlyParams = { x: 300, duration: 100 };
 
+  function portal(node: HTMLElement) {
+    document.body.appendChild(node);
+
+    return {
+      destroy() {
+        node.remove();
+      }
+    };
+  }
+
   function close(ev: MouseEvent | KeyboardEvent, reason: CloseReason = "close") {
     onclose?.(ev, reason);
 
@@ -71,7 +81,7 @@
 <svelte:window on:keyup={onKeyUp} />
 
 {#if show}
-  <div class="modal {`modal-${kind}`} {modalClass}" transition:animateOut data-state={show ? "open" : "closed"}>
+  <div class="modal {`modal-${kind}`} {modalClass}" use:portal transition:animateOut data-state={show ? "open" : "closed"}>
     <div class="modal-positioner">
       <div class="modal-overlay {overlayClass}" onclick={handleOverlayClick} role="presentation"></div>
 
