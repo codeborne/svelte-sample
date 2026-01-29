@@ -146,15 +146,15 @@
   }
 
   h4, .h4 {
-    @apply text-xl font-semibold text-gray-900;
+    @apply text-xl font-semibold;
   }
 
   h5, .h5 {
-    @apply text-lg font-medium text-gray-900;
+    @apply text-lg font-medium;
   }
 
   h6, .h6 {
-    @apply text-base font-medium text-gray-900;
+    @apply text-base font-medium;
   }
 
   img, svg {
