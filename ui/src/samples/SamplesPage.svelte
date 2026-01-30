@@ -48,7 +48,7 @@
 
   <div class="w-full">
     {#if path}
-      <div class="p-3 sm:px-6 sm:py-8">
+      <div class="px-3 pt-3 sm:px-6 sm:pt-8">
         <h4>{path.replace('/', ' / ')}</h4>
         <div class="pt-6">
           {#key path}

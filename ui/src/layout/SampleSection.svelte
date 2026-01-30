@@ -16,8 +16,8 @@
   const sectionId = title.toLowerCase().replace(/\s+/g, '-');
 </script>
 
-<div class="group scroll-my-13 {sectionClass}" id={sectionId}>
-  <div class="pt-4 sm:pt-12 px-4 sm:px-12 -mx-3 sm:-mx-6 border-t {toggledContainerColor ? 'bg-neutral-50 dark:bg-neutral-900': ''}">
+<div class="group scroll-my-13 pb-4 sm:pb-12 px-4 sm:px-6 -mx-3 sm:-mx-6 border-t {toggledContainerColor ? 'bg-neutral-50 dark:bg-neutral-900': ''} {sectionClass}" id={sectionId}>
+  <div class="pt-4 sm:pt-12">
     <div class="flex justify-between">
       <a href="{title}" class="sample-section-title font-semibold uppercase text-neutral-500 dark:text-neutral-200">{title}</a>
 
@@ -38,9 +38,9 @@
       </div>
     {/if}
   </div>
-  <div class="pt-2 sm:pt-6 pb-4 sm:pb-12  px-4 sm:px-12 -mx-3 sm:-mx-6 space-y-4 {toggledContainerColor ? 'bg-neutral-50 dark:bg-neutral-900': ''}">
-    {#if children}
+  {#if children}
+    <div class="pt-2 sm:pt-6 space-y-4">
       {@render children()}
-    {/if}
-  </div>
+    </div>
+  {/if}
 </div>

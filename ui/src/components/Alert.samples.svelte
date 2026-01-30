@@ -31,8 +31,6 @@
       <Alert color="success">Updated successfully</Alert>
     </li>
   </ul>
-
-
 </SampleSection>
 
 <SampleSection title="Sizes">
