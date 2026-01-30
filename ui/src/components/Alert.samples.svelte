@@ -1,6 +1,6 @@
 <script lang="ts">
   import Alert from './Alert.svelte'
-  import SampleSection from 'src/components/SampleSection.svelte'
+  import SampleSection from 'src/layout/SampleSection.svelte'
 
   const sizes = ['', 'sm', 'lg'] as const
 </script>
