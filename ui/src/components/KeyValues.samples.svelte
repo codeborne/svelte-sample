@@ -1,6 +1,7 @@
 <script lang="ts">
   import KeyValue from 'src/components/KeyValue.svelte'
   import KeyValueList from 'src/components/KeyValueList.svelte'
+  import SampleSection from 'src/layout/SampleSection.svelte'
 
   const sizes = ['', 'sm', 'xs'] as const
 
@@ -32,43 +33,47 @@
   ]
 </script>
 
-<h4>Default usage</h4>
-<div class="common-grid mb-4">
-  {#each mockValuePairs as {key, value, unit}}
-    <KeyValue label={key} value={value + ' ' + (unit ? unit : '') }/>
-  {/each}
-</div>
+<SampleSection title="Default usage">
+  <div class="common-grid mb-4">
+    {#each mockValuePairs as {key, value, unit}}
+      <KeyValue label={key} value={value + ' ' + (unit ? unit : '') }/>
+    {/each}
+  </div>
+</SampleSection>
 
-<h4>Formatted content</h4>
-<div class="common-grid mb-4">
-  {#each mockValuePairs as {key, value, unit}}
-    <KeyValue label={key}>
-      {value}
-      {#if unit}<small class="text-muted">{unit}</small>{/if}
-    </KeyValue>
-  {/each}
-</div>
+<SampleSection title="Formatted content">
+  <div class="common-grid mb-4">
+    {#each mockValuePairs as {key, value, unit}}
+      <KeyValue label={key}>
+        {value}
+        {#if unit}<small class="text-muted">{unit}</small>{/if}
+      </KeyValue>
+    {/each}
+  </div>
+</SampleSection>
 
-<h4>Side-by-side grid</h4>
-<div class="grid grid-cols-4 mb-4">
-  {#each mockValuePairs as {key, value, unit}}
-    <KeyValue label={key}>
-      {value}
-      {#if unit}<small class="text-muted">{unit}</small>{/if}
-    </KeyValue>
-  {/each}
-</div>
+<SampleSection title="Side-by-side grid">
+  <div class="grid grid-cols-4 mb-4">
+    {#each mockValuePairs as {key, value, unit}}
+      <KeyValue label={key}>
+        {value}
+        {#if unit}<small class="text-muted">{unit}</small>{/if}
+      </KeyValue>
+    {/each}
+  </div>
+</SampleSection>
 
-<h4>Converted to a list</h4>
-<div class="grid grid-cols-3 mb-4 gap-6">
-  {#each sizes as size}
-    <KeyValueList {size}>
-      {#each mockValuePairs as {key, value, unit}}
-        <KeyValue label={key}>
-          {value}
-          {#if unit}<small class="text-muted">{unit}</small>{/if}
-        </KeyValue>
-      {/each}
-    </KeyValueList>
-  {/each}
-</div>
+<SampleSection title="Converted to a list">
+  <div class="grid grid-cols-3 mb-4 gap-6">
+    {#each sizes as size}
+      <KeyValueList {size}>
+        {#each mockValuePairs as {key, value, unit}}
+          <KeyValue label={key}>
+            {value}
+            {#if unit}<small class="text-muted">{unit}</small>{/if}
+          </KeyValue>
+        {/each}
+      </KeyValueList>
+    {/each}
+  </div>
+</SampleSection>
