@@ -2,10 +2,15 @@
 
   import {showToast, ToastType} from 'src/stores/toasts'
   import {onMount} from 'svelte'
+  import SampleSection from 'src/layout/SampleSection.svelte'
 
   onMount(() => {
     showToast('Changes were saved', {type: ToastType.SUCCESS, timeoutSec: 1000})
-    showToast('An explanation on what happened', {title: 'This is a warning toast', timeoutSec: 1000, type: ToastType.WARNING})
+    showToast('An explanation on what happened', {
+      title: 'This is a warning toast',
+      timeoutSec: 1000,
+      type: ToastType.WARNING
+    })
     showToast('Please check your internet connection', {
       title: 'Cannot connect to server',
       timeoutSec: 1000,
@@ -21,12 +26,14 @@
   })
 </script>
 
-<div class="max-w-[450px] common-grid mb-4">
+<SampleSection title="Usage">
+  <div class="max-w-[450px] common-grid mb-4">
     <h4>Simple, short messages</h4>
     <p>It is OK to use just toast message/description. If it fits into a single line, it is a short message.</p>
-</div>
+  </div>
 
   <div class="max-w-[450px] common-grid">
     <h4>Longer messages</h4>
     <p>Use a short title conveying the idea. The longer content should be as a message/description</p>
   </div>
+</SampleSection>

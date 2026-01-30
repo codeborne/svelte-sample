@@ -1,16 +1,16 @@
 <script>
   import Icon from 'src/icons/Icon.svelte'
   import Tooltip from 'src/components/Tooltip.svelte'
+  import SampleSection from 'src/layout/SampleSection.svelte'
 
-  const tooltipText = 'This is some helpful information about the history section.'
+  const tooltipText = 'This is some helpful information about the section.'
 </script>
 
-<div>
-  <h2 class="h3">Tooltip</h2>
+<SampleSection title="Examples">
   <div class="flex flex-col sm:flex-row gap-4 justify-between">
-      <Tooltip text={'Tooltip 1: ' + tooltipText}>
-        Ordinary tooltip
-      </Tooltip>
+    <Tooltip text={'Tooltip 1: ' + tooltipText}>
+      Ordinary tooltip
+    </Tooltip>
 
     <div class="text-warning-700">
       <Tooltip text={'Tooltip 2: ' + tooltipText}>
@@ -30,4 +30,4 @@
       {/snippet}
     </Tooltip>
   </div>
-</div>
+</SampleSection>

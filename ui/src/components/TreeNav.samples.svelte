@@ -1,12 +1,13 @@
 <script>
   import TreeNav from './TreeNav.svelte'
+  import SampleSection from 'src/layout/SampleSection.svelte'
 
   const children = [
     {
       label: 'Furniture',
       children: [
         {
-          label: "Desks",
+          label: 'Desks',
           children: [
             {
               label: 'Standing Desks',
@@ -46,7 +47,7 @@
           ]
         },
         {
-          label: "Chairs",
+          label: 'Chairs',
           children: [
             {
               label: 'Ergonomic Chairs',
@@ -99,4 +100,7 @@
   ]
 </script>
 
-<TreeNav label="Home" {children} expanded />
+<SampleSection title="Usage"
+               description="Use TreeNav to organize nested content like folder structures, product categories, or navigation menus. It helps users browse deep hierarchies without cluttering the interface.">
+  <TreeNav label="Home" {children} expanded/>
+</SampleSection>
