@@ -11,7 +11,7 @@
   if (!path) navigate('samples/' + Object.keys(samples)[0])
 </script>
 
-<div class="sm:flex sm:items-start gap-10">
+<div class="sm:flex sm:items-start">
 
   <div class="form-field w-full sm:hidden">
     <select bind:value={path}>
@@ -49,7 +49,7 @@
     {#if path}
       <div class="p-3 sm:px-6 sm:py-8">
         <h4>{path.replace('/', ' / ')}</h4>
-        <div class="common-grid pt-6">
+        <div class="pt-6">
           <svelte:component this={samples[path].default}/>
         </div>
       </div>
