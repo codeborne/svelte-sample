@@ -2,12 +2,15 @@
   import UserForm from 'src/samples/UserForm.svelte'
   import Form from 'src/forms/Form.svelte'
   import FormField from 'src/forms/FormField.svelte'
+  import SampleSection from 'src/layout/SampleSection.svelte'
 </script>
 
-<p>Always wrap forms into a Form component for validation to work</p>
-<UserForm/>
+<SampleSection title="Form" description="Always wrap forms into a Form component for validation to work.">
+  <UserForm/>
+</SampleSection>
 
-<p>Pre-validated</p>
-<Form submit={() => alert('TODO')} validated>
-  <FormField label="Invalid"/>
-</Form>
+<SampleSection title="Pre-validated">
+  <Form submit={() => alert('TODO')} validated>
+    <FormField label="Invalid"/>
+  </Form>
+</SampleSection>

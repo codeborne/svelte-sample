@@ -4,6 +4,7 @@
   import Card from 'src/components/Card.svelte'
   import Button from 'src/components/Button.svelte'
   import {showToast, ToastType} from 'src/stores/toasts'
+  import SampleSection from 'src/layout/SampleSection.svelte'
 
   const names = Object.keys(icons).sort()
 
@@ -14,12 +15,16 @@
   }
 </script>
 
-<div class="text-lg common-grid mb-4">
+<SampleSection title="Usage">
   <p>
-    The base library for the icons is <a href="https://tablericons.com/" target="_blank">TablerIcons</a><br>
+    The base library for the icons is
+    <a href="https://tablericons.com/" target="_blank">TablerIcons</a>
+    <br>
     Save new icons into src/icons as *.svg files, remove class attribute and change stroke="currentColor".<br>
   </p>
-  <h4 class="mt-4">Stroke width customization</h4>
+</SampleSection>
+
+<SampleSection title="Stroke width customization">
   <div>
     <p>By default stroke width for icons is 2, but it can be changed by variable strokeWidth.</p>
     <p>Recommended to use when icon comes with text, to add consistency between font and icon strokes.</p>
@@ -34,33 +39,34 @@
     </Card>
     <Card size="sm">
       <div class="flex gap-2 items-center">
-      <Icon name='user' size="lg" strokeWidth="3"/>
-      <div class="font-bold">Jaan Tamm</div>
+        <Icon name='user' size="lg" strokeWidth="3"/>
+        <div class="font-bold">Jaan Tamm</div>
       </div>
     </Card>
     <Card size="sm">
       <div class="flex gap-2 items-center">
-      <Icon name='user'/>
-      <div>Jaan Tamm</div>
+        <Icon name='user'/>
+        <div>Jaan Tamm</div>
       </div>
     </Card>
     <Card size="sm">
       <Button label="Jaan Tamm" icon="user" size="lg"/>
     </Card>
   </div>
-</div>
+</SampleSection>
 
-<h4>List of icons</h4>
-<div class="grid grid-cols-6 gap-4">
-  {#each names as name}
-    <Card size="sm">
-      <div class="flex flex-col gap-1" onclick={() => copy(name)} onkeydown={() => copy(name)} role="button" tabindex="0">
-        <Icon {name} size="xs"/>
-        <Icon {name} size="sm"/>
-        <Icon {name}/>
-        <Icon {name} size="lg" class="text-primary-500" strokeWidth="2"/>
-        <div class="mt-1 text-xs">{name}</div>
-      </div>
-    </Card>
-  {/each}
-</div>
+<SampleSection title="List of icons">
+  <div class="grid grid-cols-6 gap-4">
+    {#each names as name}
+      <Card size="sm">
+        <div class="flex flex-col gap-1" onclick={() => copy(name)} onkeydown={() => copy(name)} role="button" tabindex="0">
+          <Icon {name} size="xs"/>
+          <Icon {name} size="sm"/>
+          <Icon {name}/>
+          <Icon {name} size="lg" class="text-primary-500" strokeWidth="2"/>
+          <div class="mt-1 text-xs">{name}</div>
+        </div>
+      </Card>
+    {/each}
+  </div>
+</SampleSection>
