@@ -11,7 +11,7 @@
       <div class="toast max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black/5 overflow-hidden" transition:fly={{y: -100}}>
         <div class="p-4">
           <div class="flex items-start">
-            <div class="shrink-0">
+            <div class="shrink-0 -translate-y-0.5">
               {#if toast.type === ToastType.WARNING}
                 <Icon name="alert-triangle" class="text-warning-400"/>
               {:else if toast.type === ToastType.SUCCESS}
