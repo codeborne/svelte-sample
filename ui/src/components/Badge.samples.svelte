@@ -2,6 +2,7 @@
   import type { ComponentProps } from "svelte";
   import Badge from 'src/components/Badge.svelte'
   import Button from 'src/components/Button.svelte'
+  import SampleSection from 'src/layout/SampleSection.svelte'
 
 
   type BadgeSize = ComponentProps<typeof Badge>["size"];
@@ -9,9 +10,11 @@
   const sizes: BadgeSize[] = ["xs", "sm", "", "lg"];
 </script>
 
-<div class="space-y-6">
-  <h4 class="text-xl font-semibold">Regular badge</h4>
+<SampleSection title="Usage"
+               description="Use badges to highlight status, categorize items, display counts, or draw attention to specific information within your interface.">
+</SampleSection>
 
+<SampleSection title="Regular badge" description="Display status labels, categories, or user identifiers.">
   {#each sizes as size}
     <div class="flex flex-col space-y-2">
       <h5 class="text-xs uppercase">Size {size || "default"}</h5>
@@ -24,9 +27,9 @@
       </div>
     </div>
   {/each}
+</SampleSection>
 
-  <h4 class="text-xl font-semibold">Badge with icon</h4>
-
+<SampleSection title="Badge with icon">
   <p>
     Badge can have icons to better illustrate its meaning, when the content might not be descriptive enough.
     The icons can also improve intuitiveness especially with poor contrast situations or for people with color
@@ -43,9 +46,9 @@
       </div>
     </div>
   {/each}
+</SampleSection>
 
-  <h4 class="text-xl font-semibold">Numeric badge</h4>
-
+<SampleSection title="Numeric badge" description="Show counts, notifications, or quantities in a compact circular format.">
   {#each sizes as size}
     <div class="flex flex-col space-y-2">
       <h5 class="text-xs uppercase">Size {size || "default"}</h5>
@@ -70,4 +73,4 @@
       </div>
     </div>
   {/each}
-</div>
+</SampleSection>
