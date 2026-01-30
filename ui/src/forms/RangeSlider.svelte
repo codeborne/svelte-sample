@@ -19,7 +19,7 @@
   }
 
   input::-webkit-slider-runnable-track {
-    @apply bg-white h-2 bg-gray-300 appearance-none mt-4 rounded-xl my-4;
+    @apply h-2 bg-gray-300 appearance-none mt-4 rounded-xl my-4;
   }
 
   input::-webkit-slider-thumb {
