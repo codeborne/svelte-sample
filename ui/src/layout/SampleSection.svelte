@@ -19,7 +19,7 @@
 <div class="group scroll-my-13 pb-4 sm:pb-12 px-4 sm:px-6 -mx-3 sm:-mx-6 border-t {toggledContainerColor ? 'bg-neutral-50 dark:bg-neutral-900': ''} {sectionClass}" id={sectionId}>
   <div class="pt-4 sm:pt-12">
     <div class="flex justify-between">
-      <a href="{title}" class="sample-section-title font-semibold uppercase text-neutral-500 dark:text-neutral-200">{title}</a>
+      <div class="sample-section-title font-semibold uppercase text-neutral-500 dark:text-neutral-200">{title}</div>
 
       <Button size="sm" color="primary" variant="outlined"
               class="opacity-0 group-hover:opacity-100 transition-opacity"
