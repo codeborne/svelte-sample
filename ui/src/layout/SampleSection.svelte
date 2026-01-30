@@ -16,7 +16,7 @@
   const sectionId = title.toLowerCase().replace(/\s+/g, '-');
 </script>
 
-<div class="group scroll-my-17 {sectionClass}" id={sectionId}>
+<div class="group scroll-my-13 {sectionClass}" id={sectionId}>
   <div class="pt-4 sm:pt-12 px-4 sm:px-12 -mx-3 sm:-mx-6 border-t {toggledContainerColor ? 'bg-neutral-50 dark:bg-neutral-900': ''}">
     <div class="flex justify-between">
       <a href="{title}" class="sample-section-title font-semibold uppercase text-neutral-500 dark:text-neutral-200">{title}</a>

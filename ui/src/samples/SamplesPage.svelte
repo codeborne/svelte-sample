@@ -2,6 +2,7 @@
   import Link from 'src/components/Link.svelte'
   import {navigate} from 'src/i18n'
   import Logo from 'src/layout/Logo.svelte'
+  import SectionsNav from 'src/layout/SectionsNav.svelte'
 
   export let path: string
 
@@ -50,6 +51,9 @@
       <div class="p-3 sm:px-6 sm:py-8">
         <h4>{path.replace('/', ' / ')}</h4>
         <div class="pt-6">
+          {#key path}
+            <SectionsNav/>
+          {/key}
           <svelte:component this={samples[path].default}/>
         </div>
       </div>
