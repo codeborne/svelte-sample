@@ -1,4 +1,5 @@
 <script lang="ts">
+  import {onMount} from 'svelte'
   import Link from 'src/components/Link.svelte'
   import {navigate} from 'src/i18n'
   import Logo from 'src/layout/Logo.svelte'
@@ -10,6 +11,14 @@
   const groupedMenu = Object.keys(samples).groupBy(p => p.split('/')[0])
 
   if (!path) navigate('samples/' + Object.keys(samples)[0])
+
+  onMount(() => {
+    document.documentElement.classList.add('scroll-smooth')
+
+    return () => {
+      document.documentElement.classList.remove('scroll-smooth')
+    }
+  })
 </script>
 
 <div class="sm:flex sm:items-start">
@@ -30,7 +39,9 @@
 
   <div class="hidden sm:flex w-72 p-6 sticky top-0 h-screen overflow-auto">
     <nav class="flex flex-col gap-1">
-      <Link to=""><Logo class="h-6"/></Link>
+      <Link to="">
+        <Logo class="h-6"/>
+      </Link>
 
       {#key path}
         {#each Object.keys(groupedMenu) as dir}
