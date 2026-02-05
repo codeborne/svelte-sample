@@ -1,9 +1,11 @@
 <script lang="ts">
   import Icon from 'src/icons/Icon.svelte'
+  import Link from 'src/components/Link.svelte'
   import type {HTMLButtonAttributes} from 'svelte/elements'
   import type {Snippet} from 'svelte'
 
   const {
+    to,
     icon = '',
     iconEnd = '',
     size = '',
@@ -16,6 +18,7 @@
     type = 'button',
     ...restProps
   }: {
+    to?: string
     icon?: string
     iconEnd?: string
     size?: 'xs'|'sm'|''|'lg'
@@ -29,12 +32,11 @@
 
   const hasLabel = $derived(label || children)
   const hasAnyIcon = $derived(icon || iconEnd || loading)
+
+  const allClasses = $derived(`btn ${size} ${color} ${variant} ${restProps.class || ''} ${circular ? 'circular' : ''} ${hasAnyIcon ? 'has-icon' : ''} ${icon && !iconEnd && !hasLabel ? 'icon-only' : ''}`.trim())
 </script>
 
-<button {type} {...restProps} class="btn {size} {color} {variant} {restProps.class }"
-        class:circular={circular}
-        class:has-icon={hasAnyIcon}
-        class:icon-only={icon && !iconEnd && !hasLabel}>
+{#snippet content()}
   {#if loading}
     <Icon name="spinner" {size} class="animate-spin" />
   {:else if icon}
@@ -50,7 +52,17 @@
   {#if iconEnd && !loading}
     <Icon name={iconEnd} {size} strokeWidth={size === 'xs' ? '2.5' : '2'}/>
   {/if}
-</button>
+{/snippet}
+
+{#if to}
+  <Link {to} class={allClasses}>
+    {@render content()}
+  </Link>
+{:else}
+  <button {type} {...restProps} class={allClasses}>
+    {@render content()}
+  </button>
+{/if}
 
 <style lang="postcss" global>
   @reference "./../global.css";

@@ -72,9 +72,22 @@
         <Button label="Trailing icon" {size} iconEnd="arrow-right"/>
         <Button label="External link" {size} iconEnd="link-external"/>
         <Button {size} iconEnd="chevron-down">Dropdown</Button>
-        <Button label="Both sides" {size} icon="user" iconEnd="chevron-down"/>
+        <Button label="Both sides" {size} icon="arrow-left" iconEnd="arrow-right"/>
       </div>
     {/each}
   </div>
 </SampleSection>
 
+<SampleSection title="Button as Link" description="Use the 'to' prop to render a button as a link while maintaining button appearance. This is also more user-friendly than using onclick/navigate as it allows opening in new tab and hovering shows a preview of the url">
+  <div class="common-grid sm:grid-cols-4">
+    {#each sizes as size}
+      <div class="flex flex-col gap-6">
+        <h4>Size {size || 'default'}</h4>
+        <Button to="samples" label="View Profile" {size} color="primary"/>
+        <Button to="samples" iconEnd="arrow-right" {size} variant="soft">Continue</Button>
+        <Button to="samples" iconEnd="link-external" {size} variant="outlined">Documentation</Button>
+        <Button to="samples" icon="arrow-left" {size} variant="ghost">Go Back</Button>
+      </div>
+    {/each}
+  </div>
+</SampleSection>
