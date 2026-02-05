@@ -17,7 +17,11 @@ export default defineConfig({
     conditions: isTest ? ['browser'] : []
   },
   plugins: [
-    svelte({hot: !process.env.VITEST}),
+    svelte({
+      compilerOptions: {
+        hmr: !process.env.VITEST
+      }
+    }),
     tailwindcss(),
     run({
       silent: !!process.env.VITEST,
