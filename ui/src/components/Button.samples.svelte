@@ -62,3 +62,19 @@
     {/each}
   </div>
 </SampleSection>
+
+<SampleSection title="Icon positioning" description="Use icon for leading icons, iconEnd for trailing icons, or both for icons on both sides.">
+  <div class="common-grid sm:grid-cols-4">
+    {#each sizes as size}
+      <div class="flex flex-col gap-6">
+        <h4>Size {size || 'default'}</h4>
+        <Button label="Leading icon" {size} icon="arrow-left"/>
+        <Button label="Trailing icon" {size} iconEnd="arrow-right"/>
+        <Button label="External link" {size} iconEnd="link-external"/>
+        <Button {size} iconEnd="chevron-down">Dropdown</Button>
+        <Button label="Both sides" {size} icon="user" iconEnd="chevron-down"/>
+      </div>
+    {/each}
+  </div>
+</SampleSection>
+

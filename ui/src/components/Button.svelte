@@ -5,6 +5,7 @@
 
   const {
     icon = '',
+    iconEnd = '',
     size = '',
     variant = 'solid',
     color = 'secondary',
@@ -16,6 +17,7 @@
     ...restProps
   }: {
     icon?: string
+    iconEnd?: string
     size?: 'xs'|'sm'|''|'lg'
     variant?: 'solid'|'soft'|'outlined'|'ghost'
     color?: 'primary'|'secondary'|'warning'|'success'|'danger'
@@ -26,12 +28,13 @@
   } & HTMLButtonAttributes = $props()
 
   const hasLabel = $derived(label || children)
+  const hasAnyIcon = $derived(icon || iconEnd || loading)
 </script>
 
 <button {type} {...restProps} class="btn {size} {color} {variant} {restProps.class }"
         class:circular={circular}
-        class:has-icon={icon || loading}
-        class:icon-only={icon && !hasLabel}>
+        class:has-icon={hasAnyIcon}
+        class:icon-only={icon && !iconEnd && !hasLabel}>
   {#if loading}
     <Icon name="spinner" {size} class="animate-spin" />
   {:else if icon}
@@ -43,6 +46,9 @@
     {:else}
       {label}
     {/if}
+  {/if}
+  {#if iconEnd && !loading}
+    <Icon name={iconEnd} {size} strokeWidth={size === 'xs' ? '2.5' : '2'}/>
   {/if}
 </button>
 
