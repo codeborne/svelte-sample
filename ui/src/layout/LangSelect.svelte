@@ -14,7 +14,7 @@
 </script>
 
 <Dropdown>
-  <Button size="sm" color="primary" variant="soft" icon="world" class="uppercase">
+  <Button size="sm" color="primary" variant="soft" icon="world" iconEnd="chevron-down" class="uppercase">
     {lang}
   </Button>
   {#snippet menu()}

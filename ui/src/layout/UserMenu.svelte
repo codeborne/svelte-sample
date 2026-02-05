@@ -10,7 +10,7 @@
 
 {#if $user}
   <Dropdown class="right-0 z-50!" bind:open={isDropdownOpen}>
-    <Button size="sm" color="primary" variant="soft" icon="user">
+    <Button size="sm" color="primary" variant="soft" icon="user" iconEnd="chevron-down">
       <div>{$user.firstName} {$user.lastName}</div>
     </Button>
     {#snippet menu()}

@@ -15,10 +15,10 @@
 </SampleSection>
 
 <SampleSection title="Sizes">
-  <div class="h-80 flex flex-col sm:flex-row gap-6">
+  <div class="flex flex-col sm:flex-row gap-6">
     {#each sizes as size}
       <Dropdown>
-        <Button {size}>
+        <Button {size} iconEnd="chevron-down">
           Sample {size} dropdown
         </Button>
         {#snippet menu()}

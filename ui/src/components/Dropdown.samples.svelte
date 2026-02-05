@@ -11,7 +11,7 @@
 <SampleSection title="Dropdown">
   <div class="flex justify-between">
     <Dropdown>
-      <Button>
+      <Button iconEnd="chevron-down">
         Sample dropdown
       </Button>
       {#snippet menu()}
@@ -21,7 +21,7 @@
       {/snippet}
     </Dropdown>
     <Dropdown class="right-0">
-      <Button>
+      <Button iconEnd="chevron-down">
         Right-aligned dropdown
       </Button>
       {#snippet menu()}
@@ -34,10 +34,10 @@
 </SampleSection>
 
 <SampleSection title="With menus">
-  <div class="h-96 flex gap-6">
+  <div class="flex gap-6">
     {#each sizes as size}
       <Dropdown>
-        <Button {size}>
+        <Button {size} iconEnd="chevron-down">
           Menu {size} dropdown
         </Button>
         {#snippet menu()}
