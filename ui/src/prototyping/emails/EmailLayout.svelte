@@ -9,23 +9,18 @@
   export let fallBackMessage: string | undefined
 </script>
 
-<html lang="et">
-<body class="bg-white">
-
 <!--
 Use svelte-mail or similar tool to render e-mails to bullet proof markup
 https://github.com/ls-age/svelte-mail
 -->
 
-<div class="bg-primary-100">
-  <div class="max-w-[480px] mx-auto p-6">
-    <Logo />
-  </div>
+<div class="max-w-[480px] mx-auto p-6">
+  <Logo />
 </div>
 
 <div class="max-w-[480px] mx-auto">
 
-  <div class="bg-white p-6 border-x border-b border-gray-100 dark:border-gray-800">
+  <div class="p-6 border">
 
     {#if title}
       <h1 class="text-xl mb-3">
@@ -55,6 +50,3 @@ https://github.com/ls-age/svelte-mail
     {emailLegalText}
   </div>
 </div>
-
-</body>
-</html>

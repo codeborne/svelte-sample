@@ -11,7 +11,7 @@
 <div class="space-y-3">
   <h3>E-mail client</h3>
   <p>There is a separate page for mocking an e-mail client. This can be used to convey the ideas revolving around e-mails, their visuals and their content.</p>
-  <Link to="/emails" class="btn secondary solid">Go to mock emails</Link>
+  <Link to="emails" class="btn secondary solid">Go to mock emails</Link>
 
   <hr class="my-8!"/>
 
