@@ -34,8 +34,8 @@
       {/if}
     </div>
   {/if}
-  <div class="panel-body {bodyClass || ''}">
-    <div class="panel-scroller">
+  <div class="panel-body">
+    <div class="panel-scroller {bodyClass || ''}">
       {@render children?.()}
     </div>
   </div>
@@ -78,7 +78,19 @@
   }
 
   .panel-scroller {
-    @apply absolute inset-0 overflow-auto;
+    @apply absolute inset-0
+    scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-slate-400 scrollbar-track-transparent;
+    overflow-y: overlay;
+    overflow-y: auto; /* Fallback for browsers that support it */
+    scrollbar-gutter: auto;
+    mask: linear-gradient(to bottom,
+    #0000,
+    #ffff var(--top-fade) calc(100% - var(--bottom-fade)),
+    #0000
+    );
+    animation: scrollfade;
+    animation-timeline: --scrollfade;
+    scroll-timeline: --scrollfade y;
   }
 
   .panel.xs > .panel-header,
@@ -95,4 +107,32 @@
   .panel.lg .panel-footer {
     @apply px-5 py-5;
   }
+
+  @property --top-fade {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @property --bottom-fade {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @keyframes scrollfade {
+    0% {
+      --top-fade: 0;
+    }
+    10%, 100% {
+      --top-fade: 2rem;
+    }
+    0%, 90% {
+      --bottom-fade: 2rem;
+    }
+    100% {
+      --bottom-fade: 0;
+    }
+  }
+
 </style>
