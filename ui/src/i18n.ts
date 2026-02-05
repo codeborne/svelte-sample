@@ -1,6 +1,6 @@
 import langs from '../i18n/langs.json'
 import {defaultLang, detectLang, type Dict, init, langs as allLangs, mergeDicts, type Options, rememberLang, resolve} from '@codeborne/i18n-json'
-import {navigate as navigatorNavigate} from 'svelte-routing'
+import {navigate as navigatorNavigate} from 'svelte5-router'
 import type enDict from 'i18n/en.json'
 
 export * from '@codeborne/i18n-json'

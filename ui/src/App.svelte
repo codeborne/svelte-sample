@@ -6,7 +6,7 @@
   import Spinner from 'src/components/Spinner.svelte'
   import MockEmailsPage from 'src/prototyping/emails/MockEmailsPage.svelte'
   import MockEmailNotifications from 'src/prototyping/emails/MockEmailNotifications.svelte'
-  import {Route, Router} from 'svelte-routing'
+  import {Route, Router} from 'svelte5-router'
 </script>
 
 <svelte:head>
@@ -24,6 +24,14 @@
       {:then samples}
         <svelte:component this={samples.default} path={params.path}/>
       {/await}
+    <Route path="/samples/*path">
+      {#snippet children(params)}
+        {#await import('src/samples/SamplesPage.svelte')}
+            <Spinner/>
+        {:then samples}
+          <svelte:component this={samples.default} path={params.path}/>
+        {/await}
+      {/snippet}
     </Route>
     <Route component={NotFoundPage}/>
 
