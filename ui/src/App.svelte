@@ -18,16 +18,12 @@
 <Router>
   <div class="App min-h-screen flex flex-col">
     <Route path="/" component={HomePage}/>
-    <Route path="/samples/*path" let:params>
-      {#await import('src/samples/SamplesPage.svelte')}
-        <Spinner/>
-      {:then samples}
-        <svelte:component this={samples.default} path={params.path}/>
-      {/await}
     <Route path="/samples/*path">
       {#snippet children(params)}
         {#await import('src/samples/SamplesPage.svelte')}
+          <div class="fixed inset-0 flex pointer-events-none justify-center items-center" title="Loading...">
             <Spinner/>
+          </div>
         {:then samples}
           <svelte:component this={samples.default} path={params.path}/>
         {/await}
