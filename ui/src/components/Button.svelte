@@ -54,7 +54,7 @@
   {/if}
 {/snippet}
 
-{#if to}
+{#if to !== undefined}
   <Link {to} class={allClasses}>
     {@render content()}
   </Link>
