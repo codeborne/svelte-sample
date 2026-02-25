@@ -1,11 +1,17 @@
 <script lang="ts">
-
-  export let items: string[] = []
-  export let activeTab = items[0]
+  let {
+    items = [],
+    activeTab = $bindable(items[0]),
+    class: className
+  }: {
+    items?: string[]
+    activeTab?: string
+    class?: string
+  } = $props()
 </script>
 
 <div class="border-b border-gray-200 mb-8">
-  <nav class="-mb-px flex {$$props.class}" aria-label="Tabs">
+  <nav class="-mb-px flex {className}" aria-label="Tabs">
     {#each items as item}
       <button onclick={() => activeTab = item} role="tab"
          class:border-primary-500={activeTab === item}
