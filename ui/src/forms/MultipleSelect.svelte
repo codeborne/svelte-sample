@@ -21,8 +21,7 @@
     values = [...values ?? [], select.value]
     onchange?.(values)
   }
-
-  $: if (values) setTimeout(() => {if (select) select.selectedIndex = 0})
+  
 </script>
 
 <FormField {label}>
