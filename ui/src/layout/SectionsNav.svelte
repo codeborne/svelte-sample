@@ -18,7 +18,7 @@
 </script>
 
 {#if sections.length > 0}
-  <div class="sticky top-0 z-10 border-b -mb-px flex gap-4 py-4 flex-wrap bg-white dark:bg-neutral-800">
+  <div class="sticky top-0 z-10 border-b -mb-px -mx-3 px-4 sm:-mx-6 sm:px-6 flex gap-4 py-4 flex-wrap bg-white">
     {#each sections as section}
       <a href="#{section.id}" class="text-sm font-medium hover:underline">
         {section.title}
