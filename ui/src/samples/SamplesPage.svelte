@@ -23,7 +23,7 @@
 
 <div class="sm:flex sm:items-start">
 
-  <div class="form-field w-full sm:hidden">
+  <div class="form-field w-full px-3 pt-3 sm:hidden">
     <select bind:value={path}>
       {#key path}
         {#each Object.keys(groupedMenu) as group}
@@ -37,7 +37,8 @@
     </select>
   </div>
 
-  <div class="hidden sm:flex w-72 p-6 sticky top-0 h-screen overflow-auto">
+  <div class="hidden sm:flex w-56 p-6 sticky top-0 h-screen border-r overflow-auto
+  scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-neutral-200 hover:scrollbar-thumb-neutral-300 scrollbar-track-transparent">
     <nav class="flex flex-col gap-1">
       <Link to="">
         <Logo class="h-6"/>
