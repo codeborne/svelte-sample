@@ -65,7 +65,7 @@
           <span class="text-nowrap">In a button</span>
           <Badge variant="numeric" color="success" {size}>888</Badge>
         </Button>
-        <Button icon="notifications" {size} color="primary" class="circular relative">
+        <Button icon="bell" {size} color="primary" class="circular relative">
           <Badge variant="numeric" color="danger" class="absolute top-0 right-0 translate-x-1/3 -translate-y-1/3" {size}
           >8</Badge
           >
