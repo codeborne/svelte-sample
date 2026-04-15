@@ -19,7 +19,7 @@
     <div class="flex flex-col space-y-2">
       <h5 class="text-xs uppercase">Size {size || "default"}</h5>
       <div class="space-x-1">
-        <Badge {size}>Primary</Badge>
+        <Badge {size}>Default</Badge>
         <Badge color="primary" {size}>Primary</Badge>
         <Badge color="success" {size}>Success</Badge>
         <Badge color="warning" {size}>Warning</Badge>
